@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2142C80D-A197-41A3-A312-FE6FF9DDE95A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FaceMe_iOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>22EF45DA-9792-42D1-A466-9C3E4DD94A6E</key>
+		<string>ssh://github.com/bopang/FaceMe.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FaceMe_iOS/FaceMe_iOS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>22EF45DA-9792-42D1-A466-9C3E4DD94A6E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/bopang/FaceMe.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>22EF45DA-9792-42D1-A466-9C3E4DD94A6E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22EF45DA-9792-42D1-A466-9C3E4DD94A6E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FaceMe</string>
+		</dict>
+	</array>
+</dict>
+</plist>
