@@ -1,0 +1,60 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://facemeserver.appspot.com/_ah/api",
+  "name" : "example",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://facemeserver.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "example.helloWorldEndpoint.getThing" : {
+      "path" : "container",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.gatech.faceme.HelloWorldEndpoint.getThing",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Container" : {
+        "id" : "Container",
+        "type" : "object",
+        "properties" : {
+        }
+      }
+    },
+    "methods" : {
+      "com.gatech.faceme.HelloWorldEndpoint.getThing" : {
+        "response" : {
+          "$ref" : "Container"
+        }
+      }
+    }
+  }
+}
