@@ -43,11 +43,11 @@ public class Index extends HttpServlet {
 
     PersistenceManager pm = PMF.get().getPersistenceManager();
     
-    Query query = pm.newQuery(MediaObject.class, "owner == userParam");
+    Query query = pm.newQuery(OriginalPoster.class, "owner == userParam");
     query.declareImports("import com.google.appengine.api.users.User");
     query.declareParameters("User userParam");
 
-    List<MediaObject> results = (List<MediaObject>) query.execute(user);
+    List<OriginalPoster> results = (List<OriginalPoster>) query.execute(user);
 
     String[] errors = req.getParameterValues("error");
     if (errors == null) errors = new String[0];

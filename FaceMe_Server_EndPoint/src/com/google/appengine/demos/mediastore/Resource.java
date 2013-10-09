@@ -47,19 +47,19 @@ public class Resource extends HttpServlet {
 
     PersistenceManager pm = PMF.get().getPersistenceManager();
 
-    Query query = pm.newQuery(MediaObject.class, "blob == blobParam");
+    Query query = pm.newQuery(OriginalPoster.class, "blob == blobParam");
     query.declareImports("import " +
       "com.google.appengine.api.blobstore.BlobKey");
     query.declareParameters("BlobKey blobParam");
 
-    List<MediaObject> results = (List<MediaObject>) query.execute(blobKey);
+    List<OriginalPoster> results = (List<OriginalPoster>) query.execute(blobKey);
     if (results.isEmpty()) {
       resp.sendRedirect("/?error=" +
         URLEncoder.encode("BlobKey does not exist", "UTF-8"));
       return;
     }
 
-    MediaObject result = results.get(0);
+    OriginalPoster result = results.get(0);
     if (!result.isPublic()) {
       UserService userService = UserServiceFactory.getUserService();
       User user = userService.getCurrentUser();

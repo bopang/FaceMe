@@ -30,7 +30,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class MediaObject {
+public class OriginalPoster {
   @PrimaryKey
   @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
   private Key key;
@@ -70,7 +70,7 @@ public class MediaObject {
     "image/jpeg", "image/tiff", "image/gif", "image/bmp");
 
   
-  public MediaObject(User owner, BlobKey blob, Date creationTime,
+  public OriginalPoster(User owner, BlobKey blob, Date creationTime,
 	      String contentType, String filename, long size, String title,
 	      String description, boolean isPublic) {
 

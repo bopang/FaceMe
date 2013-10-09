@@ -76,7 +76,7 @@ public class UploadPost extends HttpServlet {
     boolean isShared = "public".equalsIgnoreCase(req.getParameter("share"));
 
     try {
-      MediaObject mediaObj = new MediaObject(user, blobKey, creation, 
+      OriginalPoster mediaObj = new OriginalPoster(user, blobKey, creation, 
         contentType, fileName, size, title, description, isShared);
       PMF.get().getPersistenceManager().makePersistent(mediaObj);
       resp.sendRedirect("/");
