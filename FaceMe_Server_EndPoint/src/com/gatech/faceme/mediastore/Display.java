@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.appengine.demos.mediastore;
+package com.gatech.faceme.mediastore;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gatech.faceme.entity.NonFacePoster;
+import com.gatech.faceme.entity.OriginalPoster;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -47,12 +49,12 @@ public class Display extends HttpServlet {
     BlobKey blobKey = new BlobKey(blobKeyString);
     PersistenceManager pm = PMF.get().getPersistenceManager();
 
-    Query query = pm.newQuery(MediaObject.class, "blob == blobParam");
+    Query query = pm.newQuery(User.class, "blob == blobParam");
     query.declareImports("import " +
       "com.google.appengine.api.blobstore.BlobKey");
     query.declareParameters("BlobKey blobParam");
 
-    List<MediaObject> results = (List<MediaObject>) query.execute(blobKey);
+    List<OriginalPoster> results = (List<OriginalPoster>) query.execute(blobKey);
     if (results.isEmpty()) {
       resp.sendRedirect("/?error=" +
         URLEncoder.encode("BlobKey does not exist", "UTF-8"));
@@ -62,7 +64,7 @@ public class Display extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
 
-    MediaObject result = results.get(0);
+    OriginalPoster result = results.get(0);
     if (!result.isPublic() && !result.getOwner().equals(user)) {
       resp.sendRedirect("/?error=" +
         URLEncoder.encode("Not authorized to access", "UTF-8"));

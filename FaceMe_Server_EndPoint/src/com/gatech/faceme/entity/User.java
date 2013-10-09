@@ -1,12 +1,24 @@
 package com.gatech.faceme.entity;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+//curl -H 'Content-Type: application/json' -d '{ "userID": "Brandon", "password": "111111" }' http://localhost:8888/_ah/api/userendpoint/v1/user/add
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class User {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private String userID;
+	@Persistent
 	private String password;
 	private String faceKey;
 	private String gender;
 	private String school;
-	
+
 	public User(String userID, String password, 
 			String faceKey, String gender,String school){
 		this.userID = userID;
@@ -14,6 +26,10 @@ public class User {
 		this.faceKey = faceKey;
 		this.gender = gender;
 		this.school = school;
+	}
+
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getUserID() {

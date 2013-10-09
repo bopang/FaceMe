@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.appengine.demos.mediastore;
+package com.gatech.faceme.mediastore;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gatech.faceme.entity.OriginalPoster;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
@@ -47,19 +48,19 @@ public class Resource extends HttpServlet {
 
     PersistenceManager pm = PMF.get().getPersistenceManager();
 
-    Query query = pm.newQuery(MediaObject.class, "blob == blobParam");
+    Query query = pm.newQuery(OriginalPoster.class, "blob == blobParam");
     query.declareImports("import " +
       "com.google.appengine.api.blobstore.BlobKey");
     query.declareParameters("BlobKey blobParam");
 
-    List<MediaObject> results = (List<MediaObject>) query.execute(blobKey);
+    List<OriginalPoster> results = (List<OriginalPoster>) query.execute(blobKey);
     if (results.isEmpty()) {
       resp.sendRedirect("/?error=" +
         URLEncoder.encode("BlobKey does not exist", "UTF-8"));
       return;
     }
 
-    MediaObject result = results.get(0);
+    OriginalPoster result = results.get(0);
     if (!result.isPublic()) {
       UserService userService = UserServiceFactory.getUserService();
       User user = userService.getCurrentUser();

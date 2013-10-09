@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.appengine.demos.mediastore;
+package com.gatech.faceme.mediastore;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gatech.faceme.entity.NonFacePoster;
+import com.gatech.faceme.entity.OriginalPoster;
 import com.google.appengine.api.blobstore.BlobInfo;
 import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -71,14 +73,17 @@ public class UploadPost extends HttpServlet {
     Date creation = blobInfo.getCreation();
     String fileName = blobInfo.getFilename();
 
+   
     String title = req.getParameter("title");
+    String moviename = req.getParameter("moviename");
+    String classification = req.getParameter("classification");
     String description = req.getParameter("description");
     boolean isShared = "public".equalsIgnoreCase(req.getParameter("share"));
 
     try {
-      MediaObject mediaObj = new MediaObject(user, blobKey, creation, 
+    	OriginalPoster originalPoster = new OriginalPoster(user, blobKey, moviename, classification,creation,
         contentType, fileName, size, title, description, isShared);
-      PMF.get().getPersistenceManager().makePersistent(mediaObj);
+      PMF.get().getPersistenceManager().makePersistent(originalPoster);
       resp.sendRedirect("/");
     } catch (Exception e) {
       blobstoreService.delete(blobKey);

@@ -12,27 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.appengine.demos.mediastore;
+package com.gatech.faceme.mediastore;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.gatech.faceme.entity.OriginalPoster;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 @SuppressWarnings("serial")
-public class Upload extends HttpServlet {
-
-  private BlobstoreService blobstoreService =
-    BlobstoreServiceFactory.getBlobstoreService();
+public class Index extends HttpServlet {
 
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws
       IOException, ServletException {
@@ -40,15 +39,26 @@ public class Upload extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
 
-    String authURL = userService.createLogoutURL("/");
-    String uploadURL = blobstoreService.createUploadUrl("/post");
+    String authURL = (user != null) ? userService.createLogoutURL("/")
+      : userService.createLoginURL("/");
 
-    req.setAttribute("uploadURL", uploadURL);
+    PersistenceManager pm = PMF.get().getPersistenceManager();
+    
+    Query query = pm.newQuery(OriginalPoster.class, "owner == userParam");
+    query.declareImports("import com.google.appengine.api.users.User");
+    query.declareParameters("User userParam");
+
+    List<OriginalPoster> results = (List<OriginalPoster>) query.execute(user);
+
+    String[] errors = req.getParameterValues("error");
+    if (errors == null) errors = new String[0];
+
+    req.setAttribute("errors", errors);
+    req.setAttribute("files", results);
     req.setAttribute("authURL", authURL);
     req.setAttribute("user", user);
-
-    RequestDispatcher dispatcher = 
-      req.getRequestDispatcher("WEB-INF/templates/upload.jsp");
+    RequestDispatcher dispatcher =
+      req.getRequestDispatcher("WEB-INF/templates/main.jsp");
     dispatcher.forward(req, resp);
   }
 }
