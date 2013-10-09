@@ -10,30 +10,19 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_signin"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/buttonshape"
         android:text="Sign in"
         android:textColor="#fff"
-        android:textColorHint="#333" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="18dp"
-       
-        android:text="Sign up"
-        android:textColor="#fff"
-        android:textColorHint="#333" />
+        android:textColorHint="#333"
+        
+        android:textColorLink="#999" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -49,11 +38,26 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
-        android:text="FACE ME"
+        android:layout_marginTop="15dp"
+        android:text="FaceMe"
         android:textColor="#FFF"
+    
         android:textSize="45sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_signin"
+        android:layout_alignBottom="@+id/button_signin"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/secondbuttonshape"
+        android:text="Sign up"
+        android:textColor="#333"
+        android:textColorHint="#333"
+        android:textColorLink="#999" />
 
 </RelativeLayout>
