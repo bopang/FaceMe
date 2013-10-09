@@ -5,7 +5,7 @@ public class User {
 	private String password;
 	private String faceKey;
 	private String gender;
-	
+	private String school;
 	public String getUserID() {
 		return userID;
 	}
