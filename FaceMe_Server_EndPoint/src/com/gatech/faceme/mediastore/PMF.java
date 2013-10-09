@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.appengine.demos.mediastore;
+package com.gatech.faceme.mediastore;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

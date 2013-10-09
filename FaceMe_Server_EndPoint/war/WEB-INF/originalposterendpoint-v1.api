@@ -1,0 +1,210 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://media-store-leon.appspot.com/_ah/api",
+  "name" : "originalposterendpoint",
+  "version" : "v1",
+  "description" : "This entity represents an original poster.",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://media-store-leon.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "originalposterendpoint.originalposter.list" : {
+      "path" : "originalposter/list",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.gatech.faceme.endpoints.OriginalPosterEndpoint.listOriginalPoster",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "originalposterendpoint.originalposter.insert" : {
+      "path" : "originalposter/insert",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.gatech.faceme.endpoints.OriginalPosterEndpoint.insertOriginalPoster",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "originalposterendpoint.originalposter.get" : {
+      "path" : "originalposter/get/{key}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.gatech.faceme.endpoints.OriginalPosterEndpoint.getOriginalPosterByID",
+      "request" : {
+        "parameters" : {
+          "key" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "OriginalPoster" : {
+        "id" : "OriginalPoster",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "owner" : {
+            "$ref" : "User"
+          },
+          "filename" : {
+            "type" : "string"
+          },
+          "size" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "contentType" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "public" : {
+            "type" : "boolean"
+          },
+          "image" : {
+            "type" : "boolean"
+          },
+          "urlpath" : {
+            "type" : "string"
+          },
+          "displayURL" : {
+            "type" : "string"
+          },
+          "creationTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "authDomain" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string"
+          },
+          "federatedIdentity" : {
+            "type" : "string"
+          },
+          "nickname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "OriginalPosterCollection" : {
+        "id" : "OriginalPosterCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "OriginalPoster"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.gatech.faceme.endpoints.OriginalPosterEndpoint.listOriginalPoster" : {
+        "response" : {
+          "$ref" : "OriginalPosterCollection"
+        }
+      },
+      "com.gatech.faceme.endpoints.OriginalPosterEndpoint.insertOriginalPoster" : {
+        "request" : {
+          "$ref" : "OriginalPoster"
+        },
+        "response" : {
+          "$ref" : "OriginalPoster"
+        }
+      },
+      "com.gatech.faceme.endpoints.OriginalPosterEndpoint.getOriginalPosterByID" : {
+        "response" : {
+          "$ref" : "OriginalPoster"
+        }
+      }
+    }
+  }
+}

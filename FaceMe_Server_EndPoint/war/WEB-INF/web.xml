@@ -4,23 +4,23 @@
   
   <servlet>
 		<servlet-name>upload</servlet-name>
-		<servlet-class>com.google.appengine.demos.mediastore.Upload</servlet-class>
+		<servlet-class>com.gatech.faceme.mediastore.Upload</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>post</servlet-name>
-		<servlet-class>com.google.appengine.demos.mediastore.UploadPost</servlet-class>
+		<servlet-class>com.gatech.faceme.mediastore.UploadPost</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>index</servlet-name>
-		<servlet-class>com.google.appengine.demos.mediastore.Index</servlet-class>
+		<servlet-class>com.gatech.faceme.mediastore.Index</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>resource</servlet-name>
-		<servlet-class>com.google.appengine.demos.mediastore.Resource</servlet-class>
+		<servlet-class>com.gatech.faceme.mediastore.Resource</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>display</servlet-name>
-		<servlet-class>com.google.appengine.demos.mediastore.Display</servlet-class>
+		<servlet-class>com.gatech.faceme.mediastore.Display</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -68,7 +68,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.gatech.faceme.HelloWorldEndpoint,com.gatech.faceme.endpoints.UserEndpoint</param-value>
+      <param-value>com.gatech.faceme.HelloWorldEndpoint,com.gatech.faceme.endpoints.OriginalPosterEndpoint,com.gatech.faceme.endpoints.UserEndpoint</param-value>
     </init-param>
   </servlet>
 

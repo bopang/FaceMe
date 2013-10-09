@@ -127,90 +127,6 @@
             }
           }
         }
-      },
-      "OriginalPoster" : {
-        "id" : "OriginalPoster",
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "$ref" : "Key"
-          },
-          "owner" : {
-            "$ref" : "User"
-          },
-          "contentType" : {
-            "type" : "string"
-          },
-          "filename" : {
-            "type" : "string"
-          },
-          "size" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "title" : {
-            "type" : "string"
-          },
-          "description" : {
-            "type" : "string"
-          },
-          "displayURL" : {
-            "type" : "string"
-          },
-          "urlpath" : {
-            "type" : "string"
-          },
-          "public" : {
-            "type" : "boolean"
-          },
-          "image" : {
-            "type" : "boolean"
-          },
-          "creationTime" : {
-            "type" : "string",
-            "format" : "date-time"
-          }
-        }
-      },
-      "Key" : {
-        "id" : "Key",
-        "type" : "object",
-        "properties" : {
-          "kind" : {
-            "type" : "string"
-          },
-          "appId" : {
-            "type" : "string"
-          },
-          "id" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "parent" : {
-            "$ref" : "Key"
-          },
-          "complete" : {
-            "type" : "boolean"
-          },
-          "namespace" : {
-            "type" : "string"
-          }
-        }
-      },
-      "OriginalPosterCollection" : {
-        "id" : "OriginalPosterCollection",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "OriginalPoster"
-            }
-          }
-        }
       }
     },
     "methods" : {
@@ -234,7 +150,7 @@
       },
       "com.gatech.faceme.endpoints.UserEndpoint.listImage" : {
         "response" : {
-          "$ref" : "OriginalPosterCollection"
+          "$ref" : "UserCollection"
         }
       }
     }

@@ -1,8 +1,8 @@
 <%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.demos.mediastore.MediaObject" %>
+<%@ page import="com.gatech.faceme.entity.OriginalPoster" %>
 <%@ page import="java.util.List" %>
 <%
-  User user = (User) request.getAttribute("user");
+	User user = (User) request.getAttribute("user");
   String authURL = (String) request.getAttribute("authURL");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -16,39 +16,56 @@
   <body>
     <div align="right">
       <%
-        if (user != null) {
+      	if (user != null) {
       %>
-        Hi there, <%= user.getNickname() %>
-      <% } %>
+        Hi there, <%=user.getNickname()%>
+      <%
+      	}
+      %>
 
-      <a href="<%= authURL %>">
-        <% if (user != null) { %>Log out<% } else  { %>Log in<% } %>
+      <a href="<%=authURL%>">
+        <%
+        	if (user != null) {
+        %>Log out<%
+        	} else  {
+        %>Log in<%
+        	}
+        %>
       </a>
     </div>
 
     <ul>
-        <% 
-           String[] errors = (String[]) request.getAttribute("errors");
-           for (int i = 0; i < errors.length; i++) { %>
-          <li style="color: red"><%= errors[i]%></li>
-        <% } %>
+        <%
+        	String[] errors = (String[]) request.getAttribute("errors");
+                   for (int i = 0; i < errors.length; i++) {
+        %>
+          <li style="color: red"><%=errors[i]%></li>
+        <%
+        	}
+        %>
       </ul>
 
     <h1 align="center">
-      <% if (user != null) { %>
+      <%
+      	if (user != null) {
+      %>
         Your media
-      <% } else { %>
+      <%
+      	} else {
+      %>
         Welcome to The MediaStore!
-      <% } %>
+      <%
+      	}
+      %>
     </h1>
 
     <hr>
       <%
-         List<MediaObject> files =
-           (List<MediaObject>) request.getAttribute("files");
-         if (files.size() > 0) {
-           for (int i = 0; i < files.size(); i++) {
-             MediaObject item = files.get(i);
+      	List<OriginalPoster> files =
+                 (List<OriginalPoster>) request.getAttribute("files");
+               if (files.size() > 0) {
+                 for (int i = 0; i < files.size(); i++) {
+                	 OriginalPoster item = files.get(i);
       %>
             <b>
               <% if (item.isImage()) { %>

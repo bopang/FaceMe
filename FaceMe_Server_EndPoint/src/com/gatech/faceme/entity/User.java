@@ -18,7 +18,7 @@ public class User {
 	private String faceKey;
 	private String gender;
 	private String school;
-	
+
 	public User(String userID, String password, 
 			String faceKey, String gender,String school){
 		this.userID = userID;

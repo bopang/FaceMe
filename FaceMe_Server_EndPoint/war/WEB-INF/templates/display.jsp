@@ -1,9 +1,9 @@
 <%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.demos.mediastore.MediaObject" %>
+<%@ page import="com.gatech.faceme.entity.OriginalPoster" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" 
   "http://www.w3.org/TR/html4/strict.dtd">
 <%
-  MediaObject item = (MediaObject) request.getAttribute("item");
+OriginalPoster item = (OriginalPoster) request.getAttribute("item");
   User user = (User) request.getAttribute("user");
   String authURL = (String) request.getAttribute("authURL");
   String displayURL = (String) request.getAttribute("displayURL");

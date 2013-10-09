@@ -23,6 +23,8 @@
           <option value="public">Public</option>
         </select>
     Title: <input type="text" size="40" name="title"><br>
+    Movie: <input type="text" size="40" name="moviename"><br>
+    Classification: <input type="text" size="40" name="classification"><br>
     Description:<br>
     <textarea cols="80" rows="20" name="description"></textarea><br>
     Upload File: <input type="file" name="file"><br>

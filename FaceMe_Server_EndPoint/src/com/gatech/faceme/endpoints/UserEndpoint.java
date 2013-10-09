@@ -7,10 +7,10 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import com.gatech.faceme.entity.User;
+import com.gatech.faceme.mediastore.*;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.response.UnauthorizedException;
-import com.google.appengine.demos.mediastore.*;
 
 @Api(name = "userendpoint", description = "This entity represents a user.", version = "v1")
 public class UserEndpoint {
@@ -46,13 +46,13 @@ public class UserEndpoint {
 
 	@ApiMethod(httpMethod = "GET", name = "image.list", path = "image/list")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public List<OriginalPoster> listImage() {
+	public List<User> listImage() {
 		PersistenceManager mgr = PMF.get().getPersistenceManager();
-		List<OriginalPoster> result = new ArrayList<OriginalPoster>();
+		List<User> result = new ArrayList<User>();
 		try {
-			Query query = mgr.newQuery(OriginalPoster.class);
+			Query query = mgr.newQuery(User.class);
 			for (Object obj : (List<Object>) query.execute()) {
-				result.add(((OriginalPoster) obj));
+				result.add(((User) obj));
 			}
 		} finally {
 			mgr.close();
