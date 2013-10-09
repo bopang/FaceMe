@@ -136,15 +136,15 @@
           "public" : {
             "type" : "boolean"
           },
-          "image" : {
-            "type" : "boolean"
-          },
           "creationTime" : {
             "type" : "string",
             "format" : "date-time"
           },
           "urlpath" : {
             "type" : "string"
+          },
+          "image" : {
+            "type" : "boolean"
           },
           "displayURL" : {
             "type" : "string"
