@@ -7,7 +7,7 @@ public class User {
 	private String gender;
 	private String school;
 	
-	private User(String userID, String password, 
+	public User(String userID, String password, 
 			String faceKey, String gender,String school){
 		this.userID = userID;
 		this.password = password;
