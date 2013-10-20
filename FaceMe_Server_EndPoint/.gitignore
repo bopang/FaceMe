@@ -11,6 +11,7 @@ war/WEB-INF/appengine-generated/
 
 # boilerplate generated classes #
 .apt_generated/
+.settings/
 
 # more caches and things from deploy #
 war/WEB-INF/deploy/
