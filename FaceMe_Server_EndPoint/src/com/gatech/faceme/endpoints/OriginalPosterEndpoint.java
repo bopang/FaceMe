@@ -32,9 +32,9 @@ public class OriginalPosterEndpoint {
 		return result;
 	}
 
-	@ApiMethod(httpMethod = "GET", name = "originalposter.get", path = "originalposter/get/{key}")
+	@ApiMethod(httpMethod = "GET", name = "originalposter.get", path = "originalposter/get/{id}")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public OriginalPoster getOriginalPosterByID(@Named("key") String key) {
+	public OriginalPoster getOriginalPosterByID(@Named("id") String key) {
 		PersistenceManager mgr = getPersistenceManager();
 		OriginalPoster originalposter = null;
 		try {
@@ -44,22 +44,6 @@ public class OriginalPosterEndpoint {
 		}
 		return originalposter;
 	}
-
-/*	@ApiMethod(httpMethod = "GET", name = "image.list", path = "image/list")
-	@SuppressWarnings({ "cast", "unchecked" })
-	public List<OriginalPoster> listImage() {
-		PersistenceManager mgr = PMF.get().getPersistenceManager();
-		List<OriginalPoster> result = new ArrayList<OriginalPoster>();
-		try {
-			Query query = mgr.newQuery(OriginalPoster.class);
-			for (Object obj : (List<Object>) query.execute()) {
-				result.add(((OriginalPoster) obj));
-			}
-		} finally {
-			mgr.close();
-		}
-		return result;
-	}*/
 
 	@ApiMethod(httpMethod = "POST", name = "originalposter.insert", path = "originalposter/insert")
 	// curl -H 'Content-Type: application/json' -d '{ "userID": "Brandon",

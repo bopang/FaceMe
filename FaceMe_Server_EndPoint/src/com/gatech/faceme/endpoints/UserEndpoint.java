@@ -61,9 +61,7 @@ public class UserEndpoint {
 	}
 
 	@ApiMethod(httpMethod = "POST", name = "user.insert", path = "user/insert")
-	// curl -H 'Content-Type: application/json' -d '{ "userID": "Brandon",
-	// "password": "111111" }'
-	// http://localhost:8888/_ah/api/userendpoint/v1/user/insert
+	//curl -H 'Content-Type: application/json' -d '{ "userID": "Brandon","password": "111111" }' http://localhost:8888/_ah/api/userendpoint/v1/user/insert
 	public User insertUser(User user) {
 		PersistenceManager pm = getPersistenceManager();
 		pm.makePersistent(user);
