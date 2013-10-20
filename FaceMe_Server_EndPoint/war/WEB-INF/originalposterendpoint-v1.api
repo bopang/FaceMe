@@ -116,10 +116,10 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "displayURL" : {
+          "urlpath" : {
             "type" : "string"
           },
-          "urlpath" : {
+          "displayURL" : {
             "type" : "string"
           }
         }
