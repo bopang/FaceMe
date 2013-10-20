@@ -1,2 +1,0 @@
-serviceClass: com.gatech.faceme.client.GreetingService
-path: 97D2FA536EC2320730D40FEE1CF60F53.gwt.rpc

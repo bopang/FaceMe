@@ -1,2 +1,0 @@
-# Module faceme_server_endpoint
-# RPC service class, partial path of RPC policy file
