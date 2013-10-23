@@ -1,18 +1,1 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-
-# gwt caches and compiled units #
-war/gwt_bree/
-gwt-unitCache/
-war/WEB-INF/appengine-generated/
-
-# boilerplate generated classes #
-.apt_generated/
-.settings/
-
-# more caches and things from deploy #
-war/WEB-INF/deploy/
-war/WEB-INF/classes/
+/test-classes
