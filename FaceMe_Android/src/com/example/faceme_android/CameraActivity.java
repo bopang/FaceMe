@@ -1,5 +1,9 @@
 package com.example.faceme_android;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
@@ -8,20 +12,28 @@ import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.database.MergeCursor;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.graphics.*;
+import android.graphics.Bitmap.Config;
 
 public class CameraActivity extends Activity implements CvCameraViewListener2 {
     private static final String TAG = "OCVSample::Activity";
@@ -30,11 +42,23 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
     
+    private Bitmap bmPosterNF;
     private Bitmap bmPoster;
     
+    private Mat mPosterNF;
     private Mat mPoster;
+    private Mat mResizedPosterNF;
     private Mat mResizedPoster;
+    private Mat mCamera;
     private Mat m1;
+    private Mat m2;
+    private Mat m3;
+    private Mat mask;
+    private Mat ones;
+    private Mat mPhoto;
+    private ArrayList<Mat> allChannels1;
+    private ArrayList<Mat> allChannels2;
+    
     
     int imageHeight;
     int imageWidth;
@@ -76,7 +100,40 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
 
         mOpenCvCameraView.setCvCameraViewListener(this);
         
-        bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_noFace.png");
+        ImageButton takePictureButton = (ImageButton) findViewById(R.id.takePicture_Button);
+        
+        takePictureButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				MergeCameraPoster();
+				
+				Core.flip(mPhoto, m1, 0);
+				Core.transpose(m1, mPhoto);
+	    		
+				Bitmap bm = Bitmap.createBitmap(mPhoto.width(), mPhoto.height(), Config.ARGB_8888);
+				Utils.matToBitmap(mPhoto, bm);
+
+				
+				try {
+				    String filename = Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png";
+					FileOutputStream out = new FileOutputStream(filename);
+					bm.compress(Bitmap.CompressFormat.PNG, 90, out);
+				    out.close();
+				} catch (Exception e) {
+				    e.printStackTrace();
+				}
+				
+				Intent intent = new Intent(getBaseContext(), PictureViewActivity.class);
+				
+				startActivity(intent);
+			}
+		});
+        
+        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_noFace.png");
+        bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_Face.jpg");
+        
     }
 
     @Override
@@ -131,21 +188,44 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     }
 
     public void onCameraViewStarted(int width, int height) {
+    	mPosterNF = new Mat();
+    	mResizedPosterNF = new Mat(height, width, CvType.CV_8UC1);
     	mPoster = new Mat();
-    	mResizedPoster = new Mat(height, width, CvType.CV_8UC1);
-    	m1 = new Mat();
+    	mResizedPoster =  new Mat(height, width, CvType.CV_8UC1);
     	
+    	m1 = new Mat();
+    	m2 = new Mat();
+    	m3 = new Mat();
+    	mCamera = new Mat();
+    	mask = new Mat();
+    	mPhoto = new Mat();
+    	allChannels1 = new ArrayList<Mat>(4);
+    	
+    	
+    	Utils.bitmapToMat(bmPosterNF, mPosterNF);
     	Utils.bitmapToMat(bmPoster, mPoster);
-    	imageWidth = (int) mPoster.size().width;
-    	imageHeight = (int) mPoster.size().height;
+    	
+    	imageWidth = (int) mPosterNF.size().width;
+    	imageHeight = (int) mPosterNF.size().height;
     	
     	if(imageHeight > imageWidth){
+    		Core.transpose(mPosterNF, m1);
+    		Core.flip(m1, mPosterNF, 0);
+    		
     		Core.transpose(mPoster, m1);
     		Core.flip(m1, mPoster, 0);
     	}
     	
+    	Imgproc.resize(mPosterNF, mResizedPosterNF, mResizedPosterNF.size());
     	Imgproc.resize(mPoster, mResizedPoster, mResizedPoster.size());
     	
+    	ones = Mat.ones(mResizedPosterNF.rows(), mResizedPosterNF.cols(), CvType.CV_8UC1);
+    	Core.multiply(ones, new Scalar(255), ones);
+    	allChannels2 = new ArrayList<Mat>();
+    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
     	
     }
 
@@ -154,9 +234,27 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         //m1 = MergeCameraAndPoster(inputFrame.rgba(), mResizedPoster, 0.5, 0.5);
-        Core.addWeighted(inputFrame.rgba(), 0.3, mResizedPoster, 0.7, 0.0, m1);
+        Core.addWeighted(inputFrame.rgba(), 0.5, mResizedPoster, 0.5, 0.0, m1);
+        mCamera = inputFrame.rgba();
     	
         return m1;
+    }
+    
+    public void MergeCameraPoster()
+    {
+    	Core.split(mResizedPosterNF, allChannels1);
+    	Mat alpha = allChannels1.get(3);
+    	Core.absdiff(alpha, new Scalar(255.0f), mask);
+    	Core.split(mCamera, allChannels1);
+    	
+    	Core.add(allChannels1.get(0), new Scalar(0.0f), allChannels2.get(0), mask);
+    	Core.add(allChannels1.get(1), new Scalar(0.0f), allChannels2.get(1), mask);
+    	Core.add(allChannels1.get(2), new Scalar(0.0f), allChannels2.get(2), mask);
+    	Core.add(allChannels1.get(3), new Scalar(0.0f), allChannels2.get(3), mask);
+    	
+    	Core.merge(allChannels2, m2);
+    	
+    	Core.addWeighted(mResizedPosterNF, 1.0, m2, 1.0, 0.0, mPhoto);
     }
     
     private Mat MergeCameraAndPoster(Mat mCamera, Mat mPoster, double alpha, double beta){

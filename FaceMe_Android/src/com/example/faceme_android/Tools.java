@@ -1,5 +1,6 @@
 package com.example.faceme_android;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -26,4 +27,13 @@ public class Tools {
 
 	    return bitmap;
 	}
+	
+	public static Bitmap getBitmapFromPath(String fileName){
+	    Bitmap bitmap = null;
+	    File tmpFile = new File(fileName);
+			bitmap = BitmapFactory.decodeFile(tmpFile.getAbsolutePath());
+
+	    return bitmap;
+	}
+
 }
