@@ -17,20 +17,23 @@
         android:layout_row="0"
         android:id="@+id/camera_view"/>
 
-    <!-- ImageView
+    <!-- <ImageView
         android:id="@+id/imageView1"
         android:layout_width="470dp"
         android:layout_height="match_parent"
         android:layout_column="0"
         android:layout_gravity="left|top"
         android:layout_row="0"
-        android:src="@drawable/ic_launcher" /-->
+        android:src="@drawable/ic_launcher" /> -->
 
     <ImageButton
         android:id="@+id/takePicture_Button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_column="1"
         android:layout_gravity="center"
         android:layout_row="0"
-        android:src="@android:drawable/btn_star" />
+        android:src="@drawable/camerabutton"
+        android:background="@android:color/transparent" />
 
 </GridLayout>
