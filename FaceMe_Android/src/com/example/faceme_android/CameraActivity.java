@@ -31,14 +31,19 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 import android.graphics.*;
 import android.graphics.Bitmap.Config;
 
-public class CameraActivity extends Activity implements CvCameraViewListener2 {
+public class CameraActivity extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
     private static final String TAG = "OCVSample::Activity";
 
     private CameraBridgeViewBase mOpenCvCameraView;
+    private SeekBar zoomBar;
+    
+    
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
     
@@ -60,12 +65,22 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     private Mat mask;
     private Mat ones;
     private Mat mPhoto;
+    
+    private Mat mPosterCopy;
+    private Mat mPosterNFCopy;
+    private Mat rWinPoster;
+    private Mat rWinPosterNF;
+    
     private ArrayList<Mat> allChannels1;
     private ArrayList<Mat> allChannels2;
     
     
     int imageHeight;
     int imageWidth;
+    int faceWinWidth, faceWinHeight;
+    int faceWinX, faceWinY;
+    
+    
     
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -134,6 +149,9 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
 				startActivity(intent);
 			}
 		});
+        
+        zoomBar = (SeekBar) findViewById(R.id.zoomBar);
+        zoomBar.setOnSeekBarChangeListener(this);
         
         bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_noFace.png");
         bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_Face.jpg");
@@ -222,14 +240,27 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     	
     	Imgproc.resize(mPosterNF, mResizedPosterNF, mResizedPosterNF.size());
     	Imgproc.resize(mPoster, mResizedPoster, mResizedPoster.size());
+    	faceWinWidth = (int) (mResizedPoster.width() * faceWidth);
+    	faceWinHeight = (int) (mResizedPoster.height() * faceWidth);
+    	faceWinY = (int) (mResizedPoster.width() * x);
+    	faceWinX = (int) (mResizedPoster.height() * y);
     	
-    	ones = Mat.ones(mResizedPosterNF.rows(), mResizedPosterNF.cols(), CvType.CV_8UC1);
+    	mPosterCopy = new Mat();
+    	mPosterNFCopy = new Mat();
+    	
+    	mResizedPosterNF.copyTo(mPosterNFCopy);
+    	
+    	
+    	rWinPosterNF = mPosterNFCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
+    	
+    	
+    	ones = Mat.ones(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_8UC1);
     	Core.multiply(ones, new Scalar(255), ones);
     	allChannels2 = new ArrayList<Mat>();
-    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(mResizedPosterNF.rows(), mResizedPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
     	
     }
 
@@ -238,38 +269,43 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         //m1 = MergeCameraAndPoster(inputFrame.rgba(), mResizedPoster, 0.5, 0.5);
-    	int winWidth, winHeight;
     	
-    	winWidth = (int) (mResizedPoster.width() * faceWidth);
-    	winHeight = (int) (mResizedPoster.height() * faceWidth);
-    	int winY = (int) (mResizedPoster.width() * x);
-    	int winX = (int) (mResizedPoster.height() * y);
+    	int zoomWidth, zoomHeight;
     	
     	
-    	Core.flip(inputFrame.rgba(), m1, 1);
+    	
+    	zoomWidth = (int) (zoomBar.getProgress()/100.0f * (mResizedPoster.width() - faceWinWidth) + faceWinWidth);
+    	zoomHeight = zoomWidth  * mResizedPoster.height() / mResizedPoster.width();
+    	int dx = (mResizedPoster.width() - zoomWidth)/2;
+    	int dy = (mResizedPoster.height() - zoomHeight)/2;
+    	
+    	m3 =inputFrame.rgba().submat(dy, dy + zoomHeight, dx, dx + zoomWidth);
+    	
+    	Core.flip(m3, m1, 1);
+    	
     	m1.copyTo(m2);
-
+    	
+    	inputFrame.rgba().copyTo(m3);;
     	
     	
     	//Mat win = m1.submat(dy/2, mResizedPoster.height()-dy/2,dx/2, mResizedPoster.width()-dx/2);
-    	Mat win = m1.submat(winY, winY + winHeight, winX, winX + winWidth);
-    	Imgproc.resize(m2, win, win.size());
+    	Mat winCamera = m3.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
+    	Imgproc.resize(m2, winCamera, winCamera.size());
     	
 //      Core.addWeighted(m1, 0.5, mResizedPoster, 0.5, 0.0, m2);
     	
-        mResizedPoster.copyTo(m2);
-        Mat winPoster = m2.submat(winY, winY + winHeight, winX, winX + winWidth);
-        Core.addWeighted(win, 0.5, winPoster, 0.5, 0.0, winPoster);
-        
-        
-        m1.copyTo(mCamera);
+    	mResizedPoster.copyTo(mPosterCopy);
+    	rWinPoster = mPosterCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
+        Core.addWeighted(winCamera, 0.5, rWinPoster, 0.5, 0.0, rWinPoster);
+  
+        winCamera.copyTo(mCamera);
     	
-        return m2;
+        return mPosterCopy;
     }
     
     public void MergeCameraPoster()
     {
-    	Core.split(mResizedPosterNF, allChannels1);
+    	Core.split(rWinPosterNF, allChannels1);
     	Mat alpha = allChannels1.get(3);
     	Core.absdiff(alpha, new Scalar(255.0f), mask);
     	Core.split(mCamera, allChannels1);
@@ -281,7 +317,8 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     	
     	Core.merge(allChannels2, m2);
     	
-    	Core.addWeighted(mResizedPosterNF, 1.0, m2, 1.0, 0.0, mPhoto);
+    	Core.addWeighted(rWinPosterNF, 1.0, m2, 1.0, 0.0, rWinPosterNF);
+    	mPosterNFCopy.copyTo(mPhoto);
     }
     
     private Mat MergeCameraAndPoster(Mat mCamera, Mat mPoster, double alpha, double beta){
@@ -302,4 +339,23 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     	
     	return result;
     }
+
+	@Override
+	public void onProgressChanged(SeekBar seekBar, int progress,
+			boolean fromUser) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStartTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStopTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		
+	}
 }

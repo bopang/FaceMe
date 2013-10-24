@@ -68,7 +68,8 @@ public class MenuActivity extends Activity{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
+					//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
+					startActivity(new Intent(getBaseContext(),CameraActivity.class));
 				}
 			});
 	 }
