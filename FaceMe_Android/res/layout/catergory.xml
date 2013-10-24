@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    
-    android:background="#2d2d2d">
+    android:background="#2d2d2d"
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/username"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:background="#222222"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:text="category"
         android:gravity="center"
-        >
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#fdbb1d"
+        android:textSize="25sp"
+        android:textColor="#333"
+         />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="25dp" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+    </FrameLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_alignParentBottom="true"
+         android:background="#222222"
+         android:gravity="center" >
 
         <Button
             android:id="@+id/button1"
@@ -47,5 +73,5 @@
             android:textSize="18sp" />
 
     </LinearLayout>
-
-</RelativeLayout>
+    
+</LinearLayout>

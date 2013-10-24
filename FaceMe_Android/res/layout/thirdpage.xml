@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2d2d2d"
+    android:gravity="center"
     android:orientation="vertical" >
 
+<LinearLayout
+    android:id="@+id/upperPart"
+    android:layout_width="wrap_content"
+    android:layout_height="90dp"
+    android:background="#f0f0f0" >
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" >
+<ListView
+    android:id="@+id/profile"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:divider="@null"
+    android:dividerHeight="0dp"
+     >
+</ListView>
+
+   </RelativeLayout>   
+   </LinearLayout>
+
     <LinearLayout
-        android:layout_width="500dp"
+        android:id="@+id/bottomPart"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
-        android:layout_weight="0.85"
+        android:background="#2d2d2d"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -18,90 +39,47 @@
             android:id="@+id/Button04"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/buttonshape3"
+             android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="25sp"
             android:text="play the game" />
 
         <Button
             android:id="@+id/Button03"
             android:layout_width="190dp"
+              android:textSize="25sp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/buttonshape3"
+             android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="Ranking" />
 
         <Button
             android:id="@+id/Button02"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/buttonshape3"
+              android:textSize="25sp"
             android:text="Browersing" />
 
         <Button
             android:id="@+id/Button01"
             android:layout_width="190dp"
+             android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/buttonshape3"
+              android:textSize="25sp"
             android:text="Profile" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="18dp"
-        android:gravity="right"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Name:David"
-            android:textColor="#fff"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Gender:Male"
-            android:textColor="#fff"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="School:CS"
-            android:textColor="#fff"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Ranking:101"
-            android:textColor="#fff"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        
-        android:layout_alignBottom="@+id/linearLayout1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="22dp"
-        android:src="@drawable/ic_launcher" />
-
-</RelativeLayout>
+    
+</LinearLayout>
