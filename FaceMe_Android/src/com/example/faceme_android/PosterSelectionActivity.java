@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -32,6 +33,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -56,9 +58,27 @@ public PosterSelectionActivity() {
 		posterList.setAdapter(posteradapter);
 		GetJsonData getData=new GetJsonData(posteradapter);
 		getData.execute();
+		chosePoster();
 		
 	}
-	
+	public void chosePoster(){
+		ListView posterList=(ListView) findViewById(R.id.posterlistView);
+		posterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int postion,
+					long id) {
+				// TODO Auto-generated method stub
+				Poster currentPoster=posters.get(postion);
+				String posterTitle=currentPoster.getPosterTitle();
+				Bitmap posterBtm=currentPoster.getPosterPic();
+				Intent intent=new Intent(PosterSelectionActivity.this, CharacterSelectionActivity.class);
+			    intent.putExtra("title", posterTitle);
+			    //intent.putExtra("posterPic", posterBtm);
+				startActivity(intent);
+			}
+		});
+	}
 public class posterAdapter extends ArrayAdapter<Poster>{
 	
 	public posterAdapter(List<Poster>posters){
