@@ -42,13 +42,17 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
     
+    float x = 0.2875f;
+    float y = 0.1226f;
+    float faceWidth = 0.33f;
+   
     private Bitmap bmPosterNF;
     private Bitmap bmPoster;
     
     private Mat mPosterNF;
     private Mat mPoster;
     private Mat mResizedPosterNF;
-    private Mat mResizedPoster;
+    private Mat mResizedPoster; 
     private Mat mCamera;
     private Mat m1;
     private Mat m2;
@@ -234,10 +238,33 @@ public class CameraActivity extends Activity implements CvCameraViewListener2 {
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         //m1 = MergeCameraAndPoster(inputFrame.rgba(), mResizedPoster, 0.5, 0.5);
-        Core.addWeighted(inputFrame.rgba(), 0.5, mResizedPoster, 0.5, 0.0, m1);
-        mCamera = inputFrame.rgba();
+    	int winWidth, winHeight;
     	
-        return m1;
+    	winWidth = (int) (mResizedPoster.width() * faceWidth);
+    	winHeight = (int) (mResizedPoster.height() * faceWidth);
+    	int winY = (int) (mResizedPoster.width() * x);
+    	int winX = (int) (mResizedPoster.height() * y);
+    	
+    	
+    	Core.flip(inputFrame.rgba(), m1, 1);
+    	m1.copyTo(m2);
+
+    	
+    	
+    	//Mat win = m1.submat(dy/2, mResizedPoster.height()-dy/2,dx/2, mResizedPoster.width()-dx/2);
+    	Mat win = m1.submat(winY, winY + winHeight, winX, winX + winWidth);
+    	Imgproc.resize(m2, win, win.size());
+    	
+//      Core.addWeighted(m1, 0.5, mResizedPoster, 0.5, 0.0, m2);
+    	
+        mResizedPoster.copyTo(m2);
+        Mat winPoster = m2.submat(winY, winY + winHeight, winX, winX + winWidth);
+        Core.addWeighted(win, 0.5, winPoster, 0.5, 0.0, winPoster);
+        
+        
+        m1.copyTo(mCamera);
+    	
+        return m2;
     }
     
     public void MergeCameraPoster()
