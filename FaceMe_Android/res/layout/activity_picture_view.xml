@@ -1,64 +1,102 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/GridLayout1"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="1"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PictureViewActivity" >
+    android:orientation="vertical"
+    tools:context=".PictureViewActivity"
+    android:background="#111" >
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="461dp"
-        android:layout_column="0"
+        android:layout_height="400dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="15dp"
+        android:background="#fff"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_gravity="left|top"
-        android:layout_row="0"
         android:src="@drawable/ic_launcher" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_column="0"
+        android:layout_height="wrap_content"
         android:layout_gravity="left|top"
-        android:layout_row="1" 
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="25dp" >
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-             android:textSize="18sp"
-            android:text="Button" 
-            android:layout_marginRight="20dp"/>
+            android:text="re take"
+            android:textColor="#f0f0f0"
+            android:textSize="20sp"
+             android:background="@android:color/transparent" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" 
-             android:textSize="18sp"
-             android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp"
-             android:layout_marginRight="20dp"/>
+            android:text="upload"
+            android:textSize="20sp"
+            android:textColor="#f0f0f0"
+            android:background="@android:color/transparent" />
 
         <Button
             android:id="@+id/button_Share"
             android:layout_width="wrap_content"
-            android:textSize="18sp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:text="Button"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
-=======
-            android:text="Share" />
->>>>>>> Share Function added.
-
+            android:text="share"
+            android:textSize="20sp"
+            android:textColor="#f0f0f0"
+            android:background="@android:color/transparent" >
+        </Button>
     </LinearLayout>
 
-</GridLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#222222"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Home"
+            android:textColor="#fdbb1d"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:text="Notification"
+            android:textColor="#fdbb1d"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:text="Friends"
+            android:textColor="#fdbb1d"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

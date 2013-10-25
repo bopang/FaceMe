@@ -42,7 +42,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MenuActivity extends Activity{
-	 String feedUrl="https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Brandon";
+	 String feedUrl="https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
 	 ListView userProfileListView;
 	 Context context;
 	 List<UserProfile> userProfileList=new ArrayList<UserProfile>();
@@ -68,8 +68,8 @@ public class MenuActivity extends Activity{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
-					startActivity(new Intent(getBaseContext(),CameraActivity.class));
+					startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
+					//startActivity(new Intent(getBaseContext(),CameraActivity.class));
 				}
 			});
 	 }

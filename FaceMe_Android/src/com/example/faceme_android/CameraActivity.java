@@ -118,6 +118,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 
         mOpenCvCameraView.setCvCameraViewListener(this);
+       // mOpenCvCameraView.setKeepScreenOn(true);
         
         ImageButton takePictureButton = (ImageButton) findViewById(R.id.takePicture_Button);
         
@@ -153,7 +154,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         zoomBar = (SeekBar) findViewById(R.id.zoomBar);
         zoomBar.setOnSeekBarChangeListener(this);
         
-        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_noFace.png");
+        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_withbeard.png");
         bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_Face.jpg");
         
     }
@@ -254,13 +255,13 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
     	rWinPosterNF = mPosterNFCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
     	
     	
-    	ones = Mat.ones(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_8UC1);
+    	ones = Mat.ones(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1);
     	Core.multiply(ones, new Scalar(255), ones);
     	allChannels2 = new ArrayList<Mat>();
-    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
-    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), mResizedPosterNF.type()));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1));
+    	allChannels2.add(Mat.zeros(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1));
     	
     }
 
@@ -296,7 +297,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
     	
     	mResizedPoster.copyTo(mPosterCopy);
     	rWinPoster = mPosterCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
-        Core.addWeighted(winCamera, 0.5, rWinPoster, 0.5, 0.0, rWinPoster);
+        Core.addWeighted(winCamera, 0.6, rWinPoster, 0.4, 0.0, rWinPoster);
   
         winCamera.copyTo(mCamera);
     	
@@ -305,19 +306,47 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
     
     public void MergeCameraPoster()
     {
-    	Core.split(rWinPosterNF, allChannels1);
-    	Mat alpha = allChannels1.get(3);
-    	Core.absdiff(alpha, new Scalar(255.0f), mask);
-    	Core.split(mCamera, allChannels1);
     	
-    	Core.add(allChannels1.get(0), new Scalar(0.0f), allChannels2.get(0), mask);
-    	Core.add(allChannels1.get(1), new Scalar(0.0f), allChannels2.get(1), mask);
-    	Core.add(allChannels1.get(2), new Scalar(0.0f), allChannels2.get(2), mask);
-    	Core.add(allChannels1.get(3), new Scalar(0.0f), allChannels2.get(3), mask);
+    	//Core.split(rWinPosterNF, allChannels1);
+    	//Mat alpha = allChannels1.get(3);
     	
+    	//Core.absdiff(alpha, new Scalar(255.0f), mask);
+    	//Core.split(mCamera, allChannels1);
+    	
+    	//Core.add(alpha, new Scalar(-255.0f), mask);
+    	
+    	
+    	//Core.multiply(allChannels1.get(0)), m1, dst);
+    	
+    	//Core.add(allChannels1.get(0), new Scalar(0.0f), allChannels2.get(0), mask);
+    	//Core.add(allChannels1.get(1), new Scalar(0.0f), allChannels2.get(1), mask);
+    	//Core.add(allChannels1.get(2), new Scalar(0.0f), allChannels2.get(2), mask);
+    	//Core.add(allChannels1.get(3), new Scalar(0.0f), allChannels2.get(3), mask);
+    	
+    	
+    	rWinPosterNF.convertTo(m1, CvType.CV_32F,1/255.0f);
+    	Core.split(m1, allChannels1);
+
+    	Mat alpha = new Mat();
+    	allChannels1.get(3).copyTo(alpha);;
+    	
+    	Core.add(alpha, new Scalar(-1.0f), m2);
+    	Core.multiply(m2, new Scalar(-1.0f), alpha);
+    	
+    	mCamera.convertTo(m1, CvType.CV_32F,1/255.0f);
+    	Core.split(m1, allChannels1);
+    	
+    	Core.multiply(allChannels1.get(0), alpha, allChannels2.get(0));
+    	Core.multiply(allChannels1.get(1), alpha, allChannels2.get(1));
+    	Core.multiply(allChannels1.get(2), alpha, allChannels2.get(2));
+    	allChannels2.set(3, alpha);
+
     	Core.merge(allChannels2, m2);
+    	m2.convertTo(m1, CvType.CV_8UC4,255.0f);
+    	//m1.copyTo(rWinPosterNF);
+    	System.out.println(alpha.dump());
+    	Core.addWeighted(rWinPosterNF, 1.0, m1, 1.0, 0.0, rWinPosterNF);
     	
-    	Core.addWeighted(rWinPosterNF, 1.0, m2, 1.0, 0.0, rWinPosterNF);
     	mPosterNFCopy.copyTo(mPhoto);
     }
     
