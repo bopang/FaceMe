@@ -62,8 +62,9 @@ public class MenuActivity extends Activity{
 	       userProfileListView.setAdapter(userProfileAdapter);
 	       
 	       Button btn_play=(Button)findViewById(R.id.Button04);
-	        
-	        btn_play.setOnClickListener(new View.OnClickListener() {
+	       Button btn_browse = (Button) findViewById(R.id.Button02);
+	       
+	       btn_play.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
@@ -72,6 +73,16 @@ public class MenuActivity extends Activity{
 					//startActivity(new Intent(getBaseContext(),CameraActivity.class));
 				}
 			});
+	       btn_browse.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					startActivity(new Intent(getBaseContext(),RateAndCommentActivity.class));
+					//startActivity(new Intent(getBaseContext(),CameraActivity.class));
+				}
+			});
+	       
 	 }
 	
 	  public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,14 +155,16 @@ public class MenuActivity extends Activity{
 			UserProfile currentUser=userProfileList.get(position);
 		    
 			ImageView imageView=(ImageView) tempView.findViewById(R.id.imageView_profilePic);
-            imageView.setImageBitmap(currentUser.getFaceBmp());
+			Bitmap btm=currentUser.getFaceBmp();
+			
+            imageView.setImageBitmap(RoundCorner.getRoundedCornerBitmap(btm, 500));
             
 			TextView name=(TextView)tempView.findViewById(R.id.textView_name);
-		    name.setText(currentUser.getUsername());
+		    name.setText("Name: "+currentUser.getUsername());
 		    TextView gender=(TextView)tempView.findViewById(R.id.textView_gender);
-		    gender.setText(currentUser.getGender());
+		    gender.setText("Gender: "+currentUser.getGender());
 		    TextView school=(TextView)tempView.findViewById(R.id.textView_school);
-		    school.setText(currentUser.getSchool());
+		    school.setText("School: "+currentUser.getSchool());
 		    
 			return tempView;
 		}

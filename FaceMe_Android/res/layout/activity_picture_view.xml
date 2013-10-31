@@ -13,7 +13,7 @@
         android:layout_height="400dp"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="15dp"
-        android:background="#fff"
+        
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_gravity="left|top"
@@ -31,33 +31,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="re take"
-            android:textColor="#f0f0f0"
-            android:textSize="20sp"
-             android:background="@android:color/transparent" />
+            android:background="@drawable/secondbuttonshape"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="Retake"
+            android:textColor="#333"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="upload"
-            android:textSize="20sp"
-            android:textColor="#f0f0f0"
-            android:background="@android:color/transparent" />
+            android:background="@drawable/secondbuttonshape"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="Upload"
+            android:textColor="#333"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_Share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="share"
-            android:textSize="20sp"
-            android:textColor="#f0f0f0"
-            android:background="@android:color/transparent" >
+            android:background="@drawable/secondbuttonshape"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="Share"
+            android:textColor="#333"
+            android:textSize="20sp" >
+
         </Button>
     </LinearLayout>
 
@@ -91,8 +100,6 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:background="@null"
             android:text="Friends"
             android:textColor="#fdbb1d"

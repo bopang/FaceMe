@@ -37,7 +37,7 @@ import android.widget.Toast;
 import android.graphics.*;
 import android.graphics.Bitmap.Config;
 
-public class CameraActivity extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
+public class CameraActivitySuperMan extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
     private static final String TAG = "OCVSample::Activity";
 
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -47,9 +47,9 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
     
-    float x = 0.2875f;
-    float y = 0.1226f;
-    float faceWidth = 0.33f;
+    float x = 0.28f;
+    float y = 0.0f;
+    float faceWidth = 0.28f;
    
     private Bitmap bmPosterNF;
     private Bitmap bmPoster;
@@ -100,7 +100,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         }
     };
 
-    public CameraActivity() {
+    public CameraActivitySuperMan() {
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
@@ -154,8 +154,8 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         zoomBar = (SeekBar) findViewById(R.id.zoomBar);
         zoomBar.setOnSeekBarChangeListener(this);
         
-        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_FaceXF_noFace.png");
-        bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "iron_man_3_FaceXF.jpg");
+        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "superman_noFace.png");
+        bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "superman_Face.jpg");
         
     }
 
@@ -344,7 +344,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
     	Core.merge(allChannels2, m2);
     	m2.convertTo(m1, CvType.CV_8UC4,255.0f);
     	//m1.copyTo(rWinPosterNF);
-    	System.out.println(alpha.dump());
+    	//System.out.println(alpha.dump());
     	Core.addWeighted(rWinPosterNF, 1.0, m1, 1.0, 0.0, rWinPosterNF);
     	
     	mPosterNFCopy.copyTo(mPhoto);

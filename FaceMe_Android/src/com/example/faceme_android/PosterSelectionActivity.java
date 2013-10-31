@@ -72,8 +72,13 @@ public PosterSelectionActivity() {
 				Poster currentPoster=posters.get(postion);
 				String posterTitle=currentPoster.getPosterTitle();
 				Bitmap posterBtm=currentPoster.getPosterPic();
-				Intent intent=new Intent(PosterSelectionActivity.this, CharacterSelectionActivity.class);
-			    intent.putExtra("title", posterTitle);
+				Intent intent;
+				if(postion ==0)
+					intent =new Intent(PosterSelectionActivity.this, CharacterSelectionActivityXiaofei.class);
+				else
+					intent =new Intent(PosterSelectionActivity.this, CharacterSelectionActivitySuperMan.class);
+				
+				intent.putExtra("title", posterTitle);
 			    //intent.putExtra("posterPic", posterBtm);
 				startActivity(intent);
 			}

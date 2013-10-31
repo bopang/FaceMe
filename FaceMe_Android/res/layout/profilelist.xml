@@ -2,36 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:background="#fff">
+    >
 
     <TextView
         android:id="@+id/textView_name"
-         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="83dp"
-        android:text="username" />
+        android:layout_marginRight="50dp"
+        android:text="Name"
+        android:textColor="#333"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_gender"
-        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView_name"
         android:layout_below="@+id/textView_name"
-        android:text="gender" />
+        android:text="Gender"
+        android:textColor="#333"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_school"
-        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView1"
         android:layout_alignLeft="@+id/textView_gender"
         android:layout_below="@+id/textView_gender"
-        android:text="school" />
+        android:text="School"
+        android:textColor="#333"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/imageView_profilePic"
@@ -44,6 +47,6 @@
         
         android:adjustViewBounds="true"
         android:src="@drawable/ic_launcher"
-        android:background="#333" />
+        />
 
 </RelativeLayout>

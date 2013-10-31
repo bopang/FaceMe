@@ -9,14 +9,13 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="category"
-        android:gravity="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:background="#fdbb1d"
-        android:textSize="25sp"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="Choose a Picture"
         android:textColor="#333"
-         />
+        android:textSize="25sp" />
 
     <FrameLayout
         android:layout_width="match_parent"

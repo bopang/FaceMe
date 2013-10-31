@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class CharacterSelectionActivity extends Activity {
+public class CharacterSelectionActivityXiaofei extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,11 @@ public class CharacterSelectionActivity extends Activity {
 		//posterTitle.setText(postertitle);
 		//Bitmap btm=intent.getParcelableExtra("posterPic");
 		ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
-		posterImg.setImageBitmap(Tools.getBitmapFromAsset(getBaseContext(), "iron_man_3_Face.jpg"));
+		posterImg.setImageBitmap(Tools.getBitmapFromAsset(getBaseContext(), "iron_man_3_FaceXF.jpg"));
 	
 		ViewGroup characterLayout = (ViewGroup) findViewById(R.id.characterSelectionLayout);
 		
-		for(int i=1; i<3; i++){
+		for(int i=2; i<3; i++){
 			ImageButton characterButton = new ImageButton(this);
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(120, 120);
 			lp.setMargins(30, 0, 30, 0);

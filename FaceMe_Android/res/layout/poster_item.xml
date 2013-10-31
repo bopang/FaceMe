@@ -15,14 +15,14 @@
         android:maxWidth="300dp"
         android:layout_marginLeft="0dp"
         android:adjustViewBounds="true"
-        android:background="#f0f0f0"
+        
         
         android:src="@drawable/ic_launcher" />
  <TextView
         android:id="@+id/textView_posterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
+        android:textColor="#f0f0f0"
         android:layout_alignTop="@+id/imageView_poster"
         android:layout_marginLeft="150dp"
         android:text="title"

@@ -10,8 +10,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class CharacterSelectionActivity extends Activity {
+public class CharacterSelectionActivitySuperMan extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,34 +21,34 @@ public class CharacterSelectionActivity extends Activity {
 		setContentView(R.layout.charaterselection);
 		//Intent intent= getIntent();
 		//String postertitle=intent.getStringExtra("title");
-		//TextView posterTitle=(TextView) findViewById(R.id.received_postertitle);
-		//posterTitle.setText(postertitle);
+		TextView posterTitle=(TextView) findViewById(R.id.received_postertitle);
+		posterTitle.setText("Man of Steel");
 		//Bitmap btm=intent.getParcelableExtra("posterPic");
 		ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
-		posterImg.setImageBitmap(Tools.getBitmapFromAsset(getBaseContext(), "iron_man_3_Face.jpg"));
+		posterImg.setImageBitmap(Tools.getBitmapFromAsset(getBaseContext(), "superman_Face.jpg"));
 	
 		ViewGroup characterLayout = (ViewGroup) findViewById(R.id.characterSelectionLayout);
 		
-		for(int i=1; i<3; i++){
+		
 			ImageButton characterButton = new ImageButton(this);
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(120, 120);
 			lp.setMargins(30, 0, 30, 0);
 			
-			characterButton.setLayoutParams(lp);
-			Bitmap bmp = Tools.getBitmapFromAsset(getBaseContext(), "face"+i+".png");
-			characterButton.setImageBitmap(bmp);
-			characterButton.setOnClickListener(new View.OnClickListener() {
+		characterButton.setLayoutParams(lp);
+		Bitmap bmp = Tools.getBitmapFromAsset(getBaseContext(), "SupermanFace.png");
+		characterButton.setImageBitmap(bmp);
+		characterButton.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
-						startActivity(new Intent(getBaseContext(),CameraActivity.class));
+						startActivity(new Intent(getBaseContext(),CameraActivitySuperMan.class));
 					}
 				});
 			
-			characterLayout.addView(characterButton);
-		}
+		characterLayout.addView(characterButton);
+		
 	}
 
 }
