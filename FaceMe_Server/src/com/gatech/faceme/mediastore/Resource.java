@@ -45,7 +45,14 @@ public class Resource extends HttpServlet {
       throws IOException {
 
     BlobKey blobKey = new BlobKey(req.getParameter("key"));
-
+    
+//    Image image = ImagesServiceFactory.makeImageFromBlob(blobKey);
+//    byte[] imgbyte = image.getImageData();
+//
+//    resp.setContentType("image/jpeg");
+//    resp.getOutputStream().write(imgbyte);
+    
+    
     PersistenceManager pm = PMF.get().getPersistenceManager();
 
     Query query = pm.newQuery(OriginalPoster.class, "blob == blobParam");

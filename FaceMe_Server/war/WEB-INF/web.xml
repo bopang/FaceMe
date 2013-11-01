@@ -22,6 +22,14 @@
 		<servlet-name>display</servlet-name>
 		<servlet-class>com.gatech.faceme.mediastore.Display</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>uploadImage</servlet-name>
+		<servlet-class>com.gatech.faceme.mediastore.UploadImage</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>imageResource</servlet-name>
+		<servlet-class>com.gatech.faceme.mediastore.ImageResource</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>upload</servlet-name>
@@ -43,6 +51,16 @@
 		<servlet-name>display</servlet-name>
 		<url-pattern>/display</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>uploadImage</servlet-name>
+		<url-pattern>/uploadImage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>imageResource</servlet-name>
+		<url-pattern>/imageResource</url-pattern>
+	</servlet-mapping>
+	
+	
 
 	<security-constraint>
 		<web-resource-collection>

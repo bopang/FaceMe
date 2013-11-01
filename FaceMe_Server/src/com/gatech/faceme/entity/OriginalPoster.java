@@ -22,7 +22,7 @@ import com.google.appengine.api.users.User;
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class OriginalPoster {
-	@PrimaryKey
+	
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
 
@@ -37,10 +37,11 @@ public class OriginalPoster {
 
 	@Persistent
 	private User owner;
-
+	
 	@Persistent
 	private Date creation;
 
+	@PrimaryKey
 	@Persistent
 	private String filename;
 

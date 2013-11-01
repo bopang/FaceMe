@@ -1,3 +1,4 @@
 /endpoint-libs/
+/war/WEB_INF/appengine-generated/
 *.discovery
 *.api

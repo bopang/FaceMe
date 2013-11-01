@@ -61,7 +61,7 @@ public class UserEndpoint {
 	}
 
 	@ApiMethod(httpMethod = "POST", name = "user.insert", path = "user/insert")
-	//curl -H 'Content-Type: application/json' -d '{ "userID": "Brandon","password": "111111" }' https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/insert
+	//curl -H 'Content-Type: application/json' -d '{ "userID": "Ziji Jiang","password": "111111","faceKey": "https://1.gravatar.com/avatar/e62128516f78f7f2c25e3b48d7e6e69b?d=https%3A%2F%2Fidenticons.github.com%2F6322625007f47a9f44efdc898e835a99.png&r=x&s=400","gender": "Male","school": "Gatech"}' https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/insert
 	public User insertUser(User user) {
 		PersistenceManager pm = getPersistenceManager();
 		pm.makePersistent(user);
