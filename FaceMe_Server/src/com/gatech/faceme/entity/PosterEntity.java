@@ -2,16 +2,20 @@ package com.gatech.faceme.entity;
 
 import java.util.Date;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class PosterEntity {
 
 	@PrimaryKey
-	@Persistent
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	
 	@Persistent
@@ -36,11 +40,10 @@ public class PosterEntity {
 	private String posterName;
 
 	
-	public PosterEntity(Key key, String originalPosterKey, String thumbnailKey,
+	public PosterEntity(String originalPosterKey, String thumbnailKey,
 			String nonfacePosterKey, String movieName, String classification,
 			Date creationDate, String posterName) {
 		super();
-		this.key = key;
 		this.originalPosterKey = originalPosterKey;
 		this.thumbnailKey = thumbnailKey;
 		this.nonfacePosterKey = nonfacePosterKey;

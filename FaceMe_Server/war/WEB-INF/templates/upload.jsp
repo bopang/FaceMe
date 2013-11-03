@@ -27,7 +27,9 @@
     Classification: <input type="text" size="40" name="classification"><br>
     Description:<br>
     <textarea cols="80" rows="20" name="description"></textarea><br>
-    Upload File: <input type="file" name="file"><br>
+    Upload Origin Poster: <input type="file" name="file1"><br>
+    Upload thumbnail: <input type="file" name="file2"><br>
+    Upload nonface poster: <input type="file" name="file3"><br>
     <input type="submit" name="submit" value="Submit">
   </form>
 

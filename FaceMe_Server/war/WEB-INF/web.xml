@@ -2,13 +2,17 @@
 
   <!-- Servlets -->
   
-  <servlet>
+ 	<servlet>
 		<servlet-name>upload</servlet-name>
 		<servlet-class>com.gatech.faceme.mediastore.Upload</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>post</servlet-name>
 		<servlet-class>com.gatech.faceme.mediastore.UploadPost</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>multiposterupload</servlet-name>
+		<servlet-class>com.gatech.faceme.mediastore.UploadMultiPoster</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -38,6 +42,10 @@
 	<servlet-mapping>
 		<servlet-name>post</servlet-name>
 		<url-pattern>/post</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>multiposterupload</servlet-name>
+		<url-pattern>/multiposterupload</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>
@@ -80,6 +88,7 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
+
 
   <servlet>
     <servlet-name>SystemServiceServlet</servlet-name>
