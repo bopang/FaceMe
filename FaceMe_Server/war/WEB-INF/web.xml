@@ -2,13 +2,17 @@
 
   <!-- Servlets -->
   
-  <servlet>
+ 	<servlet>
 		<servlet-name>upload</servlet-name>
 		<servlet-class>com.gatech.faceme.mediastore.Upload</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>post</servlet-name>
 		<servlet-class>com.gatech.faceme.mediastore.UploadPost</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>multiposterupload</servlet-name>
+		<servlet-class>com.gatech.faceme.mediastore.UploadMultiPoster</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -38,6 +42,10 @@
 	<servlet-mapping>
 		<servlet-name>post</servlet-name>
 		<url-pattern>/post</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>multiposterupload</servlet-name>
+		<url-pattern>/multiposterupload</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>
@@ -81,12 +89,13 @@
 		</auth-constraint>
 	</security-constraint>
 
+
   <servlet>
     <servlet-name>SystemServiceServlet</servlet-name>
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.gatech.faceme.endpoints.NonFacePosterEndpoint,com.gatech.faceme.endpoints.OriginalPosterEndpoint,com.gatech.faceme.endpoints.UserEndpoint</param-value>
+      <param-value>com.gatech.faceme.endpoints.CharacterFaceEndpoint,com.gatech.faceme.endpoints.NonFacePosterEndpoint,com.gatech.faceme.endpoints.OriginalPosterEndpoint,com.gatech.faceme.endpoints.PairTableEndpoint,com.gatech.faceme.endpoints.PosterEndpoint,com.gatech.faceme.endpoints.UserEndpoint,com.gatech.faceme.endpoints.UserFaceEndpoint</param-value>
     </init-param>
   </servlet>
 

@@ -57,7 +57,14 @@ public class UploadPost extends HttpServlet {
     Iterator<String> names = blobs.keySet().iterator();
     String blobName = names.next();
     BlobKey blobKey = blobs.get(blobName);
-
+    System.out.println("1. blobname: "+blobName+", "+"blobkey: "+blobKey );
+    blobName = names.next();
+    blobKey = blobs.get(blobName);
+    System.out.println("2. blobname: "+blobName+", "+"blobkey: "+blobKey );
+    blobName = names.next();
+    blobKey = blobs.get(blobName);
+    System.out.println("3. blobname: "+blobName+", "+"blobkey: "+blobKey );
+    
     if (user == null) {
       blobstoreService.delete(blobKey);
       resp.sendRedirect("/?error=" + 

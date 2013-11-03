@@ -41,14 +41,14 @@ public class Upload extends HttpServlet {
     User user = userService.getCurrentUser();
 
     String authURL = userService.createLogoutURL("/");
-    String uploadURL = blobstoreService.createUploadUrl("/post");
+    String uploadURL = blobstoreService.createUploadUrl("/multiposterupload");
 
     req.setAttribute("uploadURL", uploadURL);
     req.setAttribute("authURL", authURL);
     req.setAttribute("user", user);
 
     RequestDispatcher dispatcher = 
-      req.getRequestDispatcher("WEB-INF/templates/upload.jsp");
+      req.getRequestDispatcher("WEB-INF/templates/multiposterupload.jsp");
     dispatcher.forward(req, resp);
   }
 }

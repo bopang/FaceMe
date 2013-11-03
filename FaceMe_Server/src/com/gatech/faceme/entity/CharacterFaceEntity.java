@@ -31,20 +31,20 @@ public class CharacterFaceEntity {
 	@Persistent
 	private float height;
 	@Persistent
-	private Key postID;
+	private String posterID;
 	@Persistent
 	private int index;
 	
 	public CharacterFaceEntity(String imageKey, String name,
 			float positionX, float postionY,float width, float height,
-			Key postID, int index){
+			String posterID, int index){
 		this.imageKey = imageKey;
 		this.name = name;
 		this.positionX = positionX;
 		this.postionY = postionY;
 		this.width = width;
 		this.height = height;
-		this.postID = postID;
+		this.posterID = posterID;
 		this.index = index;
 	}
 	public String getImageKey() {
@@ -71,11 +71,11 @@ public class CharacterFaceEntity {
 	public void setPostionY(float postionY) {
 		this.postionY = postionY;
 	}
-	public Key getPostID() {
-		return postID;
+	public String getPostID() {
+		return posterID;
 	}
-	public void setPostID(Key postID) {
-		this.postID = postID;
+	public void setPostID(String postID) {
+		this.posterID = postID;
 	}
 	public float getWidth() {
 		return width;
