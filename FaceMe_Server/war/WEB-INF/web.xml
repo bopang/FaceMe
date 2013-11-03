@@ -86,7 +86,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.gatech.faceme.endpoints.NonFacePosterEndpoint,com.gatech.faceme.endpoints.OriginalPosterEndpoint,com.gatech.faceme.endpoints.UserEndpoint</param-value>
+      <param-value>com.gatech.faceme.endpoints.CharacterFaceEndpoint,com.gatech.faceme.endpoints.NonFacePosterEndpoint,com.gatech.faceme.endpoints.OriginalPosterEndpoint,com.gatech.faceme.endpoints.PairTableEndpoint,com.gatech.faceme.endpoints.PosterEndpoint,com.gatech.faceme.endpoints.UserEndpoint,com.gatech.faceme.endpoints.UserFaceEndpoint</param-value>
     </init-param>
   </servlet>
 
