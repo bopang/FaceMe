@@ -11,6 +11,7 @@ import com.google.appengine.api.datastore.Key;
 public class PosterEntity {
 
 	@PrimaryKey
+	@Persistent
 	private Key key;
 	
 	@Persistent
