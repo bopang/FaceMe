@@ -1,11 +1,15 @@
 package com.gatech.faceme.entity;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class CharacterFaceEntity {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -31,10 +35,9 @@ public class CharacterFaceEntity {
 	@Persistent
 	private int index;
 	
-	public CharacterFaceEntity(Key key, String imageKey, String name,
+	public CharacterFaceEntity(String imageKey, String name,
 			float positionX, float postionY,float width, float height,
 			Key postID, int index){
-		this.setKey(key);
 		this.imageKey = imageKey;
 		this.name = name;
 		this.positionX = positionX;
@@ -94,8 +97,5 @@ public class CharacterFaceEntity {
 	}
 	public Key getKey() {
 		return key;
-	}
-	public void setKey(Key key) {
-		this.key = key;
 	}
 }

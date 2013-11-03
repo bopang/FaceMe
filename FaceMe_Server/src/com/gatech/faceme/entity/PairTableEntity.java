@@ -1,13 +1,15 @@
 package com.gatech.faceme.entity;
 
 import java.util.ArrayList;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class PairTableEntity {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -16,8 +18,8 @@ public class PairTableEntity {
 	@Persistent
 	private ArrayList<Key> faceList;
 	
-	public PairTableEntity(Key key, ArrayList<Key> faceList){
-		this.setKey(key);
+	public PairTableEntity(ArrayList<Key> faceList){
+		
 		this.setFaceList(faceList);
 	}
 
