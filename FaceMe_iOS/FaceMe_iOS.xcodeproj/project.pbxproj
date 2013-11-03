@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181A3D7D1825CF19001B2781 /* FaceMe_logo_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */; };
 		207944E017FA254F00D4882F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944DF17FA254F00D4882F /* Foundation.framework */; };
 		207944E217FA254F00D4882F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944E117FA254F00D4882F /* CoreGraphics.framework */; };
 		207944E417FA254F00D4882F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944E317FA254F00D4882F /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FaceMe_logo_large.png; sourceTree = "<group>"; };
 		207944DC17FA254F00D4882F /* FaceMe_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceMe_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207944DF17FA254F00D4882F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		207944E117FA254F00D4882F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,7 @@
 		207944E617FA254F00D4882F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */,
 				207944E717FA254F00D4882F /* FaceMe_iOS-Info.plist */,
 				207944E817FA254F00D4882F /* InfoPlist.strings */,
 				207944EB17FA254F00D4882F /* main.m */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				207944F617FA254F00D4882F /* Main_iPad.storyboard in Resources */,
+				181A3D7D1825CF19001B2781 /* FaceMe_logo_large.png in Resources */,
 				207944FB17FA254F00D4882F /* Images.xcassets in Resources */,
 				207944F317FA254F00D4882F /* Main_iPhone.storyboard in Resources */,
 				207944EA17FA254F00D4882F /* InfoPlist.strings in Resources */,
@@ -474,6 +478,7 @@
 				2079451317FA254F00D4882F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2079451417FA254F00D4882F /* Build configuration list for PBXNativeTarget "FaceMe_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +487,7 @@
 				2079451617FA254F00D4882F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
