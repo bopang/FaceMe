@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180C67AF1827426A00747186 /* PosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180C67AE1827426A00747186 /* PosterCell.m */; };
 		181A3D7D1825CF19001B2781 /* FaceMe_logo_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */; };
+		181A3D801825D82A001B2781 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A3D7F1825D82A001B2781 /* CameraViewController.m */; };
+		181A3D831825D83E001B2781 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A3D821825D83E001B2781 /* MenuViewController.m */; };
+		181A3D861825D8C1001B2781 /* CharaterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A3D851825D8C1001B2781 /* CharaterSelectionViewController.m */; };
+		181A3D891825D945001B2781 /* PosterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A3D881825D945001B2781 /* PosterSelectionViewController.m */; };
 		207944E017FA254F00D4882F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944DF17FA254F00D4882F /* Foundation.framework */; };
 		207944E217FA254F00D4882F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944E117FA254F00D4882F /* CoreGraphics.framework */; };
 		207944E417FA254F00D4882F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944E317FA254F00D4882F /* UIKit.framework */; };
@@ -36,7 +41,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180C67AD1827426A00747186 /* PosterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosterCell.h; sourceTree = "<group>"; };
+		180C67AE1827426A00747186 /* PosterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosterCell.m; sourceTree = "<group>"; };
 		181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FaceMe_logo_large.png; sourceTree = "<group>"; };
+		181A3D7E1825D82A001B2781 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		181A3D7F1825D82A001B2781 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		181A3D811825D83E001B2781 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		181A3D821825D83E001B2781 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		181A3D841825D8C1001B2781 /* CharaterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharaterSelectionViewController.h; sourceTree = "<group>"; };
+		181A3D851825D8C1001B2781 /* CharaterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharaterSelectionViewController.m; sourceTree = "<group>"; };
+		181A3D871825D945001B2781 /* PosterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosterSelectionViewController.h; sourceTree = "<group>"; };
+		181A3D881825D945001B2781 /* PosterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosterSelectionViewController.m; sourceTree = "<group>"; };
 		207944DC17FA254F00D4882F /* FaceMe_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceMe_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207944DF17FA254F00D4882F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		207944E117FA254F00D4882F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,9 +131,19 @@
 		207944E517FA254F00D4882F /* FaceMe_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				180C67AD1827426A00747186 /* PosterCell.h */,
+				180C67AE1827426A00747186 /* PosterCell.m */,
 				207944EE17FA254F00D4882F /* AppDelegate.h */,
 				207944EF17FA254F00D4882F /* AppDelegate.m */,
 				207944F117FA254F00D4882F /* Main_iPhone.storyboard */,
+				181A3D871825D945001B2781 /* PosterSelectionViewController.h */,
+				181A3D881825D945001B2781 /* PosterSelectionViewController.m */,
+				181A3D7E1825D82A001B2781 /* CameraViewController.h */,
+				181A3D7F1825D82A001B2781 /* CameraViewController.m */,
+				181A3D811825D83E001B2781 /* MenuViewController.h */,
+				181A3D821825D83E001B2781 /* MenuViewController.m */,
+				181A3D841825D8C1001B2781 /* CharaterSelectionViewController.h */,
+				181A3D851825D8C1001B2781 /* CharaterSelectionViewController.m */,
 				207944F417FA254F00D4882F /* Main_iPad.storyboard */,
 				207944F717FA254F00D4882F /* ViewController.h */,
 				207944F817FA254F00D4882F /* ViewController.m */,
@@ -258,8 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				207944F917FA254F00D4882F /* ViewController.m in Sources */,
+				181A3D801825D82A001B2781 /* CameraViewController.m in Sources */,
 				207944F017FA254F00D4882F /* AppDelegate.m in Sources */,
+				181A3D861825D8C1001B2781 /* CharaterSelectionViewController.m in Sources */,
+				180C67AF1827426A00747186 /* PosterCell.m in Sources */,
 				207944EC17FA254F00D4882F /* main.m in Sources */,
+				181A3D891825D945001B2781 /* PosterSelectionViewController.m in Sources */,
+				181A3D831825D83E001B2781 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
