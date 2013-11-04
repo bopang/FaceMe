@@ -40,7 +40,7 @@ public class OriginalPosterEndpoint {
 
 	@ApiMethod(httpMethod = "GET", name = "originalposter.get", path = "originalposter/get/{id}")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public OriginalPoster getOriginalPosterByID(@Named("id") String key) {
+	public OriginalPoster getOriginalPosterByID(@Named("id") long key) {
 		PersistenceManager mgr = getPersistenceManager();
 		OriginalPoster originalposter = null;
 		try {
