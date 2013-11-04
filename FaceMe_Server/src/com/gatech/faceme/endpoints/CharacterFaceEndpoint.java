@@ -34,11 +34,12 @@ public class CharacterFaceEndpoint {
 	
 	@ApiMethod(httpMethod = "GET", name = "characterface.get", path = "characterface/get/{id}")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public CharacterFaceEntity getCharacterFaceByID(@Named("id") String id) {
+	public CharacterFaceEntity getCharacterFaceByID(@Named("id") long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		CharacterFaceEntity characterface = null;
 		try {
 			characterface = mgr.getObjectById(CharacterFaceEntity.class, id);
+	
 		} finally {
 			mgr.close();
 		}
