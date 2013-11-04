@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import com.gatech.faceme.entity.PairTableEntity;
+import com.gatech.faceme.entity.User;
 import com.gatech.faceme.mediastore.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
@@ -98,6 +99,18 @@ public class PairTableEndpoint {
 			mgr.close();
 		}
 		return result;
+	}
+	
+	@ApiMethod(httpMethod = "POST", name = "paritable.insert",
+			path = "pairtable/insert")
+	//curl -H 'Content-Type: application/json' -d '{ "activeUser": activeUserkey,"otherUsers": [{userKey1},{userKey2}],
+	//"activeUserFace": "activeUserFaceKey", "otherUserFace":[{keyFaceKey1},{keyFaceKey2}], "ifNotified": false}' 
+	// http://localhost:8888/_ah/api/pairtableendpoint/v1/pairtable/insert
+	public PairTableEntity addPairTable(PairTableEntity pairTable) {
+		PersistenceManager pm = getPersistenceManager();
+		pm.makePersistent(pairTable);
+		pm.close();
+		return pairTable;
 	}
 	
 	private static PersistenceManager getPersistenceManager() {
