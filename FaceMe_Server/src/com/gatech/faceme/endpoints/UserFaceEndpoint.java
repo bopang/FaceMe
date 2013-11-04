@@ -50,7 +50,7 @@ public class UserFaceEndpoint {
 	 */
 	@ApiMethod(httpMethod = "GET", name = "poster.get", path = "poster/get/{id}")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public UserFaceEntity getOriginalPosterByID(@Named("id") String key) {
+	public UserFaceEntity getOriginalPosterByID(@Named("id") long key) {
 		PersistenceManager mgr = getPersistenceManager();
 		UserFaceEntity posterEntity = null;
 		try {

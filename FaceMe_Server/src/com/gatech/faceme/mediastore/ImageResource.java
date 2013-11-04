@@ -31,7 +31,7 @@ public class ImageResource extends HttpServlet {
 
 		    BlobKey blobKey = new BlobKey(req.getParameter("key"));
 
-		    resp.setContentType("image/jpeg");
+		    resp.setContentType("image/png");
 		    
 		    blobstoreService.serve(blobKey, resp);
 		  }
