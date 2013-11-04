@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <opencv2/highgui/cap_ios.h>
 
-@interface CameraViewController : UIViewController
+
+
+@interface CameraViewController : UIViewController<CvVideoCameraDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *snapButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *posterView;
+
+@property (nonatomic, retain) CvVideoCamera* videoCamera;
+
+- (IBAction)takePhoto:(id)sender;
 
 @end
