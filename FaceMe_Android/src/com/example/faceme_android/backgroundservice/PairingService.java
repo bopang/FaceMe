@@ -15,15 +15,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.faceme_android.Poster;
-import com.example.faceme_android.UserProfile;
-
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.RingtoneManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.example.faceme_android.R;
+import com.example.faceme_android.RateAndCommentActivity;
+import com.example.faceme_android.Tools;
 
 public class PairingService extends Service {
 
@@ -102,20 +107,22 @@ public class PairingService extends Service {
 						builder.append(line);
 					}
 					String jsonData = builder.toString();
-					
+
 					Log.i("JsonData", jsonData);
 
 					JSONObject json = new JSONObject(jsonData);
 					JSONArray items = json.getJSONArray("items");
-					
+
 					for (int i = 0; i < items.length(); i++) {
 						JSONObject item = items.getJSONObject(i);
 
 						if (item.length() > 0) {
 							Log.d("paring.service", "Successfully pairing!");
 							System.out.println("Successfully pairing!");
+							createNotification();
 						} else {
-							Log.d("paring.service", "Failed to get any pairing...");
+							Log.d("paring.service",
+									"Failed to get any pairing...");
 							System.out.println("Failed to get any pairing...");
 						}
 
@@ -137,11 +144,37 @@ public class PairingService extends Service {
 
 				return;
 			}
+
 		};
 
 		thread.start();
 
 		Log.d("paring.service", "paring service created.");
+	}
+
+	protected void createNotification() {
+
+		// Prepare intent which is triggered if the
+		// notification is selected
+		Intent intent = new Intent(this, RateAndCommentActivity.class);
+		PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+		Bitmap logoIcon = Tools.getBitmapFromAsset(this, "logo.png");
+
+		// Build notification
+
+		NotificationCompat.Builder noti = new NotificationCompat.Builder(this)
+				.setContentTitle("You Got a Paired Photo! ")
+				.setContentText("FaceMe app")
+				.setSmallIcon(R.drawable.logo_launcher)
+				.setContentIntent(pIntent)
+				.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+				.addAction(R.drawable.ic_launcher, "Action Button", pIntent);
+
+		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		// hide the notification after its selected
+		notificationManager.notify(0, noti.build());
+
 	}
 
 	@Override
