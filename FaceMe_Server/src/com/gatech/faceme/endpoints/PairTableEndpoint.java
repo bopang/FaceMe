@@ -50,6 +50,7 @@ public class PairTableEndpoint {
 		
 			for (Object obj : (List<Object>) query.execute()) {
 				result.add(((PairTableEntity) obj));
+				((PairTableEntity) obj).setIfNotified(true);
 			}
 			
 		} finally {
