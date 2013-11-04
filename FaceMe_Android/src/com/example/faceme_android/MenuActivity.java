@@ -225,19 +225,6 @@ public class MenuActivity extends Activity{
 					
 					userProfileList.add(new UserProfile(name,gender,school,picUrl,bmp));
 					
-					
-					
-					//JSONObject data= json.getJSONObject("data");
-					//JSONArray items=data.getJSONArray("items");
-                    
-					
-//					for(int i=0; i<items.length();i++){
-//						JSONObject item=items.getJSONObject(i);
-//						String name=item.getString("thumbnail");
-//						userProfileList.add(new UserProfile(name,"male","aaa","bbb"));
-//						
-//					}
-					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

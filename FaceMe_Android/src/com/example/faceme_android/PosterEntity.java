@@ -1,6 +1,6 @@
 package com.example.faceme_android;
 
-import java.util.Date;
+import android.graphics.Bitmap;
 
 
 
@@ -13,6 +13,11 @@ public class PosterEntity {
 	private String movieName;
 	private String classification;
 	private String posterName;
+	
+	
+	public Bitmap thumbnail;
+	public Bitmap originalPoster;
+	public Bitmap nonfacePoster;
 
 	public PosterEntity(long key, String originalPosterKey,
 			String thumbnailKey, String nonfacePosterKey, String movieName,

@@ -59,13 +59,13 @@ public class UploadMultiPoster extends HttpServlet {
 		if (user != null){
 			
 			BlobKey originalPosterBlobKey = blobs.get("origin");
-			String originalPosterKey = originalPosterBlobKey.toString();
+			String originalPosterKey = originalPosterBlobKey.getKeyString();
 			
 			BlobKey thumbNailBlobKey = blobs.get("thumbnail");
-			String thumbNailKey = thumbNailBlobKey.toString();
+			String thumbNailKey = thumbNailBlobKey.getKeyString();
 			
 			BlobKey nonFacePosterBlobKey = blobs.get("nonface");
-			String nonFacePosterKey = nonFacePosterBlobKey.toString();
+			String nonFacePosterKey = nonFacePosterBlobKey.getKeyString();
 			
 			BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
 			BlobInfo originalPosterBlobInfo = blobInfoFactory
@@ -92,7 +92,7 @@ public class UploadMultiPoster extends HttpServlet {
 				int index;
 				
 				for (int i = 1; i <= numberoffaces; i++) {
-					faceKey = blobs.get("f"+i).toString();
+					faceKey = blobs.get("f"+i).getKeyString();
 					faceName = req.getParameter("faceName"+i);
 					positionX = Float.parseFloat(req.getParameter("positionX"+i));
 					positionY = Float.parseFloat(req.getParameter("positionY"+i));

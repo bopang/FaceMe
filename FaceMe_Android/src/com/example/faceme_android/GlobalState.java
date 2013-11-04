@@ -6,5 +6,6 @@ import android.app.Application;
 
 public class GlobalState extends Application{
 	PosterEntity currentPoster;
-	List<PosterEntity> loadedPOster;
+	List<PosterEntity> loadedPoster;
+
 }
