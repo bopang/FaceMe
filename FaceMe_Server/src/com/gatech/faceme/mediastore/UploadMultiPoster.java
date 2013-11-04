@@ -58,18 +58,13 @@ public class UploadMultiPoster extends HttpServlet {
 		
 		if (user != null){
 			
-			Iterator<String> names = blobs.keySet().iterator();
-			
-			String blobName = names.next();
-			BlobKey originalPosterBlobKey = blobs.get(blobName);
+			BlobKey originalPosterBlobKey = blobs.get("origin");
 			String originalPosterKey = originalPosterBlobKey.toString();
 			
-			blobName = names.next();
-			BlobKey thumbNailBlobKey = blobs.get(blobName);
+			BlobKey thumbNailBlobKey = blobs.get("thumbnail");
 			String thumbNailKey = thumbNailBlobKey.toString();
 			
-			blobName = names.next();
-			BlobKey nonFacePosterBlobKey = blobs.get(blobName);
+			BlobKey nonFacePosterBlobKey = blobs.get("nonface");
 			String nonFacePosterKey = nonFacePosterBlobKey.toString();
 			
 			BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
@@ -87,29 +82,27 @@ public class UploadMultiPoster extends HttpServlet {
 				PosterEntity posterEntity = new PosterEntity(originalPosterKey,
 						thumbNailKey, nonFacePosterKey, movieName, classification,
 						creationDate, posterName);
-				
 				PMF.get().getPersistenceManager().makePersistent(posterEntity);
+				
 				
 				String numOfFaces = req.getParameter("numoffaces");
 				int numberoffaces = Integer.parseInt(numOfFaces);
-				String faceKey, faceName, posterKey;
+				String faceKey, faceName;
 				float positionX, positionY, width, height;
 				int index;
 				
 				for (int i = 1; i <= numberoffaces; i++) {
-					blobName = names.next();
-					faceKey = blobs.get(blobName).toString();
+					faceKey = blobs.get("f"+i).toString();
 					faceName = req.getParameter("faceName"+i);
 					positionX = Float.parseFloat(req.getParameter("positionX"+i));
 					positionY = Float.parseFloat(req.getParameter("positionY"+i));
 					width = Float.parseFloat(req.getParameter("width"+i));
 					height = Float.parseFloat(req.getParameter("height"+i));
 					index = Integer.parseInt(req.getParameter("index"+i));
-					CharacterFaceEntity characterFaceEntity = new CharacterFaceEntity(faceKey, faceName, positionX, positionY, width, height, originalPosterKey, index);
+					CharacterFaceEntity characterFaceEntity = new CharacterFaceEntity(faceKey, faceName, positionX, positionY, width, height, posterEntity.getKey(), index);
 					PMF.get().getPersistenceManager().makePersistent(characterFaceEntity);
 				}
-				
-				
+			
 				resp.sendRedirect("/");
 			} catch (Exception e) {
 				blobstoreService.delete(originalPosterBlobKey);
