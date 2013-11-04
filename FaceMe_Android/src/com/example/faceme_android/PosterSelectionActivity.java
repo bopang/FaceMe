@@ -41,7 +41,7 @@ import android.widget.TextView;
 
 public class PosterSelectionActivity extends Activity {
 	Context context;
-	String posterUrl="https://facemegatech.appspot.com/_ah/api/originalposterendpoint/v1/originalposter/list";
+	String posterUrl="https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
 	List<Poster>posters=new ArrayList<Poster>();
 	
 public PosterSelectionActivity() {

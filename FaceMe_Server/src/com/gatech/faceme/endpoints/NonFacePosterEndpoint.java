@@ -34,7 +34,7 @@ public class NonFacePosterEndpoint {
 
 	@ApiMethod(httpMethod = "GET", name = "nonfaceposter.get", path = "nonfaceposter/get/{id}")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public NonFacePoster getNonFacePosterByID(@Named("id") String id) {
+	public NonFacePoster getNonFacePosterByID(@Named("id") long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		NonFacePoster nonfaceposter = null;
 		try {
