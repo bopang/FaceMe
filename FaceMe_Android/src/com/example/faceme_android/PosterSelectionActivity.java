@@ -42,8 +42,8 @@ import android.widget.TextView;
 public class PosterSelectionActivity extends Activity {
 	Context context;
 	String posterUrl="https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
-	List<Poster>posters=new ArrayList<Poster>();
-	
+	List<PosterEntity>posters=new ArrayList<PosterEntity>();
+	GlobalState state;
 public PosterSelectionActivity() {
 	// TODO Auto-generated constructor stub
 }
@@ -54,12 +54,12 @@ public PosterSelectionActivity() {
 		setContentView(R.layout.posterselection);
 		context=this;
 		ListView posterList=(ListView) findViewById(R.id.posterlistView);
-		ArrayAdapter<Poster>posteradapter=new posterAdapter(posters);
+		ArrayAdapter<PosterEntity>posteradapter=new posterAdapter(posters);
 		posterList.setAdapter(posteradapter);
 		GetJsonData getData=new GetJsonData(posteradapter);
 		getData.execute();
-		chosePoster();
-		
+		chosePoster();	
+		state = ((GlobalState) getApplicationContext());
 	}
 	public void chosePoster(){
 		ListView posterList=(ListView) findViewById(R.id.posterlistView);
@@ -69,9 +69,10 @@ public PosterSelectionActivity() {
 			public void onItemClick(AdapterView<?> parent, View viewClicked, int postion,
 					long id) {
 				// TODO Auto-generated method stub
-				Poster currentPoster=posters.get(postion);
-				String posterTitle=currentPoster.getPosterTitle();
-				Bitmap posterBtm=currentPoster.getPosterPic();
+				PosterEntity currentPoster=posters.get(postion);
+				state.currentPoster = posters.get(postion);
+				String posterTitle="aaa";//currentPoster.getPosterTitle();
+				//Bitmap posterBtm=currentPoster.getPosterPic();
 				Intent intent;
 				if(postion ==0)
 					intent =new Intent(PosterSelectionActivity.this, CharacterSelectionActivityXiaofei.class);
@@ -84,9 +85,9 @@ public PosterSelectionActivity() {
 			}
 		});
 	}
-public class posterAdapter extends ArrayAdapter<Poster>{
+public class posterAdapter extends ArrayAdapter<PosterEntity>{
 	
-	public posterAdapter(List<Poster>posters){
+	public posterAdapter(List<PosterEntity>posters){
 		super(PosterSelectionActivity.this,R.layout.poster_item,posters);
 		
 	}
@@ -99,24 +100,22 @@ public class posterAdapter extends ArrayAdapter<Poster>{
 		if(templateView==null){
 			templateView=getLayoutInflater().inflate(R.layout.poster_item, parent, false);
 		}
-		Poster currentPoster=posters.get(position);
+		PosterEntity currentPoster=posters.get(position);
 		TextView title=(TextView)templateView.findViewById(R.id.textView_posterTitle);
 		TextView description=(TextView)templateView.findViewById(R.id.textView_posterDescription);
-		title.setText(currentPoster.getPosterTitle());
-		description.setText(currentPoster.getPosterDescription());
+		title.setText(currentPoster.getMovieName());
+		description.setText(currentPoster.getPosterName());
 		ImageView posterImg=(ImageView)templateView.findViewById(R.id.imageView_poster);
-		posterImg.setImageBitmap(currentPoster.getPosterPic());
+		if(currentPoster.thumbnail != null)
+			posterImg.setImageBitmap(currentPoster.thumbnail);
 		return templateView;
 	}
-	
-	
-	
-	
+
 }
 public class GetJsonData extends AsyncTask<Void, Void, Void>{
     ProgressDialog dialog;
-    ArrayAdapter<Poster>posteradapter;
-    public GetJsonData( ArrayAdapter<Poster>posteraAdapter) {
+    ArrayAdapter<PosterEntity>posteradapter;
+    public GetJsonData( ArrayAdapter<PosterEntity>posteraAdapter) {
     	
 		posteradapter=posteraAdapter;
     	// TODO Auto-generated constructor stub
@@ -155,11 +154,26 @@ public class GetJsonData extends AsyncTask<Void, Void, Void>{
 			JSONArray  items=json.getJSONArray("items");
 			for(int i=0; i<items.length();i++){
 				JSONObject item=items.getJSONObject(i);
-				 String name=item.getString("title");
-				 String path=item.getString("urlpath");
-				 Bitmap bmp=getImageBitmap("https://facemegatech.appspot.com"+path);
-				 posters.add(new Poster(name, bmp));
+				 long key = item.getJSONObject("key").getLong("id");
+				 String movieName=item.getString("movieName");
+				 String posterName = item.getString("posterName");
+				 String classification = item.getString("classification");
+				 String thumbnailKey = item.getString("thumbnailKey")	;
+				 String originalPosterKey = item.getString("originalPosterKey");
+				 String nonfacePosterKey = item.getString("nonfacePosterKey");
+				 PosterEntity poster = new PosterEntity(key, originalPosterKey,thumbnailKey,nonfacePosterKey,movieName,
+							classification, posterName);
+				 poster.thumbnail = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + thumbnailKey);
+				 
+				 posters.add(poster);
+				 
+				 //String path=item.getString("urlpath");
+				 //Bitmap bmp=getImageBitmap("https://facemegatech.appspot.com"+path);
+				 //posters.add(new Poster(name, bmp));
 			}
+			
+			
+			state.loadedPoster = posters;
 			
 			
 		} catch (ClientProtocolException e) {

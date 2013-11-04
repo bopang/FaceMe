@@ -27,6 +27,8 @@ public class PictureViewActivity extends Activity {
 		imview.setImageBitmap(Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png"));
 		
 		Button btn_share = (Button)findViewById(R.id.button_Share);
+		Button btn_upload = (Button)findViewById(R.id.button_Upload);
+		
 		btn_share.setOnClickListener(new OnClickListener() {
 			
 			@Override
