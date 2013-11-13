@@ -5,7 +5,13 @@ import java.util.List;
 import android.app.Application;
 
 public class GlobalState extends Application{
-	PosterEntity currentPoster;
-	List<PosterEntity> loadedPoster;
-
+	public PosterEntity currentPoster;
+	public List<PosterEntity> loadedPoster;
+	public UserProfile currentUser;
+	public DataManager dm;
+	public CharacterFace faceChosed;
+	
+	public void initDataManager(){
+		dm = new DataManager(this);
+	}
 }

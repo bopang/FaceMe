@@ -1,7 +1,6 @@
 package com.example.faceme_android;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -19,9 +18,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class PictureViewActivity extends Activity {
+public class PictureViewActivityXiaoFei extends Activity {
 
-	public PictureViewActivity(){
+	public PictureViewActivityXiaoFei(){
 		
 	}
 	GlobalState state;
@@ -36,34 +35,20 @@ public class PictureViewActivity extends Activity {
 		
 		
 		GlobalState state = (GlobalState) getApplicationContext();
-		Bitmap nonfacePoster = state.currentPoster.nonfacePoster;
+		Bitmap nonfacePoster = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3_FaceXF_noFace.png");
 		//Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png"));
 
-		CharacterFace facechoosed = state.faceChosed;
+		//CharacterFace facechoosed = state.faceChosed;
 		
 		
-		Bitmap userFaceBmp = Bitmap.createScaledBitmap(tmp, (int)(nonfacePoster.getWidth() * facechoosed.getWidth()), (int)(nonfacePoster.getHeight() * facechoosed.getHeight()), false);
+		Bitmap userFaceBmp = Bitmap.createScaledBitmap(tmp, (int)(nonfacePoster.getWidth() * 0.22727f), (int)(nonfacePoster.getHeight() * 0.18868), false);
 		Bitmap result = Bitmap.createBitmap(nonfacePoster.getWidth(), nonfacePoster.getHeight(), Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(result);
 		
-		for(CharacterFace face : state.currentPoster.faces){
-			if(face != facechoosed){
-				canvas.drawBitmap(face.bmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
-			}
-		}
-		
-		canvas.drawBitmap(userFaceBmp, facechoosed.getPositionX() * nonfacePoster.getWidth(), facechoosed.getPostionY() * nonfacePoster.getHeight(), null);
+		canvas.drawBitmap(userFaceBmp, 0.31318f * nonfacePoster.getWidth(), 0.16038f * nonfacePoster.getHeight(), null);
 		canvas.drawBitmap(nonfacePoster, 0, 0, null);
 
 		imview.setImageBitmap(result);
-		try {
-		    String filename = Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png";
-			FileOutputStream out = new FileOutputStream(filename);
-			result.compress(Bitmap.CompressFormat.PNG, 90, out);
-		    out.close();
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
 		
 		Button btn_share = (Button)findViewById(R.id.button_Share);
 		Button btn_upload = (Button)findViewById(R.id.button_Upload);

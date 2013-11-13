@@ -19,72 +19,26 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-public class CharacterSelectionActivity extends Activity {
+public class DataManager {
+	HttpClient client;
+	HttpGet httpGet;
+	HttpResponse response;
+	StatusLine statusline;
+	int statusCode;
+	InputStream inputStream;
+	BufferedReader reader;
+	StringBuilder builder;
+	
 	GlobalState state;
-	Context context;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.charaterselection);
-		//Intent intent= getIntent();
-		//String postertitle=intent.getStringExtra("title");
-		TextView posterTitle=(TextView) findViewById(R.id.received_postertitle);
-
-		context = this;
-		state =(GlobalState) getApplicationContext();
-		posterTitle.setText(state.currentPoster.getPosterName());
-		loadPosterData(state.currentPoster);
-		
-	}
 	
-	public void setImageViews(){
-		
-		ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
-		posterImg.setImageBitmap(state.currentPoster.originalPoster);
-	
-		ViewGroup characterLayout = (ViewGroup) findViewById(R.id.characterSelectionLayout);
-		
-		for(int i=0; i<state.currentPoster.faces.size(); i++){
-			ImageButton characterButton = new ImageButton(this);
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(120, 120);
-			lp.setMargins(30, 0, 30, 0);
-			
-			characterButton.setLayoutParams(lp);
-			characterButton.setTag(state.currentPoster.faces.get(i));
-			Bitmap faceBmp = state.currentPoster.faces.get(i).bmp;
-			Bitmap bmp = Bitmap.createScaledBitmap(faceBmp, 120*faceBmp.getWidth()/faceBmp.getHeight(), 120, false);
-			characterButton.setImageBitmap(bmp);
-			characterButton.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
-						
-						state.faceChosed = (CharacterFace) v.getTag();
-						startActivity(new Intent(getBaseContext(),CameraActivity.class));
-					}
-				});
-			
-			characterLayout.addView(characterButton);
-		}
+	public DataManager(GlobalState state){
+		this.state = state;
 	}
 	
 	public void loadPosterData(PosterEntity poster){
@@ -95,11 +49,9 @@ public class CharacterSelectionActivity extends Activity {
 					protected Void doInBackground(PosterEntity... params) {
 						// TODO Auto-generated method stub
 						PosterEntity poster = params[0];
+						poster.originalPoster = getImageBitmap(poster.getOriginalPosterKey());
+						poster.nonfacePoster = getImageBitmap(poster.getNonfacePosterKey());
 						
-						poster.nonfacePoster = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + poster.getNonfacePosterKey());
-						poster.originalPoster = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + poster.getOriginalPosterKey());
-
-
 						HttpClient client=new DefaultHttpClient();
 						HttpGet httpGet=new HttpGet("https://facemegatech.appspot.com/_ah/api/characterfaceendpoint/v1/characterfaceinposter/get/"+poster.getKey());
 						try {
@@ -142,10 +94,16 @@ public class CharacterSelectionActivity extends Activity {
 								 face.bmp = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + imageKey);
 
 								 faces.add(face);
-
+								 
+								 //String path=item.getString("urlpath");
+								 //Bitmap bmp=getImageBitmap("https://facemegatech.appspot.com"+path);
+								 //posters.add(new Poster(name, bmp));
 							}
-		
-							poster.faces = faces;							
+							
+							
+							poster.faces = faces;
+							
+							state.currentPoster = poster;
 							
 						} catch (ClientProtocolException e) {
 							// TODO Auto-generated catch block
@@ -157,31 +115,15 @@ public class CharacterSelectionActivity extends Activity {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						
 						return null;
 					}
-					@Override
-					protected void onPostExecute(Void result) {
-						// TODO Auto-generated method stub
-						dialog.dismiss();
-						setImageViews();
-						super.onPostExecute(result);
-						super.onPostExecute(result);
-					}
-
-					@Override
-					protected void onPreExecute() {
-						// TODO Auto-generated method stub
-						dialog=new ProgressDialog(context);
-						dialog.setTitle("loading");
-						dialog.show();
-						super.onPreExecute();
-						super.onPreExecute();
-					}
-					
+			
 				};
-				
 				loadPosterImageAndFaceCharacter.execute(poster);
 	}
+	
 	public Bitmap getImageBitmap(String url) { 
         Bitmap bm = null; 
         try { 

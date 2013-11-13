@@ -42,7 +42,7 @@ public class CharacterSelectionActivityXiaofei extends Activity {
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
-						startActivity(new Intent(getBaseContext(),CameraActivity.class));
+						startActivity(new Intent(getBaseContext(),CameraActivitySuperMan.class));
 					}
 				});
 			

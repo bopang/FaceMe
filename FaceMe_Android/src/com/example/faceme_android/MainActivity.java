@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startActivity(new Intent(getBaseContext(), MenuActivity.class));
-				createNotification();
+				//createNotification();
 			}
 		});
     }

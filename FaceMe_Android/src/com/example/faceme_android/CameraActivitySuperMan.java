@@ -13,6 +13,7 @@ import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
@@ -38,6 +39,7 @@ import android.graphics.*;
 import android.graphics.Bitmap.Config;
 
 public class CameraActivitySuperMan extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
+	GlobalState state;
     private static final String TAG = "OCVSample::Activity";
 
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -47,9 +49,10 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
     
-    float x = 0.28f;
-    float y = 0.0f;
-    float faceWidth = 0.28f;
+    float x = 0.31318f;
+    float y = 0.16038f;
+    float faceWidth = 0.22727f;
+    float faceHeight = 0.18868f;
    
     private Bitmap bmPosterNF;
     private Bitmap bmPoster;
@@ -79,6 +82,8 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
     int imageWidth;
     int faceWinWidth, faceWinHeight;
     int faceWinX, faceWinY;
+    
+    boolean transposed;
     
     
     
@@ -128,9 +133,10 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
 			public void onClick(View v) {
 				
 				MergeCameraPoster();
-				
-				Core.flip(mPhoto, m1, 0);
-				Core.transpose(m1, mPhoto);
+				if(transposed){
+					Core.flip(mPhoto, m1, 0);
+					Core.transpose(m1, mPhoto);
+				}
 	    		
 				Bitmap bm = Bitmap.createBitmap(mPhoto.width(), mPhoto.height(), Config.ARGB_8888);
 				Utils.matToBitmap(mPhoto, bm);
@@ -145,18 +151,22 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
 				    e.printStackTrace();
 				}
 				
-				Intent intent = new Intent(getBaseContext(), PictureViewActivity.class);
+				Intent intent = new Intent(getBaseContext(), PictureViewActivityXiaoFei.class);
 				
 				startActivity(intent);
 			}
 		});
         
+        
         zoomBar = (SeekBar) findViewById(R.id.zoomBar);
         zoomBar.setOnSeekBarChangeListener(this);
         
-        bmPosterNF = Tools.getBitmapFromAsset(this.getApplicationContext(), "superman_noFace.png");
-        bmPoster = Tools.getBitmapFromAsset(this.getApplicationContext(), "superman_Face.jpg");
+
         
+        bmPosterNF = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3_FaceXF_noFace.png");
+        bmPoster = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3_FaceXF.jpg");
+        //bmPosterNF = state.currentPoster.nonfacePoster;
+        //bmPoster = state.currentPoster.originalPoster;
     }
 
     @Override
@@ -237,23 +247,60 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
     		
     		Core.transpose(mPoster, m1);
     		Core.flip(m1, mPoster, 0);
+    		
+    		float tmp = x;
+    		x = y;
+    		y = 1 - tmp;
+    		
+    		tmp = faceWidth;
+    		faceWidth = faceHeight;
+    		faceHeight = tmp;
+    		transposed = true;
     	}
     	
-    	Imgproc.resize(mPosterNF, mResizedPosterNF, mResizedPosterNF.size());
-    	Imgproc.resize(mPoster, mResizedPoster, mResizedPoster.size());
-    	faceWinWidth = (int) (mResizedPoster.width() * faceWidth);
-    	faceWinHeight = (int) (mResizedPoster.height() * faceWidth);
-    	faceWinY = (int) (mResizedPoster.width() * x);
-    	faceWinX = (int) (mResizedPoster.height() * y);
+    	imageWidth = (int) mPosterNF.size().width;
+    	imageHeight = (int) mPosterNF.size().height;
+    	
+    	float scale;
+    	int border_width = 0;
+    	int border_height = 0;
+    	
+    	if(imageWidth /(float) width > imageHeight /(float) height){
+    		scale = width / (float) imageWidth;
+    		imageWidth = width;
+    		imageHeight = (int) (imageHeight * scale);
+    		border_height = (int) (height - imageHeight)/2;	
+    	}
+    	else{
+    		scale = height / (float) imageHeight;
+    		imageWidth = (int) (imageWidth * scale);
+    		imageHeight = height;
+    		border_width = (int) (width - imageWidth)/2;
+    	}
+    		
+    	Imgproc.resize(mPoster, m1, new Size(0,0), scale, scale, Imgproc.INTER_LINEAR);
+    	Imgproc.copyMakeBorder(m1, mResizedPoster, border_height, border_height, border_width, border_width, Imgproc.BORDER_CONSTANT);
+    	
+    	Imgproc.resize(mPosterNF, m1, new Size(0,0), scale, scale, Imgproc.INTER_LINEAR);
+    	Imgproc.copyMakeBorder(m1, mResizedPosterNF, border_height, border_height, border_width, border_width, Imgproc.BORDER_CONSTANT);
+    	
+
+    	faceWinWidth = (int) (imageWidth * faceWidth);
+    	faceWinHeight = (int) (imageHeight * faceHeight);
+    	faceWinY = (int) (imageHeight * y) + border_height;
+    	if(transposed)
+    		faceWinY = faceWinY - faceWinHeight;
+    	faceWinX = (int) (imageWidth * x) + border_width;
     	
     	mPosterCopy = new Mat();
     	mPosterNFCopy = new Mat();
     	
     	mResizedPosterNF.copyTo(mPosterNFCopy);
     	
-    	
-    	rWinPosterNF = mPosterNFCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
-    	
+    	if(faceWinHeight > 0)
+    		rWinPosterNF = mPosterNFCopy.submat(faceWinY, faceWinY + faceWinHeight, faceWinX, faceWinX + faceWinWidth);
+    	else
+    		rWinPosterNF = mPosterNFCopy.submat(faceWinY + faceWinHeight, faceWinY, faceWinX, faceWinX + faceWinWidth);
     	
     	ones = Mat.ones(rWinPosterNF.rows(), rWinPosterNF.cols(), CvType.CV_32FC1);
     	Core.multiply(ones, new Scalar(255), ones);
@@ -324,51 +371,34 @@ public class CameraActivitySuperMan extends Activity implements CvCameraViewList
     	//Core.add(allChannels1.get(3), new Scalar(0.0f), allChannels2.get(3), mask);
     	
     	
-    	rWinPosterNF.convertTo(m1, CvType.CV_32F,1/255.0f);
-    	Core.split(m1, allChannels1);
-
-    	Mat alpha = new Mat();
-    	allChannels1.get(3).copyTo(alpha);;
-    	
-    	Core.add(alpha, new Scalar(-1.0f), m2);
-    	Core.multiply(m2, new Scalar(-1.0f), alpha);
-    	
-    	mCamera.convertTo(m1, CvType.CV_32F,1/255.0f);
-    	Core.split(m1, allChannels1);
-    	
-    	Core.multiply(allChannels1.get(0), alpha, allChannels2.get(0));
-    	Core.multiply(allChannels1.get(1), alpha, allChannels2.get(1));
-    	Core.multiply(allChannels1.get(2), alpha, allChannels2.get(2));
-    	allChannels2.set(3, alpha);
-
-    	Core.merge(allChannels2, m2);
-    	m2.convertTo(m1, CvType.CV_8UC4,255.0f);
-    	//m1.copyTo(rWinPosterNF);
-    	//System.out.println(alpha.dump());
-    	Core.addWeighted(rWinPosterNF, 1.0, m1, 1.0, 0.0, rWinPosterNF);
-    	
-    	mPosterNFCopy.copyTo(mPhoto);
+//    	rWinPosterNF.convertTo(m1, CvType.CV_32F,1/255.0f);
+//    	Core.split(m1, allChannels1);
+//
+//    	Mat alpha = new Mat();
+//    	allChannels1.get(3).copyTo(alpha);;
+//    	
+//    	Core.add(alpha, new Scalar(-1.0f), m2);
+//    	Core.multiply(m2, new Scalar(-1.0f), alpha);
+//    	
+//    	mCamera.convertTo(m1, CvType.CV_32F,1/255.0f);
+//    	
+//    	Core.split(m1, allChannels1);
+//    	
+//    	Core.multiply(allChannels1.get(0), alpha, allChannels2.get(0));
+//    	Core.multiply(allChannels1.get(1), alpha, allChannels2.get(1));
+//    	Core.multiply(allChannels1.get(2), alpha, allChannels2.get(2));
+//    	allChannels2.set(3, alpha);
+//
+//    	Core.merge(allChannels2, m2);
+//    	m2.convertTo(m1, CvType.CV_8UC4,255.0f);
+//    	//m1.copyTo(rWinPosterNF);
+//    	System.out.println(alpha.dump());
+//    	Core.addWeighted(rWinPosterNF, 1.0, m1, 1.0, 0.0, rWinPosterNF);
+//    	
+//    	mPosterNFCopy.copyTo(mPhoto);
+    	mCamera.copyTo(mPhoto);
     }
     
-    private Mat MergeCameraAndPoster(Mat mCamera, Mat mPoster, double alpha, double beta){
-    	Mat result = new Mat(mCamera.size(), mCamera.type());
-    	byte[] color1 = new byte[4];
-    	byte[] color2 = new byte[4];
-    	byte[] color3 = new byte[4];
-    	for(int i=0; i<mCamera.size().width; i++){
-    		for(int j=0; j<mCamera.size().height; j++){
-    			mCamera.get(j, i, color1);
-    			mPoster.get(j, i, color2);
-    			for(int k=0; k<3; k++){
-    				color3[k] = (byte) (color1[k] * alpha * color1[3] + color2[k] * beta * color2[3]);
-    			}
-    			result.put(j, i, color3);
-    		}
-    	}
-    	
-    	return result;
-    }
-
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {

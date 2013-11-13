@@ -1,5 +1,8 @@
 package com.example.faceme_android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Bitmap;
 
 
@@ -18,6 +21,8 @@ public class PosterEntity {
 	public Bitmap thumbnail;
 	public Bitmap originalPoster;
 	public Bitmap nonfacePoster;
+	
+	public List<CharacterFace> faces;
 
 	public PosterEntity(long key, String originalPosterKey,
 			String thumbnailKey, String nonfacePosterKey, String movieName,
@@ -30,7 +35,9 @@ public class PosterEntity {
 		this.movieName = movieName;
 		this.classification = classification;
 		this.posterName = posterName;
+		
 	}
+	
 
 	public long getKey() {
 		return key;

@@ -19,7 +19,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.faceme_android.backgroundservice.PairingServiceActivity;
+//import com.example.faceme_android.backgroundservice.PairingServiceActivity;
+
+
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -45,6 +47,7 @@ public class MenuActivity extends Activity{
 	 Context context;
 	 List<UserProfile> userProfileList=new ArrayList<UserProfile>();
      ArrayList<String>profileUrl=new ArrayList<String>();
+
 	@Override
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -67,7 +70,7 @@ public class MenuActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(getBaseContext(),PairingServiceActivity.class));
+				//	startActivity(new Intent(getBaseContext(),PairingServiceActivity.class));
 			}
 		});
 	       
@@ -85,8 +88,8 @@ public class MenuActivity extends Activity{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					startActivity(new Intent(getBaseContext(),RateAndCommentActivity.class));
-					//startActivity(new Intent(getBaseContext(),CameraActivity.class));
+					//startActivity(new Intent(getBaseContext(),RateAndCommentActivity.class));
+					startActivity(new Intent(getBaseContext(),CharacterSelectionActivityXiaofei.class));
 				}
 			});
 	       
@@ -97,55 +100,6 @@ public class MenuActivity extends Activity{
 	        getMenuInflater().inflate(R.menu.main, menu);
 	        return true;
 	  }
-	  
-	  public void getUserInfo(){
-		  HttpClient client=new DefaultHttpClient();
-			HttpGet httpGet=new HttpGet(feedUrl);
-			try {
-				HttpResponse response=client.execute(httpGet);
-				StatusLine statusline=response.getStatusLine();
-				int statusCode=statusline.getStatusCode();
-				if(statusCode!=200){
-					return;
-				}
-				InputStream jsonStream =response.getEntity().getContent();
-				BufferedReader reader=new BufferedReader(new InputStreamReader(jsonStream));
-				StringBuilder builder=new StringBuilder();
-				String line;
-				while((line=reader.readLine())!=null){
-					
-					builder.append(line);
-				}
-				String jsonData=builder.toString();
-				Log.i("JsonData", jsonData);
-				JSONObject json= new JSONObject(jsonData);
-				//JSONObject data= json.getJSONObject("data");
-				//JSONArray items=data.getJSONArray("items");
-				
-				String name = json.getString("name");
-				String gender = json.getString("gender");
-				String school = json.getString("school");
-				userProfileList.add(new UserProfile(name,gender,school,""));
-				
-				
-				//for(int i=0; i<items.length();i++){
-					//JSONObject item=items.getJSONObject(i);
-					//String name=item.getString("thumbnail");
-					//userProfileList.add(new UserProfile(name,"male","aaa","bbb"));
-				//}
-				
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	  }
-	  
 	  
 	  public class ProfileAdapter extends ArrayAdapter<UserProfile>{
 		  public ProfileAdapter(List<UserProfile> profileList){
@@ -224,6 +178,8 @@ public class MenuActivity extends Activity{
 					Bitmap bmp=getImageBitmap(picUrl);
 					
 					userProfileList.add(new UserProfile(name,gender,school,picUrl,bmp));
+					GlobalState state = (GlobalState) getApplicationContext();
+					state.currentUser = userProfileList.get(0);
 					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block

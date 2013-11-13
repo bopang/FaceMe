@@ -9,9 +9,12 @@
         android:targetSdkVersion="15" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:name="com.example.faceme_android.GlobalState"
+        android:icon="@drawable/logo_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+"
         <activity
             android:name="com.example.faceme_android.MainActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -23,14 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <service android:name="com.example.faceme_android.backgroundservice.PairingService">
-        	<intent-filter>
-				<action android:name="com.example.faceme_android.backgroundservice.PairingService"></action>
-				<category android:name="android.intent.category.default" /> 
-			</intent-filter>
+
+        <service android:name="com.example.faceme_android.backgroundservice.PairingService" >
+            <intent-filter>
+                <action android:name="com.example.faceme_android.backgroundservice.PairingService" >
+                </action>
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
         </service>
-        
+
         <activity
             android:name="com.example.faceme_android.MenuActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -47,6 +52,9 @@
             android:name="com.example.faceme_android.PictureViewActivity"
             android:label="@string/title_activity_picture_view" >
         </activity>
+        <activity
+            android:name="com.example.faceme_android.PictureViewActivityXiaoFei">
+        </activity>
         <activity android:name="com.example.faceme_android.PosterSelectionActivity" >
         </activity>
         <activity android:name="com.example.faceme_android.CharacterSelectionActivity" >
@@ -55,18 +63,22 @@
         </activity>
         <activity android:name="com.example.faceme_android.CharacterSelectionActivityXiaofei" >
         </activity>
-         <activity android:name="com.example.faceme_android.backgroundservice.PairingServiceActivity" >
+        <activity android:name="com.example.faceme_android.backgroundservice.PairingServiceActivity" >
         </activity>
         <activity
             android:name="com.example.faceme_android.CameraActivitySuperMan"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
-             >
         </activity>
         <activity
             android:name="com.example.faceme_android.RateAndCommentActivity"
             android:label="@string/title_activity_rate_and_comment" >
+        </activity>
+        
+        <activity
+            android:name="com.example.faceme_android.BrowseringActivity"
+            android:label="@string/title_activity_browsering" >
         </activity>
     </application>
 
