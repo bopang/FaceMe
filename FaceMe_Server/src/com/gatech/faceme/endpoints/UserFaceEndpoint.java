@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import com.gatech.faceme.entity.ImageUploadURL;
+import com.gatech.faceme.entity.PairTableEntity;
 import com.gatech.faceme.entity.UserFaceEntity;
 import com.gatech.faceme.mediastore.PMF;
 import com.google.api.server.spi.config.Api;
@@ -72,7 +73,18 @@ public class UserFaceEndpoint {
 		return new ImageUploadURL(
 				blobstoreService.createUploadUrl("/uploadUserFace"));
 	}
-
+	
+	@ApiMethod(httpMethod = "POST", name = "userface.insert",
+			path = "userface/insert")
+	//curl -H 'Content-Type: application/json' -d '{ "activeUser": activeUserkey,"otherUsers": [{userKey1},{userKey2}],
+	//"activeUserFace": "activeUserFaceKey", "otherUserFace":[{keyFaceKey1},{keyFaceKey2}], "ifNotified": false}' 
+	// http://localhost:8888/_ah/api/pairtableendpoint/v1/pairtable/insert
+	public UserFaceEntity addUserFace(UserFaceEntity userface) {
+		PersistenceManager pm = getPersistenceManager();
+		pm.makePersistent(userface);
+		pm.close();
+		return userface;
+	}
 	private static PersistenceManager getPersistenceManager() {
 		return PMF.get().getPersistenceManager();
 	}
