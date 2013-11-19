@@ -76,9 +76,7 @@ public class UserFaceEndpoint {
 	
 	@ApiMethod(httpMethod = "POST", name = "userface.insert",
 			path = "userface/insert")
-	//curl -H 'Content-Type: application/json' -d '{ "activeUser": activeUserkey,"otherUsers": [{userKey1},{userKey2}],
-	//"activeUserFace": "activeUserFaceKey", "otherUserFace":[{keyFaceKey1},{keyFaceKey2}], "ifNotified": false}' 
-	// http://localhost:8888/_ah/api/pairtableendpoint/v1/pairtable/insert
+	//curl -H 'Content-Type: application/json' -d '{"imageKey": imageKey, "userID": userID, "posterKey": poseterKey, "characterKey": characterKey}' http://localhost:8888/_ah/api/userfaceendpoint/v1/userface/insert
 	public UserFaceEntity addUserFace(UserFaceEntity userface) {
 		PersistenceManager pm = getPersistenceManager();
 		pm.makePersistent(userface);
