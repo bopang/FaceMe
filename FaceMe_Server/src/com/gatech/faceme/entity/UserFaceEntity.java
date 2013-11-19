@@ -27,10 +27,9 @@ public class UserFaceEntity {
 	@Persistent
 	private String characterKey;
 
-	public UserFaceEntity(Key key, String imageKey, String userID,
+	public UserFaceEntity(String imageKey, String userID,
 			String posterKey, String characterKey) {
 		super();
-		this.key = key;
 		this.imageKey = imageKey;
 		this.userID = userID;
 		this.posterKey = posterKey;

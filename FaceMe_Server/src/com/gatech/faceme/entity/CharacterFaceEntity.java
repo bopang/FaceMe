@@ -25,7 +25,7 @@ public class CharacterFaceEntity {
 	@Persistent
 	private float positionX; //upper left point
 	@Persistent
-	private float postionY;
+	private float positionY;
 	@Persistent
 	private float width; //image width and height
 	@Persistent
@@ -41,7 +41,7 @@ public class CharacterFaceEntity {
 		this.imageKey = imageKey;
 		this.name = name;
 		this.positionX = positionX;
-		this.postionY = postionY;
+		this.positionY = postionY;
 		this.width = width;
 		this.height = height;
 		this.posterID = posterID;
@@ -66,10 +66,10 @@ public class CharacterFaceEntity {
 		this.positionX = positionX;
 	}
 	public float getPostionY() {
-		return postionY;
+		return positionY;
 	}
 	public void setPostionY(float postionY) {
-		this.postionY = postionY;
+		this.positionY = postionY;
 	}
 	public Key getPostID() {
 		return posterID;

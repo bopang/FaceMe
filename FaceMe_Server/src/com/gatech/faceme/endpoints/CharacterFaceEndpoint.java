@@ -9,10 +9,12 @@ import javax.jdo.Query;
 
 import com.gatech.faceme.entity.CharacterFaceEntity;
 import com.gatech.faceme.entity.PairTableEntity;
+import com.gatech.faceme.entity.PosterEntity;
 import com.gatech.faceme.entity.User;
 import com.gatech.faceme.mediastore.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
+import com.google.appengine.api.datastore.Key;
 
 @Api(name = "characterfaceendpoint", description = 
 			"This entity represents a character face.", version = "v1")	
@@ -51,11 +53,14 @@ public class CharacterFaceEndpoint {
 	@SuppressWarnings({ "cast", "unchecked" })
 	public ArrayList<CharacterFaceEntity> getCharacterFaceInPoster(@Named("id") long posterid) {
 		PersistenceManager mgr = getPersistenceManager();
-		ArrayList<CharacterFaceEntity> characterface = null;
+		
+		ArrayList<CharacterFaceEntity> characterface = new ArrayList<CharacterFaceEntity>();
 		try {
-			Query query = mgr.newQuery(PairTableEntity.class, 
-					"posterID ==posterid");
-			for (Object obj : (List<Object>) query.execute()) {
+			Key posterKey = ((PosterEntity)mgr.getObjectById(PosterEntity.class, posterid)).getKey();
+			Query query = mgr.newQuery(CharacterFaceEntity.class);
+			query.setFilter("posterID == posterIDparam");
+			query.declareParameters(Key.class.getName() + " posterIDparam");
+			for (Object obj : (List<Object>) query.execute(posterKey)) {
 				characterface.add(((CharacterFaceEntity) obj));
 			}
 	
