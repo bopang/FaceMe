@@ -1,15 +1,17 @@
 package com.example.faceme_android;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
+import com.faceme_android.MultiTabActivity;
 
 public class MainActivity extends Activity {
 
@@ -24,7 +26,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getBaseContext(), MenuActivity.class));
+				startActivity(new Intent(getBaseContext(), MultiTabActivity.class));
 				//createNotification();
 			}
 		});
