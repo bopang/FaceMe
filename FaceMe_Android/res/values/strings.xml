@@ -7,5 +7,6 @@
     <string name="title_activity_picture_view">PictureViewActivity</string>
     <string name="title_activity_rate_and_comment">RateAndCommentActivity</string>
     <string name="pairing_service">This is activity of background pairing service !</string>
+    <string name="title_activity_browsering">BrowseringActivity</string>
 
 </resources>
