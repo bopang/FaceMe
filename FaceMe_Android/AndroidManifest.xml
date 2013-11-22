@@ -42,6 +42,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+         <activity
+            android:name="com.faceme_android.LoginActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name="com.faceme_android.MultiTabActivity"
             android:configChanges="keyboardHidden|orientation"

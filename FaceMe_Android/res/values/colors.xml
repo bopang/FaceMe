@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="GhostWhite">#fff8f8ff</color>
+    <color name="white">#ffffffff</color>
+    <color name="Transpant">#00000000</color>
+    <color name="black">#ff2e140a</color>
+    <color name="HalfBlack">#aa000000</color>
+    <color name="LightGreen">#ff002200</color>
+    <color name="LightBlue">#ff0000ff</color>
+    <color name="TextRed">#ffc68753</color>
+    <color name="orange">#fff94627</color>
+    <color name="calendar_topbg">#ff836244</color>
+    <color name="calendar_cellbg">#ff373737</color>
+    <color name="main_yellow">#fdbb1d</color>
+    <color name="hintColor">#ffd4c7b9</color>
+    <color name="main_red">#ffbe2e15</color>
+    <color name="main_grey">#ff5f5f5f</color>
+    <color name="huangTuSe">#ff995e2d</color>
+    <color name="sc_transparent_background">#00111111</color>
+    <color name="red">#fff94627</color>
+    <color name="dark">#ff494949</color>
+    <color name="grey">#ff8c8d90</color>
+    <color name="ash">#ff78736d</color>
+    <color name="mainList1">#fff46e64</color>
+    <color name="mainList2">#fffeb355</color>
+    <color name="mainList3">#ff7daee8</color>
+    <color name="mainList4">#ff7fd373</color>
+    <color name="mainList5">#ffde7ab8</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

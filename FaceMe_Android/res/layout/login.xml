@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newbg"
+    android:orientation="vertical" >
+
+   <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_yellow" >
+
+     
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="FaceMe"
+            android:textColor="#222222"
+            android:textSize="25dip" />
+
+        <Button
+            android:id="@+id/add_user"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/adduser" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#fffffbf7"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20.0dip"
+        android:paddingRight="20.0dip" >
+
+        <EditText
+            android:id="@+id/load_name"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="30.0dip"
+            android:background="@drawable/edittext_bg_selector"
+            android:dropDownVerticalOffset="0.0dip"
+            android:hint="E-mail/Account"
+            android:maxLength="40"
+            android:paddingLeft="10.0dip"
+            android:singleLine="true"
+            android:textColor="@color/dark"
+            android:textColorHint="@color/hintColor" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/load_password"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="15.0dip"
+            android:background="@drawable/edittext_bg_selector"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="10.0dip"
+            android:password="true"
+            android:textColor="@color/dark"
+            android:textColorHint="@color/hintColor" />
+
+        <RelativeLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20.0dip"
+            android:layout_marginTop="15.0dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:background="@drawable/buttonstatus"
+                android:gravity="center"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="23.0sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+  
+
+</LinearLayout>

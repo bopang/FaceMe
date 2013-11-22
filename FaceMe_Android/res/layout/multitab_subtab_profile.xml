@@ -254,7 +254,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dip"
             android:layout_marginTop="20dip"
-            android:background="#fdbb1d"
+            android:background="@drawable/buttonstatus"
             android:gravity="center"
             android:text="Save"
             android:textColor="#ffffff"

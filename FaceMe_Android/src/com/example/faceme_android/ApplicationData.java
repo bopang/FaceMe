@@ -32,7 +32,8 @@ import android.widget.ArrayAdapter;
 
 public class ApplicationData extends Application{
 	public static final String posterUrl="https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
-	public static final String feedUrl="https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
+	//public static String feedUrl="https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
+	public static String feedUrl;
 	public PosterEntity currentPoster = null;
 	
 	
@@ -55,6 +56,12 @@ public class ApplicationData extends Application{
 	}
 	
 	public void loadUserInfo(){
+		this.feedUrl = "https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
+		new GetUserInfoTask().execute();
+	}
+	
+	public void loadUserInfo(String feedUrl){
+		this.feedUrl = feedUrl; 
 		new GetUserInfoTask().execute();
 	}
 	
@@ -120,11 +127,12 @@ public class ApplicationData extends Application{
 				String gender = json.getString("gender");
 				String school = json.getString("school");
 				String picUrl=json.getString("faceKey");
-				
+				String password = json.getString("password");
 				Bitmap bmp=getImageBitmap(picUrl);
 				
-				mCurrentUser = new UserProfile(name,gender,school,picUrl,bmp);
-				
+				mCurrentUser = new UserProfile(name,gender,school,picUrl,bmp,password);
+				System.out.println("CurrentUser: " + mCurrentUser);
+				System.out.println("Current pwd:" + mCurrentUser.getPassword());
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

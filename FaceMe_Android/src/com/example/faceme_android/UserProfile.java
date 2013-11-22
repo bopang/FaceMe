@@ -7,6 +7,7 @@ public String username;
 public String gender;
 public String school;
 public String profilePicUrl;
+public String password;
 public Bitmap faceBmp;
 
 public String getProfilePicUrl() {
@@ -22,6 +23,15 @@ public UserProfile(String name, String Gender, String School,String ProfileUrl){
 	gender=Gender;
 	school=School;
 	profilePicUrl=ProfileUrl;
+}
+
+public UserProfile(String name, String Gender, String School,String ProfileUrl, Bitmap bmp, String Password){
+	username=name;
+	gender=Gender;
+	school=School;
+	profilePicUrl=ProfileUrl;
+	password=Password;
+	faceBmp = bmp;
 }
 
 public UserProfile(String name, String Gender, String School,String ProfileUrl, Bitmap bmp){
@@ -63,6 +73,13 @@ public void setSchool(String school) {
 	this.school = school;
 }
 
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password){
+	this.password = password;
+}
 
 
 }

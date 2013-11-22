@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
+import com.faceme_android.LoginActivity;
 import com.faceme_android.MultiTabActivity;
 
 public class MainActivity extends Activity {
@@ -26,7 +27,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getBaseContext(), MultiTabActivity.class));
+				startActivity(new Intent(getBaseContext(), LoginActivity.class));
 				//createNotification();
 			}
 		});
