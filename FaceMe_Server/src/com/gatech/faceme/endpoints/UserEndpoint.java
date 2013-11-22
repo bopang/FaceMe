@@ -46,7 +46,7 @@ public class UserEndpoint {
 
 	@ApiMethod(httpMethod = "GET", name = "image.list", path = "image/list")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public List<User> listImage() {
+	public Object[] listImage() {
 		PersistenceManager mgr = PMF.get().getPersistenceManager();
 		List<User> result = new ArrayList<User>();
 		try {
@@ -57,7 +57,7 @@ public class UserEndpoint {
 		} finally {
 			mgr.close();
 		}
-		return result;
+		return result.toArray();
 	}
 
 	@ApiMethod(httpMethod = "POST", name = "user.insert", path = "user/insert")
