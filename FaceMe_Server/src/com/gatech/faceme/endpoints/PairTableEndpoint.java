@@ -88,7 +88,6 @@ public class PairTableEndpoint {
 		PersistenceManager mgr = getPersistenceManager();
 		ArrayList<PairTableEntity> result = new ArrayList<PairTableEntity>();
 		try {
-
 			Query query = mgr.newQuery(PairTableEntity.class, 
 					"(activeUser ==userID) && (key ==userName)");
 			

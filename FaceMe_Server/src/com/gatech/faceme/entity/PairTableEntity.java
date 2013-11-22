@@ -22,17 +22,17 @@ public class PairTableEntity {
 	private ArrayList<String> otherUsers;
 	
 	@Persistent
-	private Key activeUserFace;
+	private String activeUserFace;
 	
 	@Persistent
-	private ArrayList<Key> otherUserFace;
+	private ArrayList<String> otherUserFace;
 	
 	
 	@Persistent
 	private boolean ifNotified;
 	
 	public PairTableEntity(String activeUser, ArrayList<String> otherUsers,
-				Key activeUserFace, ArrayList<Key> otherUserFace,
+			String activeUserFace, ArrayList<String> otherUserFace,
 				boolean ifNotified){
 		this.activeUser = activeUser;
 		this.setotherUsers(otherUsers);
@@ -72,19 +72,19 @@ public class PairTableEntity {
 		this.ifNotified = ifNotified;
 	}
 
-	public Key getActiveUserFace() {
+	public String getActiveUserFace() {
 		return activeUserFace;
 	}
 
-	public void setActiveUserFace(Key activeUserFace) {
+	public void setActiveUserFace(String activeUserFace) {
 		this.activeUserFace = activeUserFace;
 	}
 
-	public ArrayList<Key> getOtherUserFace() {
+	public ArrayList<String> getOtherUserFace() {
 		return otherUserFace;
 	}
 
-	public void setOtherUserFace(ArrayList<Key> otherUserFace) {
+	public void setOtherUserFace(ArrayList<String> otherUserFace) {
 		this.otherUserFace = otherUserFace;
 	}
 	
