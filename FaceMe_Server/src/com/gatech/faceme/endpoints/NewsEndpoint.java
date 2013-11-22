@@ -28,7 +28,7 @@ public class NewsEndpoint {
 		try {
 			Query query1 = mgr.newQuery(UserFaceEntity.class);
 			Query query2 = mgr.newQuery(CharacterFaceEntity.class);
-			Query query3 = mgr.newQuery(PosterEntity.class);
+	//		Query query3 = mgr.newQuery(PosterEntity.class);
 			Query query4 = mgr.newQuery(PairTableEntity.class);
 			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
 				String posterkey = obj.getPosterKey();
@@ -60,9 +60,9 @@ public class NewsEndpoint {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public class News{
-		
+
 		private String posterKey;
 		private String originalPosterImageKey;
 		private String nonfacePosterImageKey;
@@ -71,9 +71,8 @@ public class NewsEndpoint {
 		
 		// to be done
 		private String updateDate;
-		
-		private List<UserFaceEntity> userfaces;
-		private List<CharacterFaceEntity> characters;
+		public List<UserFaceEntity> userfaces;
+		public List<CharacterFaceEntity> characters;
 
 		
 		public News(String posterKey, String originalPosterImageKey, String nonfacePosterImageKey,

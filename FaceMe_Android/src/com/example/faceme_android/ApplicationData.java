@@ -40,6 +40,7 @@ public class ApplicationData extends Application{
 	public List<PosterEntity> mPosters = null;
 	public List<NewsEntity> mNews = null;
 	public List<PosterEntity> mPosterCache = null;
+	public List<UserProfile> mRankingData = null;
 	
 	public UserProfile mCurrentUser = null;
 	public CharacterFaceEntity faceChosed = null;
@@ -48,11 +49,16 @@ public class ApplicationData extends Application{
 	public void onCreate(){
 		mPosters = new ArrayList<PosterEntity>();
 		mNews = new ArrayList<NewsEntity>();
+		mRankingData = new ArrayList<UserProfile>();
 		
 		ArrayList<UserFaceEntity> userface = new ArrayList<UserFaceEntity>();
 		userface.add(new UserFaceEntity("Ziyi","Ziyi","Ziyi","Ziyi"));
 		
 		mNews.add(new NewsEntity("","","","","","2013-10-20",userface,null));
+		
+		//mRankingData.add(mcurrentPoster);
+		
+		
 	}
 	
 	public void loadUserInfo(){
@@ -133,6 +139,10 @@ public class ApplicationData extends Application{
 				mCurrentUser = new UserProfile(name,gender,school,picUrl,bmp,password);
 				System.out.println("CurrentUser: " + mCurrentUser);
 				System.out.println("Current pwd:" + mCurrentUser.getPassword());
+
+				mRankingData.add(mCurrentUser);
+				
+
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
