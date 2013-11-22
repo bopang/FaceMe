@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            android:scaleType="matrix" 
-            android:src="@drawable/tab_bg"/>
+            android:scaleType="matrix"
+            android:src="@drawable/tab_bg" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -71,7 +71,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ranking"
+                    android:text="Rank"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -94,7 +94,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NewFeeds"
+                    android:text="New"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -117,7 +117,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notification"
+                    android:text="Noti"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
