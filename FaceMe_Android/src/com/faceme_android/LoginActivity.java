@@ -35,7 +35,8 @@ public class LoginActivity extends Activity {
 		btn_signin = (Button) findViewById(R.id.btn_login);
 		et_name = (EditText) this.findViewById(R.id.load_name);
 		et_password = (EditText) this.findViewById(R.id.load_password);
-		
+		et_name.setText("Brandon");
+		et_password.setText("111111");
 		btn_signin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
