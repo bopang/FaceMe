@@ -38,16 +38,17 @@
                 android:orientation="vertical" >
 
                  <ImageView
-                    android:id="@+id/AAA"
+                    android:id="@+id/play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix" 
+                    android:src="@drawable/play"/>
                  
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AAA"
+                    android:text="Play"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -60,16 +61,17 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/BBB"
+                    android:id="@+id/ranking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix" 
+                    android:src="@drawable/ranking"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BBB"
+                    android:text="Ranking"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -82,16 +84,17 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/CCC"
+                    android:id="@+id/newfeeds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix" 
+                    android:src="@drawable/newfeeds"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CCC"
+                    android:text="NewFeeds"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -104,16 +107,17 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/DDD"
+                    android:id="@+id/notification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="matrix" />
+                    android:scaleType="matrix" 
+                    android:src="@drawable/notification"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DDD"
+                    android:text="Notification"
                     android:textColor="#000"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -125,16 +129,17 @@
                     android:orientation="vertical" >
 
                     <ImageView
-                        android:id="@+id/EEE"
+                        android:id="@+id/profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:scaleType="matrix" />
+                        android:scaleType="matrix" 
+                        android:src="@drawable/profile"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="EEE"
+                        android:text="Profile"
                         android:textColor="#000"
                         android:textSize="12sp" />
                 </LinearLayout>
