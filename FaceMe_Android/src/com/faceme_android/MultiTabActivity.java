@@ -31,6 +31,7 @@ public class MultiTabActivity extends Activity {
 	//View of each tab;
 	private PosterSelectionView mPosterSelectionView;
 	private NewsFeedView mNewsFeedView;
+	private RankingView mRankingView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,11 +44,11 @@ public class MultiTabActivity extends Activity {
 		mTabPager = (ViewPager) findViewById(R.id.multitabbed);
 
 		mTabPager.setOnPageChangeListener(new MyOnPageChangeListener());
-		mTab1 = (ImageView) findViewById(R.id.AAA);
-		mTab2 = (ImageView) findViewById(R.id.BBB);
-		mTab3 = (ImageView) findViewById(R.id.CCC);
-		mTab4 = (ImageView) findViewById(R.id.DDD);
-		mTab5 = (ImageView) findViewById(R.id.EEE);
+		mTab1 = (ImageView) findViewById(R.id.play);
+		mTab2 = (ImageView) findViewById(R.id.newfeeds);
+		mTab3 = (ImageView) findViewById(R.id.ranking);
+		mTab4 = (ImageView) findViewById(R.id.notification);
+		mTab5 = (ImageView) findViewById(R.id.profile);
 		mTabImg = (ImageView) findViewById(R.id.img_tab_now);
 		
 		mTab1.setOnClickListener(new MyOnClickListener(0));
@@ -66,11 +67,12 @@ public class MultiTabActivity extends Activity {
 		
 		mPosterSelectionView = new PosterSelectionView(this);
 		mNewsFeedView = new NewsFeedView(this);
+		mRankingView = new RankingView(this);
 		
 		LayoutInflater mLi = LayoutInflater.from(this);
 		View view1 = mLi.inflate(R.layout.multitab_subtab_play, null);
 		//View view2 = mLi.inflate(R.layout.multitab_subtab_b, null);
-		View view3 = mLi.inflate(R.layout.multitab_subtab_c, null);
+		//View view3 = mLi.inflate(R.layout.multitab_subtab_c, null);
 		View view4 = mLi.inflate(R.layout.multitab_subtab_d, null);
 		View view5 = mLi.inflate(R.layout.multitab_subtab_e, null);
 
@@ -80,7 +82,7 @@ public class MultiTabActivity extends Activity {
 		views.add(mPosterSelectionView.getContentView());
 		views.add(mNewsFeedView.getContentView());
 		//views.add(view2);
-		views.add(view3);
+		views.add(mRankingView.getContentView());
 		views.add(view4);
 		views.add(view5);
 
