@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="55dp"
+    android:background="#2d2d2d"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/label_newsfeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fdbb1d"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="News Feed"
+        android:textColor="#333"
+        android:textSize="25sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="25dp" >
+
+        <ListView
+            android:id="@+id/listView_newslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/loadingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Loading..."
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </FrameLayout>
+    
+</LinearLayout>

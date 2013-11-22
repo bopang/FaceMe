@@ -23,18 +23,18 @@ public class PictureViewActivityXiaoFei extends Activity {
 	public PictureViewActivityXiaoFei(){
 		
 	}
-	GlobalState state;
+	ApplicationData state;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		state = (GlobalState) getApplicationContext();
+		state = (ApplicationData) getApplicationContext();
 		setContentView(R.layout.activity_picture_view);
 		ImageView imview = (ImageView) findViewById(R.id.imageView);
 		
 		Bitmap tmp = Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png");
 		
 		
-		GlobalState state = (GlobalState) getApplicationContext();
+		ApplicationData state = (ApplicationData) getApplicationContext();
 		Bitmap nonfacePoster = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3_FaceXF_noFace.png");
 		//Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png"));
 

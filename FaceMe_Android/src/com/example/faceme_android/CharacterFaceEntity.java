@@ -3,7 +3,7 @@ package com.example.faceme_android;
 import android.graphics.Bitmap;
 
 
-public class CharacterFace {
+public class CharacterFaceEntity {
 	private long key;
 	
 	private String imageKey;
@@ -25,7 +25,7 @@ public class CharacterFace {
 
 	public Bitmap bmp;
 	
-	public CharacterFace(long id, String imageKey, String name,
+	public CharacterFaceEntity(long id, String imageKey, String name,
 			float positionX, float postionY,float width, float height,
 			long posterID, int index){
 		this.key = id;

@@ -40,7 +40,7 @@ import android.graphics.Bitmap.Config;
 
 public class CameraActivity extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
 	
-    GlobalState state;
+    ApplicationData state;
     private static final String TAG = "OCVSample::Activity";
 
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -162,7 +162,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         zoomBar = (SeekBar) findViewById(R.id.zoomBar);
         zoomBar.setOnSeekBarChangeListener(this);
         
-        state = (GlobalState) getApplicationContext();
+        state = (ApplicationData) getApplicationContext();
         
         x = state.faceChosed.getPositionX();
         y = state.faceChosed.getPostionY();

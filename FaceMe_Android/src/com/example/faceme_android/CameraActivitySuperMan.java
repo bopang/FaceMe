@@ -39,7 +39,7 @@ import android.graphics.*;
 import android.graphics.Bitmap.Config;
 
 public class CameraActivitySuperMan extends Activity implements CvCameraViewListener2, OnSeekBarChangeListener {
-	GlobalState state;
+	ApplicationData state;
     private static final String TAG = "OCVSample::Activity";
 
     private CameraBridgeViewBase mOpenCvCameraView;
