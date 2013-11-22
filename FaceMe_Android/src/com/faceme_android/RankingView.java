@@ -24,7 +24,7 @@ public class RankingView {
 	private View mContentView;
 	private LayoutInflater mLayoutInFlater;
 	
-	private ListView mPosterList;
+	private ListView mUserList;
 	private ArrayAdapter<UserProfile> mListAdapter;
 	
 	private ApplicationData mApplicationData;
@@ -37,19 +37,19 @@ public class RankingView {
 		
 		mLayoutInFlater = LayoutInflater.from(context);
 		this.mContentView = mLayoutInFlater.inflate(R.layout.multitab_subtab_ranking, null);
-		this.mLoadingView = mContentView.findViewById(R.id.LoadingView);
+		this.mLoadingView = mContentView.findViewById(R.id.loadingView);
 		
-		mPosterList = (ListView) mContentView.findViewById(R.id.listView_posterlist);
+		mUserList = (ListView) mContentView.findViewById(R.id.listView_ranklist);
 		mListAdapter = new UserAdapter(mApplicationData.mRankingData);
-		mPosterList.setAdapter(mListAdapter);
-		mPosterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		mUserList.setAdapter(mListAdapter);
+		mUserList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewClicked, int postion,
 					long id) {
 				// TODO Auto-generated method stub
-				PosterEntity currentPoster=mApplicationData.mPosters.get(postion);
-				mApplicationData.currentPoster = currentPoster;
+				//PosterEntity currentPoster=mApplicationData.mPosters.get(postion);
+				//mApplicationData.currentPoster = currentPoster;
 
 				Intent intent;
 				//if(postion ==0)
@@ -61,11 +61,16 @@ public class RankingView {
 			}
 		});
 		
-		if(mApplicationData.mPosters.size() != 0){
+		//if(mApplicationData.mPosters.size() != 0){
 			hideLoadingView();
-		}
+		//}
 	}
 
+	public void resetAdapter(){
+		mListAdapter = new UserAdapter(mApplicationData.mRankingData);
+		mUserList.setAdapter(mListAdapter);
+	}
+	
 	public void hideLoadingView(){
 		mLoadingView.setVisibility(View.GONE);
 	}
@@ -103,10 +108,10 @@ public class RankingView {
 			
 			TextView nameText = (TextView)templateView.findViewById(R.id.label_ranking_name);
 			TextView scoreText = (TextView)templateView.findViewById(R.id.label_ranking_scoreNum);
-			TextView rankText = (TextView)templateView.findViewById(R.id.ranking);
+			TextView rankText = (TextView)templateView.findViewById(R.id.label_ranking_position);
 			
 			nameText.setText(user.getUsername());
-			scoreText.setText(position * 100);
+			scoreText.setText("1000");
 			rankText.setText(""+(position+1));
 			
 			ImageView userPhotoImageView = (ImageView)templateView.findViewById(R.id.imageView_ranking_userPhoto);

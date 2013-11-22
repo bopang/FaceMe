@@ -45,13 +45,8 @@ public class MultiTabActivity extends Activity {
 
 		mTabPager.setOnPageChangeListener(new MyOnPageChangeListener());
 		mTab1 = (ImageView) findViewById(R.id.play);
-<<<<<<< HEAD
 		mTab2 = (ImageView) findViewById(R.id.newfeeds);
 		mTab3 = (ImageView) findViewById(R.id.ranking);
-=======
-		mTab2 = (ImageView) findViewById(R.id.ranking);
-		mTab3 = (ImageView) findViewById(R.id.newfeeds);
->>>>>>> d4ed19bba5851b6a1eb1d6135c9d4b793e8461f7
 		mTab4 = (ImageView) findViewById(R.id.notification);
 		mTab5 = (ImageView) findViewById(R.id.profile);
 		mTabImg = (ImageView) findViewById(R.id.img_tab_now);
@@ -114,6 +109,9 @@ public class MultiTabActivity extends Activity {
 				((ViewPager) container).addView(views.get(position));
 				if(position == 0 && mApplicationData.mPosters.size()==0){
 					mApplicationData.loadPostersData(mPosterSelectionView.getAdapter());
+				}
+				if(position == 2){
+					mRankingView.resetAdapter();
 				}
 				return views.get(position);
 			}

@@ -91,7 +91,6 @@ public class ApplicationData extends Application{
 
 		}
 		@Override
-		
 		protected Void doInBackground(Void... params) {
 			try {
 				Thread.sleep(1000);
@@ -130,6 +129,7 @@ public class ApplicationData extends Application{
 				Bitmap bmp=getImageBitmap(picUrl);
 				
 				mCurrentUser = new UserProfile(name,gender,school,picUrl,bmp);
+				Log.i("UserInfoLoaded","UserInfoLoaded");
 				mRankingData.add(mCurrentUser);
 				
 			} catch (ClientProtocolException e) {
