@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:background="#eeeeee" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#fdbb1d" >
+
+
+            <TextView
+                android:id="@+id/add_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="User Profile"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="75.0dip"
+            android:layout_height="75.0dip"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dip" >
+
+            <ImageView
+                android:id="@+id/reviseHead"
+                android:layout_width="130.0dip"
+                android:layout_height="130.0dip"
+                android:background="@drawable/defaultuserpicture"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="20.0dip"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="#55000000"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="Loading"
+                android:textColor="#ffffffff"
+                android:textSize="10.0dip" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:layout_weight="0.38"
+            android:background="#ffffff"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dip"
+                android:text="Name  "
+                android:textColor="#C48550" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:background="@drawable/yellowline" />
+
+            <EditText
+                android:id="@+id/add_brith_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:hint="Please input your name"
+                android:lines="1"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dip"
+            android:layout_weight="0.38"
+            android:background="#ffffff" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dip"
+                android:text="Gender"
+                android:textColor="#C48550" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:background="@drawable/yellowline" />
+
+            <RadioGroup
+                android:id="@+id/add_radioGourp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/add_brith_nan"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:background="#0fffffff"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/check_circle"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dip"
+                    android:text="Male"
+                    android:textColor="#222222" />
+
+                <RadioButton
+                    android:id="@+id/add_brith_nv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:background="#0fffffff"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/check_circle"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dip"
+                    android:text="Female"
+                    android:textColor="#222222" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dip"
+            android:background="#ffffff" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dip"
+                android:text="DOB     "
+                android:textColor="#C48550" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:background="@drawable/yellowline" />
+
+            <Button
+                android:id="@+id/add_brith_brith"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:hint="Set your date of birth "
+                android:lines="1"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+ 
+
+            <LinearLayout
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:background="#ffffff" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dip"
+                    android:text="Email   "
+                    android:textColor="#C48550" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
+                    android:background="@drawable/yellowline" />
+
+                <EditText
+                    android:id="@+id/add_brith_zhufuduanxin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:hint="youraccount@mailbox.com"
+                    android:lines="1"
+                    android:numeric="integer"
+                    android:singleLine="true"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:background="#ffffff" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dip"
+                    android:text="Other   "
+                    android:textColor="#C48550" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
+                    android:background="@drawable/yellowline" />
+
+                <EditText
+                    android:id="@+id/add_brith_beizhu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:hint="Describe yourself"
+                    android:lines="1"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+        <Button
+            android:id="@+id/add_brith_baocun"
+            android:layout_width="92dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="20dip"
+            android:background="#fdbb1d"
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</ScrollView>

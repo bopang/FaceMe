@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2d2d2d"
+    android:background="#eeeeee"
     android:orientation="vertical" >
 
     <TextView
@@ -14,7 +14,7 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:text="Choose a Picture"
-        android:textColor="#333"
+        android:textColor="#111111"
         android:textSize="25sp" />
 
     <FrameLayout
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Loading..."
+            android:textColor="#000000"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </FrameLayout>
