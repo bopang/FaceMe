@@ -51,7 +51,6 @@ public class LoginActivity extends Activity {
 		
 		String user_url_path = "https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/"
 				+ username;
-//		String user_url_path = "https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Brandon";
 		mApplicationData = (ApplicationData) getApplicationContext();
 		mApplicationData.loadUserInfo(user_url_path);
 		
@@ -66,6 +65,7 @@ public class LoginActivity extends Activity {
 		readNamePass();
 		if(!url_password.equals(password)){
 			Toast.makeText(LoginActivity.this, "Login failed." + username + "password incorrect", Toast.LENGTH_SHORT).show();
+			et_password.setText("");
 		}else{
 			startActivity(new Intent(LoginActivity.this, MultiTabActivity.class));
 		}
