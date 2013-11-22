@@ -44,7 +44,7 @@ public class PosterSelectionActivity extends Activity {
 	Context context;
 	String posterUrl="https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
 	List<PosterEntity>posters=new ArrayList<PosterEntity>();
-	GlobalState state;
+	ApplicationData state;
 	public PosterSelectionActivity() {
 		// TODO Auto-generated constructor stub
 	}
@@ -52,15 +52,15 @@ public class PosterSelectionActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.posterselection);
+		setContentView(R.layout.view_posterselection);
 		context=this;
-		ListView posterList=(ListView) findViewById(R.id.posterlistView);
+		ListView posterList=(ListView) findViewById(R.id.listView_posters);
 		ArrayAdapter<PosterEntity>posteradapter=new posterAdapter(posters);
 		posterList.setAdapter(posteradapter);
 		GetJsonData getData=new GetJsonData(posteradapter);
 		getData.execute();
 		chosePoster();	
-		state = (GlobalState) getApplicationContext();
+		state = (ApplicationData) getApplicationContext();
 		
 		Button btn_home = (Button) findViewById(R.id.button_home);
 		btn_home.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +73,7 @@ public class PosterSelectionActivity extends Activity {
 		
 	}
 	public void chosePoster(){
-		ListView posterList=(ListView) findViewById(R.id.posterlistView);
+		ListView posterList=(ListView) findViewById(R.id.listView_posterlist);
 		posterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -100,7 +100,7 @@ public class PosterSelectionActivity extends Activity {
 	public class posterAdapter extends ArrayAdapter<PosterEntity>{
 
 		public posterAdapter(List<PosterEntity>posters){
-			super(PosterSelectionActivity.this,R.layout.poster_item,posters);
+			super(PosterSelectionActivity.this,R.layout.cellitem_poster,posters);
 
 		}
 
@@ -110,7 +110,7 @@ public class PosterSelectionActivity extends Activity {
 			View templateView;
 			templateView=convertView;
 			if(templateView==null){
-				templateView=getLayoutInflater().inflate(R.layout.poster_item, parent, false);
+				templateView=getLayoutInflater().inflate(R.layout.cellitem_poster, parent, false);
 			}
 			PosterEntity currentPoster=posters.get(position);
 			TextView title=(TextView)templateView.findViewById(R.id.textView_posterTitle);
@@ -188,7 +188,7 @@ public class PosterSelectionActivity extends Activity {
 				}
 
 
-				state.loadedPoster = posters;
+				state.mPosters = posters;
 
 
 			} catch (ClientProtocolException e) {

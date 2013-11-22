@@ -35,9 +35,9 @@ public class DataManager {
 	BufferedReader reader;
 	StringBuilder builder;
 	
-	GlobalState state;
+	ApplicationData state;
 	
-	public DataManager(GlobalState state){
+	public DataManager(ApplicationData state){
 		this.state = state;
 	}
 	
@@ -73,7 +73,7 @@ public class DataManager {
 							String jsonData=builder.toString();
 							Log.i("JsonData", jsonData);
 							JSONObject json= new JSONObject(jsonData);
-							ArrayList<CharacterFace> faces = new ArrayList<CharacterFace>();
+							ArrayList<CharacterFaceEntity> faces = new ArrayList<CharacterFaceEntity>();
 							
 							JSONArray  items=json.getJSONArray("items");
 							
@@ -88,7 +88,7 @@ public class DataManager {
 								 float width =  (float) item.getDouble("width");
 								 float height =  (float) item.getDouble("height");
 								 int index = item.getInt("index");
-								 CharacterFace face = new CharacterFace(id, imageKey, name,
+								 CharacterFaceEntity face = new CharacterFaceEntity(id, imageKey, name,
 										 positionX, positionY, width, height,
 											poster.getKey(), index);
 								 face.bmp = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + imageKey);

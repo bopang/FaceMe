@@ -178,8 +178,8 @@ public class MenuActivity extends Activity{
 					Bitmap bmp=getImageBitmap(picUrl);
 					
 					userProfileList.add(new UserProfile(name,gender,school,picUrl,bmp));
-					GlobalState state = (GlobalState) getApplicationContext();
-					state.currentUser = userProfileList.get(0);
+					ApplicationData state = (ApplicationData) getApplicationContext();
+					state.mCurrentUser = userProfileList.get(0);
 					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block

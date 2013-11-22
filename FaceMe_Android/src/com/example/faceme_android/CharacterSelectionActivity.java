@@ -36,7 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CharacterSelectionActivity extends Activity {
-	GlobalState state;
+	ApplicationData state;
 	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class CharacterSelectionActivity extends Activity {
 		TextView posterTitle=(TextView) findViewById(R.id.received_postertitle);
 
 		context = this;
-		state =(GlobalState) getApplicationContext();
+		state =(ApplicationData) getApplicationContext();
 		posterTitle.setText(state.currentPoster.getPosterName());
 		loadPosterData(state.currentPoster);
 		
@@ -78,7 +78,7 @@ public class CharacterSelectionActivity extends Activity {
 						// TODO Auto-generated method stub
 						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
 						
-						state.faceChosed = (CharacterFace) v.getTag();
+						state.faceChosed = (CharacterFaceEntity) v.getTag();
 						startActivity(new Intent(getBaseContext(),CameraActivity.class));
 					}
 				});
@@ -121,7 +121,7 @@ public class CharacterSelectionActivity extends Activity {
 							String jsonData=builder.toString();
 							Log.i("JsonData", jsonData);
 							JSONObject json= new JSONObject(jsonData);
-							ArrayList<CharacterFace> faces = new ArrayList<CharacterFace>();
+							ArrayList<CharacterFaceEntity> faces = new ArrayList<CharacterFaceEntity>();
 							
 							JSONArray  items=json.getJSONArray("items");
 							
@@ -136,7 +136,7 @@ public class CharacterSelectionActivity extends Activity {
 								 float width =  (float) item.getDouble("width");
 								 float height =  (float) item.getDouble("height");
 								 int index = item.getInt("index");
-								 CharacterFace face = new CharacterFace(id, imageKey, name,
+								 CharacterFaceEntity face = new CharacterFaceEntity(id, imageKey, name,
 										 positionX, positionY, width, height,
 											poster.getKey(), index);
 								 face.bmp = getImageBitmap("https://facemegatech.appspot.com/imageResource?key=" + imageKey);

@@ -52,31 +52,31 @@ public class PictureViewActivity extends Activity {
 	public PictureViewActivity(){
 
 	}
-	GlobalState state;
+	ApplicationData state;
 	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		state = (GlobalState) getApplicationContext();
+		state = (ApplicationData) getApplicationContext();
 		setContentView(R.layout.activity_picture_view);
 		ImageView imview = (ImageView) findViewById(R.id.imageView);
 
 		Bitmap tmp = Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png");
 
 
-		GlobalState state = (GlobalState) getApplicationContext();
+		ApplicationData state = (ApplicationData) getApplicationContext();
 		context = this;
 		Bitmap nonfacePoster = state.currentPoster.nonfacePoster;
 		//Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png"));
 
-		CharacterFace facechoosed = state.faceChosed;
+		CharacterFaceEntity facechoosed = state.faceChosed;
 
 
 		Bitmap userFaceBmp = Bitmap.createScaledBitmap(tmp, (int)(nonfacePoster.getWidth() * facechoosed.getWidth()), (int)(nonfacePoster.getHeight() * facechoosed.getHeight()), false);
 		Bitmap result = Bitmap.createBitmap(nonfacePoster.getWidth(), nonfacePoster.getHeight(), Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(result);
 
-		for(CharacterFace face : state.currentPoster.faces){
+		for(CharacterFaceEntity face : state.currentPoster.faces){
 			if(face != facechoosed){
 				canvas.drawBitmap(face.bmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
 			}
@@ -216,7 +216,7 @@ public class PictureViewActivity extends Activity {
 				imageBmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
 				byte[] data = stream.toByteArray();
 				//TODO: Format the upload image Name;
-				String uploadFileName = state.currentUser.username + "_" + state.currentPoster.getPosterName() + ".png";
+				String uploadFileName = state.mCurrentUser.username + "_" + state.currentPoster.getPosterName() + ".png";
 				ByteArrayBody bab = new ByteArrayBody(data, uploadFileName);
 				reqEntityBuilder.addPart("uploadFileName", bab);
 				postRequest.setEntity(reqEntityBuilder);       
@@ -246,7 +246,7 @@ public class PictureViewActivity extends Activity {
 				faceEntity.put("imageKey", faceKey );
 				faceEntity.put("characterKey", ""+state.faceChosed.getKey());
 				faceEntity.put("posterKey", ""+state.currentPoster.getKey());
-				faceEntity.put("userID", state.currentUser.getUsername());
+				faceEntity.put("userID", state.mCurrentUser.getUsername());
 				
 				StringEntity se = new StringEntity(faceEntity.toString());  
                 se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
@@ -283,6 +283,7 @@ public class PictureViewActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
+			super.onPostExecute(result);
 			dialog.dismiss();
 			AlertDialog notification= new AlertDialog.Builder(context).create();
 			notification.setMessage("Upload Successful!");
@@ -293,18 +294,15 @@ public class PictureViewActivity extends Activity {
             });
 			notification.show();
 			
-			super.onPostExecute(result);
-			super.onPostExecute(result);
 		}
 
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
-			dialog=new ProgressDialog(context);
-			dialog.setTitle("Uploading");
-			dialog.show();
 			super.onPreExecute();
-			super.onPreExecute();
+	
+			dialog = ProgressDialog.show(context, "", "Loading. Please wait...", true);
+			
 		}
 	}
 }

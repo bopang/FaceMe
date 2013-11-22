@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import com.example.faceme_android.ApplicationData;
 import com.example.faceme_android.R;
 
 public class MultiTabActivity extends Activity {
@@ -23,12 +24,19 @@ public class MultiTabActivity extends Activity {
 	private ImageView mTab1, mTab2, mTab3, mTab4, mTab5;
 	private ImageView mTabImg;
 	private int zero = 0;
-	private int one, two, three, four;// µ¥¸öË®Æ½¶¯»­Î»ÒÆ
+	private int one, two, three, four;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private int currIndex;
+	private ApplicationData mApplicationData;
+	
+	//View of each tab;
+	private PosterSelectionView mPosterSelectionView;
+	private NewsFeedView mNewsFeedView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mApplicationData = (ApplicationData) getApplicationContext();
+		mApplicationData.loadUserInfo();
 		setContentView(R.layout.multitab_bed);
 		instance = this;
 
@@ -48,30 +56,35 @@ public class MultiTabActivity extends Activity {
 		mTab4.setOnClickListener(new MyOnClickListener(3));
 		mTab5.setOnClickListener(new MyOnClickListener(4));
 
-		Display currDisplay = getWindowManager().getDefaultDisplay();// »ñÈ¡ÆÁÄ»µ±Ç°·Ö±æÂÊ
+		Display currDisplay = getWindowManager().getDefaultDisplay();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int displayWidth = currDisplay.getWidth();
 		int displayHeight = currDisplay.getHeight();
-		one = displayWidth / 5; // ÉèÖÃË®Æ½¶¯»­Æ½ÒÆ´óÐ¡
+		one = displayWidth / 5; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		two = one * 2;
 		three = one * 3;
 		four = one * 4;
-
+		
+		mPosterSelectionView = new PosterSelectionView(this);
+		mNewsFeedView = new NewsFeedView(this);
+		
 		LayoutInflater mLi = LayoutInflater.from(this);
-		View view1 = mLi.inflate(R.layout.multitab_subtab_a, null);
-		View view2 = mLi.inflate(R.layout.multitab_subtab_b, null);
+		View view1 = mLi.inflate(R.layout.multitab_subtab_play, null);
+		//View view2 = mLi.inflate(R.layout.multitab_subtab_b, null);
 		View view3 = mLi.inflate(R.layout.multitab_subtab_c, null);
 		View view4 = mLi.inflate(R.layout.multitab_subtab_d, null);
 		View view5 = mLi.inflate(R.layout.multitab_subtab_e, null);
 
-		// Ã¿¸öÒ³ÃæµÄviewÊý¾Ý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½viewï¿½ï¿½ï¿½ï¿½
 		final ArrayList<View> views = new ArrayList<View>();
-		views.add(view1);
-		views.add(view2);
+		//views.add(view1);
+		views.add(mPosterSelectionView.getContentView());
+		views.add(mNewsFeedView.getContentView());
+		//views.add(view2);
 		views.add(view3);
 		views.add(view4);
 		views.add(view5);
 
-		// Ìî³äViewPagerµÄÊý¾ÝÊÊÅäÆ÷
+		// ï¿½ï¿½ï¿½ï¿½ViewPagerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		PagerAdapter mPagerAdapter = new PagerAdapter() {
 
 			@Override
@@ -92,12 +105,15 @@ public class MultiTabActivity extends Activity {
 			@Override
 			public Object instantiateItem(View container, int position) {
 				((ViewPager) container).addView(views.get(position));
+				if(position == 0 && mApplicationData.mPosters.size()==0){
+					mApplicationData.loadPostersData(mPosterSelectionView.getAdapter());
+				}
 				return views.get(position);
 			}
 		};
 
 		mTabPager.setAdapter(mPagerAdapter);
-		mTabPager.setCurrentItem(0);
+		mTabPager.setCurrentItem(1);
 	}
 
 	public class MyOnClickListener implements View.OnClickListener {
@@ -229,7 +245,7 @@ public class MultiTabActivity extends Activity {
 				break;
 			}
 			currIndex = arg0;
-			animation.setFillAfter(true);// True:Í¼Æ¬Í£ÔÚ¶¯»­½áÊøÎ»ÖÃ
+			animation.setFillAfter(true);// True:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			animation.setDuration(150);
 			mTabImg.startAnimation(animation);
 		}

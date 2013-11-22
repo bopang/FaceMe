@@ -22,7 +22,7 @@ public class PosterEntity {
 	public Bitmap originalPoster;
 	public Bitmap nonfacePoster;
 	
-	public List<CharacterFace> faces;
+	public List<CharacterFaceEntity> faces;
 
 	public PosterEntity(long key, String originalPosterKey,
 			String thumbnailKey, String nonfacePosterKey, String movieName,
