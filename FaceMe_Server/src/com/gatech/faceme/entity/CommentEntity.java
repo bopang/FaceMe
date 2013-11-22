@@ -1,6 +1,7 @@
 package com.gatech.faceme.entity;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -21,10 +22,10 @@ public class CommentEntity {
 	private String pairTable;
 	
 	@Persistent
-	private String user;
+	private String user; //who made the comment
 	
 	@Persistent
-	private String toComment;
+	private String toComment;// communicate with who
 	
 	public CommentEntity(String comment, String pairTable, String user, String toComment){
 		this.comment = comment;
