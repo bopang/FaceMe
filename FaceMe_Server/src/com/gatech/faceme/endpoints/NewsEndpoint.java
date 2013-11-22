@@ -33,14 +33,12 @@ public class NewsEndpoint {
 			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
 				String posterkey = obj.getPosterKey();
 				Key userKey = obj.getKey();
-				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, posterkey);
+				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
 				Key posterid = posterEntity.getKey();
 //				query3 = mgr.newQuery(PairTableEntity.class, 
 //						"originalPosterKey ==posterkey");
 				query2 = mgr.newQuery(CharacterFaceEntity.class, 
 						"posterID==posterid");
-				query4 = mgr.newQuery(PairTableEntity.class, 
-						"activeUserFace==userid");
 				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
 				userfaces.add(obj);
 				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
