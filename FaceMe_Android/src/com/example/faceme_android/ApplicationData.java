@@ -98,7 +98,6 @@ public class ApplicationData extends Application{
 
 		}
 		@Override
-		
 		protected Void doInBackground(Void... params) {
 			try {
 				Thread.sleep(1000);
@@ -139,7 +138,7 @@ public class ApplicationData extends Application{
 				mCurrentUser = new UserProfile(name,gender,school,picUrl,bmp,password);
 				System.out.println("CurrentUser: " + mCurrentUser);
 				System.out.println("Current pwd:" + mCurrentUser.getPassword());
-
+				Log.i("UserInfoLoaded","UserInfoLoaded");
 				mRankingData.add(mCurrentUser);
 				
 

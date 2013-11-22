@@ -110,6 +110,9 @@ public class MultiTabActivity extends Activity {
 				if(position == 0 && mApplicationData.mPosters.size()==0){
 					mApplicationData.loadPostersData(mPosterSelectionView.getAdapter());
 				}
+				if(position == 2){
+					mRankingView.resetAdapter();
+				}
 				return views.get(position);
 			}
 		};
