@@ -42,7 +42,33 @@ public class PosterEndpoint {
 		}
 		return result;
 	}
-
+	/**
+	 * Get a list with fixed number of posters from PosterEntity in Google Datastore and return
+	 * List of this entity.
+	 * 
+	 * @return List<PosterEntity>
+	 */
+	@ApiMethod(httpMethod = "GET", name = "poster.#list", path = "poster/list/{startPoint}/{quantity}")
+	@SuppressWarnings({ "cast", "unchecked" })
+	public List<PosterEntity> listPosterWithGivenQuanlity(@Named("startPoint") int start, 
+					@Named("quantity") int number) {
+		PersistenceManager mgr = PMF.get().getPersistenceManager();
+		List<PosterEntity> result = new ArrayList<PosterEntity>();
+		try {
+			Query query = mgr.newQuery(PosterEntity.class);
+			int count=0;
+			for (Object obj : (List<Object>) query.execute()) {
+				if(count<start-1) continue;
+				result.add(((PosterEntity) obj));
+				count++;
+				if(count==number) break;
+			}
+		} finally {
+			mgr.close();
+		}
+		return result;
+	}
+	
 	/**
 	 * Return a specific PosterEntity according to the blobkey in GET method
 	 * 

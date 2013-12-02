@@ -1,21 +1,22 @@
 package com.gatech.faceme.endpoints;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
-import javax.inject.Named;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
-import javax.jdo.annotations.Persistent;
+
 
 import com.gatech.faceme.entity.CharacterFaceEntity;
-import com.gatech.faceme.entity.PairTableEntity;
+
 import com.gatech.faceme.entity.PosterEntity;
 import com.gatech.faceme.entity.UserFaceEntity;
 import com.gatech.faceme.mediastore.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
-import com.google.appengine.api.datastore.Key;
+
 
 @Api(name = "newsendpoint", description = "Used for getting news", version = "v1")
 public class NewsEndpoint {
@@ -28,15 +29,9 @@ public class NewsEndpoint {
 		try {
 			Query query1 = mgr.newQuery(UserFaceEntity.class);
 			Query query2 = mgr.newQuery(CharacterFaceEntity.class);
-	//		Query query3 = mgr.newQuery(PosterEntity.class);
-			Query query4 = mgr.newQuery(PairTableEntity.class);
 			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
 				String posterkey = obj.getPosterKey();
-				Key userKey = obj.getKey();
 				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
-				Key posterid = posterEntity.getKey();
-//				query3 = mgr.newQuery(PairTableEntity.class, 
-//						"originalPosterKey ==posterkey");
 				query2 = mgr.newQuery(CharacterFaceEntity.class, 
 						"posterID==posterid");
 				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
@@ -56,10 +51,6 @@ public class NewsEndpoint {
 		return result;
 	}
 	
-	private PersistenceManager getPersistenceManager() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public class News{
 
@@ -78,14 +69,74 @@ public class NewsEndpoint {
 		public News(String posterKey, String originalPosterImageKey, String nonfacePosterImageKey,
 				String movieName, String posterName, List<UserFaceEntity> userfaces
 				, List<CharacterFaceEntity> characters){
-			this.posterKey = posterKey;
-			this.originalPosterImageKey = originalPosterImageKey;
-			this.nonfacePosterImageKey = nonfacePosterImageKey;
-			this.movieName = movieName;
-			this.posterName = posterName;
+			this.setPosterKey(posterKey);
+			this.setOriginalPosterImageKey(originalPosterImageKey);
+			this.setNonfacePosterImageKey(nonfacePosterImageKey);
+			this.setMovieName(movieName);
+			this.setPosterName(posterName);
 //			this.updateDate = updateDate;
 			this.userfaces = userfaces;
 			this.characters = characters;
+		}
+
+
+		public String getPosterKey() {
+			return posterKey;
+		}
+
+
+		public void setPosterKey(String posterKey) {
+			this.posterKey = posterKey;
+		}
+
+
+		public String getOriginalPosterImageKey() {
+			return originalPosterImageKey;
+		}
+
+
+		public void setOriginalPosterImageKey(String originalPosterImageKey) {
+			this.originalPosterImageKey = originalPosterImageKey;
+		}
+
+
+		public String getNonfacePosterImageKey() {
+			return nonfacePosterImageKey;
+		}
+
+
+		public void setNonfacePosterImageKey(String nonfacePosterImageKey) {
+			this.nonfacePosterImageKey = nonfacePosterImageKey;
+		}
+
+
+		public String getMovieName() {
+			return movieName;
+		}
+
+
+		public void setMovieName(String movieName) {
+			this.movieName = movieName;
+		}
+
+
+		public String getPosterName() {
+			return posterName;
+		}
+
+
+		public void setPosterName(String posterName) {
+			this.posterName = posterName;
+		}
+
+
+		public String getUpdateDate() {
+			return updateDate;
+		}
+
+
+		public void setUpdateDate(String updateDate) {
+			this.updateDate = updateDate;
 		}
 	}
 	
