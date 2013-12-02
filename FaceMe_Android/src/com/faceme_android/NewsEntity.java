@@ -2,6 +2,8 @@ package com.faceme_android;
 
 import java.util.List;
 
+import android.graphics.Bitmap;
+
 import com.example.faceme_android.*;
 
 public class NewsEntity {
@@ -12,15 +14,20 @@ public class NewsEntity {
 	public String posterName;
 	public String updateDate;
 	
-	public List<UserFaceEntity> userfaces;
-	public List<CharacterFaceEntity> characters;
+	public List<Long> userfaces;
+	public List<Long> characters;
+	
+	public Bitmap originalPosterBmp;
+	public Bitmap nonfacePosterBmp;
+	
+	public Bitmap cosplayBmp;
 	
 	
 	
 	public NewsEntity(String posterKey, String originalPosterImageKey,
 			String nonfacePosterImageKey, String movieName, String posterName,
-			String updateDate, List<UserFaceEntity> userfaces,
-			List<CharacterFaceEntity> characters) {
+			String updateDate, List<Long> userfaces,
+			List<Long> characters) {
 		super();
 		this.posterKey = posterKey;
 		this.originalPosterImageKey = originalPosterImageKey;
@@ -32,8 +39,8 @@ public class NewsEntity {
 		this.characters = characters;
 	}
 	
-	public String getUserNames(){
-		return userfaces.get(0).getUserID();
-	}
+//	public String getUserNames(){
+//		return userfaces.get(0).getUserID();
+//	}
 	
 }

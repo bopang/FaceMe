@@ -17,6 +17,7 @@ import com.example.faceme_android.ApplicationData;
 import com.example.faceme_android.CharacterSelectionActivity;
 import com.example.faceme_android.PosterEntity;
 import com.example.faceme_android.R;
+import com.example.faceme_android.Tools;
 import com.faceme_android.PosterSelectionView.posterAdapter;
 
 public class NewsFeedView {
@@ -107,8 +108,15 @@ public class NewsFeedView {
 			
 			ImageView newsImageView = (ImageView)templateView.findViewById(R.id.imageView_newsImage);
 
-			userNameText.setText(currentNews.getUserNames());
-			dataText.setText(currentNews.updateDate);
+			String userName = mApplicationData.mUserFaceCache.get(currentNews.userfaces.get(0)).getUserID();
+			userNameText.setText(userName);
+			dataText.setText("");
+			
+			if(currentNews.cosplayBmp == null){
+				currentNews.cosplayBmp = Tools.synthesisPoster(currentNews, mApplicationData);
+			}
+			
+			newsImageView.setImageBitmap(currentNews.cosplayBmp);
 
 			return templateView;
 		}

@@ -1,15 +1,20 @@
 package com.example.faceme_android;
 
+import android.graphics.Bitmap;
+
 public class UserFaceEntity {
+	public long id;
 	private String imageKey;
 	private String userID;
 	private String posterKey;
-	private String characterKey;
+	private long characterKey;
+	
+	public Bitmap userFaceBmp;
 	
 	
 	
 	public UserFaceEntity(String imageKey, String userID, String posterKey,
-			String characterKey) {
+			long characterKey) {
 		this.imageKey = imageKey;
 		this.userID = userID;
 		this.posterKey = posterKey;
@@ -35,10 +40,10 @@ public class UserFaceEntity {
 	public void setPosterKey(String posterKey) {
 		this.posterKey = posterKey;
 	}
-	public String getCharacterKey() {
+	public long getCharacterKey() {
 		return characterKey;
 	}
-	public void setCharacterKey(String characterKey) {
+	public void setCharacterKey(long characterKey) {
 		this.characterKey = characterKey;
 	}
 	
