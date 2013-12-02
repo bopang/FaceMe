@@ -1,16 +1,17 @@
 package com.gatech.faceme.endpoints;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 
+
+import javax.inject.Named;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 
-import com.gatech.faceme.entity.CharacterFaceEntity;
 
+import com.gatech.faceme.entity.CharacterFaceEntity;
 import com.gatech.faceme.entity.PosterEntity;
 import com.gatech.faceme.entity.UserFaceEntity;
 import com.gatech.faceme.mediastore.PMF;
@@ -21,9 +22,9 @@ import com.google.api.server.spi.config.ApiMethod;
 @Api(name = "newsendpoint", description = "Used for getting news", version = "v1")
 public class NewsEndpoint {
 
-	@ApiMethod(httpMethod = "GET", name = "news.list", path = "news/list")
+	@ApiMethod(httpMethod = "GET", name = "news.wholelist", path = "news/list")
 	@SuppressWarnings({ "cast", "unchecked" })
-	public List<News> listUserFace() {
+	public List<News> listNews() {
 		PersistenceManager mgr = PMF.get().getPersistenceManager();
 		List<News> result = new ArrayList<News>();
 		try {
@@ -44,6 +45,42 @@ public class NewsEndpoint {
 				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(),
 						posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
 						posterEntity.getMovieName(), userfaces, characters));
+			}
+		} finally {
+			mgr.close();
+		}
+		return result;
+	}
+	
+	@ApiMethod(httpMethod = "GET", name = "news.certainlist", path = "news/list/{startPoint}/{quantity}")
+	@SuppressWarnings({ "cast", "unchecked" })
+	public List<News> certainListNews(@Named("startPoint") int start, 
+			@Named("quantity") int number) {
+		PersistenceManager mgr = PMF.get().getPersistenceManager();
+		List<News> result = new ArrayList<News>();
+		try {
+			int count=0;
+			Query query1 = mgr.newQuery(UserFaceEntity.class);
+			Query query2 = mgr.newQuery(CharacterFaceEntity.class);
+			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
+				if(count<start-1) continue;
+				String posterkey = obj.getPosterKey();
+				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
+				query2 = mgr.newQuery(CharacterFaceEntity.class, 
+						"posterID==posterid");
+				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
+				userfaces.add(obj);
+				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
+				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute()) {
+					characters.add(object);
+					
+				}
+				
+				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(),
+						posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
+						posterEntity.getMovieName(), userfaces, characters));
+				count++;
+				if(count==number) break;
 			}
 		} finally {
 			mgr.close();
