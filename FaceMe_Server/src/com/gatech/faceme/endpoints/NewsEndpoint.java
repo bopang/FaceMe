@@ -3,14 +3,9 @@ package com.gatech.faceme.endpoints;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 import javax.inject.Named;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
-
-
 
 
 import com.gatech.faceme.entity.CharacterFaceEntity;
@@ -73,12 +68,17 @@ public class NewsEndpoint {
 				if(count<start-1) continue;
 				String posterkey = obj.getPosterKey();
 				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
-				query2 = mgr.newQuery(CharacterFaceEntity.class, 
-						"posterID==posterid");
+				
+				Key posterKey = posterEntity.getKey();
+				
+				query2 = mgr.newQuery(CharacterFaceEntity.class);
+				query2.setFilter("posterID == posterIDparam");
+				query2.declareParameters(Key.class.getName() + " posterIDparam");
+				
 				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
 				userfaces.add(obj);
 				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
-				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute()) {
+				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute(posterKey)) {
 					characters.add(object);
 					
 				}
