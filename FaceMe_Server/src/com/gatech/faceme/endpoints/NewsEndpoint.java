@@ -5,9 +5,11 @@ import java.util.List;
 
 
 
+
 import javax.inject.Named;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
 
 
 
@@ -17,6 +19,7 @@ import com.gatech.faceme.entity.UserFaceEntity;
 import com.gatech.faceme.mediastore.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
+import com.google.appengine.api.datastore.Key;
 
 
 @Api(name = "newsendpoint", description = "Used for getting news", version = "v1")
@@ -33,21 +36,24 @@ public class NewsEndpoint {
 			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
 				String posterkey = obj.getPosterKey();
 				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
-				query2 = mgr.newQuery(CharacterFaceEntity.class, 
-						"posterID==posterid");
+				Key posterKey = posterEntity.getKey();
+				
+				query2 = mgr.newQuery(CharacterFaceEntity.class);
+				query2.setFilter("posterID == posterIDparam");
+				query2.declareParameters(Key.class.getName() + " posterIDparam");
+				
 				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
 				userfaces.add(obj);
 				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
-				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute()) {
+				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute(posterKey)) {
 					characters.add(object);
 					
 				}
-				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(),
-						posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
-						posterEntity.getMovieName(), userfaces, characters));
+				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(), posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
+						posterEntity.getPosterName(), userfaces, characters));
 			}
 		} finally {
-			mgr.close();
+			//mgr.close();
 		}
 		return result;
 	}
@@ -91,14 +97,14 @@ public class NewsEndpoint {
 	
 	public class News{
 
-		private String posterKey;
-		private String originalPosterImageKey;
-		private String nonfacePosterImageKey;
-		private String movieName;
-		private String posterName;
+		public String posterKey;
+		public String originalPosterImageKey;
+		public String nonfacePosterImageKey;
+		public String movieName;
+		public String posterName;
 		
 		// to be done
-		private String updateDate;
+		public String updateDate;
 		public List<UserFaceEntity> userfaces;
 		public List<CharacterFaceEntity> characters;
 
