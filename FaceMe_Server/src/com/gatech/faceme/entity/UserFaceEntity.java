@@ -64,5 +64,10 @@ public class UserFaceEntity {
 		return characterKey;
 	}
 	
-	
+	public int getRating(){
+		return rating;
+	}
+	public int getRatingTimes(){
+		return ratingTimes;
+	}
 }
