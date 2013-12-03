@@ -61,7 +61,7 @@ public class PosterEndpoint {
 				if(count<start-1) continue;
 				result.add(((PosterEntity) obj));
 				count++;
-				if(count==number) break;
+				if(count==(start+number-1)) break;
 			}
 		} finally {
 			mgr.close();

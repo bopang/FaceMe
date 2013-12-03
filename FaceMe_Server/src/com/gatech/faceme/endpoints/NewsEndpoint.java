@@ -80,7 +80,7 @@ public class NewsEndpoint {
 						posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
 						posterEntity.getMovieName(), userfaces, characters));
 				count++;
-				if(count==number) break;
+				if(count==(start+number-1)) break;
 			}
 		} finally {
 			mgr.close();
