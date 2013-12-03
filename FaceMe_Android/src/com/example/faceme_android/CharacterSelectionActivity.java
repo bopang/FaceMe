@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -36,8 +37,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CharacterSelectionActivity extends Activity {
-	ApplicationData state;
-	Context context;
+	ApplicationData mApplicationData;
+	Context mContext;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -47,28 +48,32 @@ public class CharacterSelectionActivity extends Activity {
 		//String postertitle=intent.getStringExtra("title");
 		TextView posterTitle=(TextView) findViewById(R.id.received_postertitle);
 
-		context = this;
-		state =(ApplicationData) getApplicationContext();
-		posterTitle.setText(state.currentPoster.getPosterName());
-		loadPosterData(state.currentPoster);
+		mContext = this;
+		mApplicationData =(ApplicationData) getApplicationContext();
 		
+		if(mApplicationData.playWithNews == false){
+			posterTitle.setText(mApplicationData.currentPoster.getPosterName());
+			loadPosterData(mApplicationData.currentPoster);
+		}
+		else{
+			posterTitle.setText(mApplicationData.currentNews.posterName);
+			ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
+			posterImg.setImageBitmap(mApplicationData.currentNews.cosplayBmp);
+			setCharacterImageViews(mApplicationData.currentNews.getAvaliableFaces(mApplicationData));
+		}
 	}
-	
-	public void setImageViews(){
-		
-		ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
-		posterImg.setImageBitmap(state.currentPoster.originalPoster);
-	
+	public void setCharacterImageViews(List<Long> avaliableFaces){
 		ViewGroup characterLayout = (ViewGroup) findViewById(R.id.characterSelectionLayout);
 		
-		for(int i=0; i<state.currentPoster.faces.size(); i++){
+		for(int i=0; i<avaliableFaces.size(); i++){
 			ImageButton characterButton = new ImageButton(this);
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(120, 120);
 			lp.setMargins(30, 0, 30, 0);
 			
 			characterButton.setLayoutParams(lp);
-			characterButton.setTag(state.currentPoster.faces.get(i));
-			Bitmap faceBmp = state.currentPoster.faces.get(i).bmp;
+			CharacterFaceEntity face = mApplicationData.mCharacterFaceCache.get(avaliableFaces.get(i));
+			characterButton.setTag(face);
+			Bitmap faceBmp = face.bmp;
 			Bitmap bmp = Bitmap.createScaledBitmap(faceBmp, 120*faceBmp.getWidth()/faceBmp.getHeight(), 120, false);
 			characterButton.setImageBitmap(bmp);
 			characterButton.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +83,48 @@ public class CharacterSelectionActivity extends Activity {
 						// TODO Auto-generated method stub
 						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
 						
-						state.faceChosed = (CharacterFaceEntity) v.getTag();
+						mApplicationData.faceChosed = (CharacterFaceEntity) v.getTag();
 						startActivity(new Intent(getBaseContext(),CameraActivity.class));
 					}
 				});
 			
 			characterLayout.addView(characterButton);
 		}
+	}
+	
+	public void setCharacterImageViews(){
+		ViewGroup characterLayout = (ViewGroup) findViewById(R.id.characterSelectionLayout);
+	
+		for(int i=0; i<mApplicationData.currentPoster.faces.size(); i++){
+			ImageButton characterButton = new ImageButton(this);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(120, 120);
+			lp.setMargins(30, 0, 30, 0);
+			
+			characterButton.setLayoutParams(lp);
+			characterButton.setTag(mApplicationData.currentPoster.faces.get(i));
+			Bitmap faceBmp = mApplicationData.currentPoster.faces.get(i).bmp;
+			Bitmap bmp = Bitmap.createScaledBitmap(faceBmp, 120*faceBmp.getWidth()/faceBmp.getHeight(), 120, false);
+			characterButton.setImageBitmap(bmp);
+			characterButton.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						//startActivity(new Intent(getBaseContext(),PosterSelectionActivity.class));
+						
+						mApplicationData.faceChosed = (CharacterFaceEntity) v.getTag();
+						startActivity(new Intent(getBaseContext(),CameraActivity.class));
+					}
+				});
+			
+			characterLayout.addView(characterButton);
+		}
+	}
+	
+	public void setImageViews(){
+		ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
+		posterImg.setImageBitmap(mApplicationData.currentPoster.originalPoster);
+		setCharacterImageViews();
 	}
 	
 	public void loadPosterData(PosterEntity poster){
@@ -171,7 +211,7 @@ public class CharacterSelectionActivity extends Activity {
 					@Override
 					protected void onPreExecute() {
 						// TODO Auto-generated method stub
-						dialog=new ProgressDialog(context);
+						dialog=new ProgressDialog(mContext);
 						dialog.setTitle("loading");
 						dialog.show();
 						super.onPreExecute();

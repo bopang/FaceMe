@@ -51,7 +51,7 @@ public class PosterSelectionView {
 				// TODO Auto-generated method stub
 				PosterEntity currentPoster=mApplicationData.mPosters.get(postion);
 				mApplicationData.currentPoster = currentPoster;
-
+				mApplicationData.playWithNews = false;
 				Intent intent;
 				//if(postion ==0)
 				//intent =new Intent(PosterSelectionActivity.this, CharacterSelectionActivityXiaofei.class);

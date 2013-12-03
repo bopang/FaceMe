@@ -171,10 +171,15 @@ public class CameraActivity extends Activity implements CvCameraViewListener2, O
         
         //bmPosterNF = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3_noFace.png");
         //bmPoster = Tools.getBitmapFromAsset(this.getBaseContext(), "iron_man_3.jpg");
-        bmPosterNF = state.currentPoster.nonfacePoster;
-        bmPoster = state.currentPoster.originalPoster;
+        if(state.playWithNews == false){
+        	bmPosterNF = state.currentPoster.nonfacePoster;
+        	bmPoster = state.currentPoster.originalPoster;
+        }
+        else{
+        	bmPosterNF = state.currentNews.nonfacePosterBmp;
+        	bmPoster = state.currentNews.cosplayBmp;
+        }
     }
-
     @Override
     public void onPause()
     {

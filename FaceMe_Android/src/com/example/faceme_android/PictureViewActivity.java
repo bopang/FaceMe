@@ -66,26 +66,52 @@ public class PictureViewActivity extends Activity {
 
 		ApplicationData state = (ApplicationData) getApplicationContext();
 		context = this;
-		Bitmap nonfacePoster = state.currentPoster.nonfacePoster;
+		Bitmap nonfacePoster;
+		if(state.playWithNews == false){
+			nonfacePoster = state.currentPoster.nonfacePoster;
+		}
+		else{
+			nonfacePoster = state.currentNews.nonfacePosterBmp;
+		}
 		//Tools.getBitmapFromPath(Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png"));
 
 		CharacterFaceEntity facechoosed = state.faceChosed;
-
-
 		Bitmap userFaceBmp = Bitmap.createScaledBitmap(tmp, (int)(nonfacePoster.getWidth() * facechoosed.getWidth()), (int)(nonfacePoster.getHeight() * facechoosed.getHeight()), false);
-		Bitmap result = Bitmap.createBitmap(nonfacePoster.getWidth(), nonfacePoster.getHeight(), Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(result);
+		Bitmap result;
+		if(state.playWithNews == false){
+			result = Bitmap.createBitmap(nonfacePoster.getWidth(), nonfacePoster.getHeight(), Bitmap.Config.ARGB_8888);
+			Canvas canvas = new Canvas(result);
+	
+			for(CharacterFaceEntity face : state.currentPoster.faces){
+				if(face != facechoosed){
+					canvas.drawBitmap(face.bmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
+				}
+			}
+	
+			canvas.drawBitmap(userFaceBmp, facechoosed.getPositionX() * nonfacePoster.getWidth(), facechoosed.getPostionY() * nonfacePoster.getHeight(), null);
+			canvas.drawBitmap(nonfacePoster, 0, 0, null);
+	
+			imview.setImageBitmap(result);
+		}
+		else{
+			result = Bitmap.createBitmap(nonfacePoster.getWidth(), nonfacePoster.getHeight(), Bitmap.Config.ARGB_8888);
+			
+			Canvas canvas = new Canvas(result);
 
-		for(CharacterFaceEntity face : state.currentPoster.faces){
-			if(face != facechoosed){
+			for(long faceKey : state.currentNews.characters){
+				CharacterFaceEntity face = state.mCharacterFaceCache.get(faceKey);
 				canvas.drawBitmap(face.bmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
 			}
+			for(long userFaceKey : state.currentNews.userfaces){
+				UserFaceEntity userFace = state.mUserFaceCache.get(userFaceKey);
+				CharacterFaceEntity face = state.mCharacterFaceCache.get(userFace.getCharacterKey());
+				Bitmap oldUserFaceBmp = Bitmap.createScaledBitmap(userFace.userFaceBmp, (int)(nonfacePoster.getWidth() * face.getWidth()), (int)(nonfacePoster.getHeight() * face.getHeight()), false);
+				canvas.drawBitmap(oldUserFaceBmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
+			}
+			canvas.drawBitmap(userFaceBmp, facechoosed.getPositionX() * nonfacePoster.getWidth(), facechoosed.getPostionY() * nonfacePoster.getHeight(), null);
+			canvas.drawBitmap(nonfacePoster, 0, 0, null);
+			imview.setImageBitmap(result);
 		}
-
-		canvas.drawBitmap(userFaceBmp, facechoosed.getPositionX() * nonfacePoster.getWidth(), facechoosed.getPostionY() * nonfacePoster.getHeight(), null);
-		canvas.drawBitmap(nonfacePoster, 0, 0, null);
-
-		imview.setImageBitmap(result);
 		try {
 			String filename = Environment.getExternalStorageDirectory().getPath() +"/CosplayTmp.png";
 			FileOutputStream out = new FileOutputStream(filename);
