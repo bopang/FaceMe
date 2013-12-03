@@ -64,6 +64,7 @@ public class NewsEndpoint {
 			@Named("quantity") int number) {
 		PersistenceManager mgr = PMF.get().getPersistenceManager();
 		List<News> result = new ArrayList<News>();
+		if(start<=0||number==0) return result;
 		try {
 			int count=0;
 			Query query1 = mgr.newQuery(UserFaceEntity.class);

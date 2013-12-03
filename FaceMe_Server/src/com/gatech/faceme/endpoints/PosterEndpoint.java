@@ -54,6 +54,8 @@ public class PosterEndpoint {
 					@Named("quantity") int number) {
 		PersistenceManager mgr = PMF.get().getPersistenceManager();
 		List<PosterEntity> result = new ArrayList<PosterEntity>();
+		if(start<=0||number==0) return result;
+
 		try {
 			Query query = mgr.newQuery(PosterEntity.class);
 			int count=0;
