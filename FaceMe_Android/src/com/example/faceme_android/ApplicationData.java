@@ -52,6 +52,10 @@ public class ApplicationData extends Application{
 	public UserProfile mCurrentUser = null;
 	public CharacterFaceEntity faceChosed = null;
 	
+	public boolean playWithNews = false;
+	public NewsEntity currentNews = null;
+	public List<Long> avaliableFaces = null;
+	
 	@Override 
 	public void onCreate(){
 		mPosters = new ArrayList<PosterEntity>();

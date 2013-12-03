@@ -1,10 +1,11 @@
 package com.faceme_android;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.Bitmap;
 
-import com.example.faceme_android.*;
+import com.example.faceme_android.ApplicationData;
 
 public class NewsEntity {
 	public String posterKey;
@@ -21,7 +22,7 @@ public class NewsEntity {
 	public Bitmap nonfacePosterBmp;
 	
 	public Bitmap cosplayBmp;
-	
+	public Bitmap newsBmp;
 	
 	
 	public NewsEntity(String posterKey, String originalPosterImageKey,
@@ -37,6 +38,18 @@ public class NewsEntity {
 		this.updateDate = updateDate;
 		this.userfaces = userfaces;
 		this.characters = characters;
+	}
+	
+	public List<Long> getAvaliableFaces(ApplicationData data){
+		List<Long> result = new ArrayList<Long>();
+		for(Long face : characters){
+			result.add(face);
+		}
+		for(Long userface : userfaces){
+			long key = data.mCharacterFaceCache.get(data.mUserFaceCache.get(userface).getCharacterKey()).getKey();
+			result.remove(new Long(key));
+		}
+		return result;
 	}
 	
 //	public String getUserNames(){

@@ -1,14 +1,16 @@
 package com.faceme_android;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,7 +20,6 @@ import com.example.faceme_android.CharacterSelectionActivity;
 import com.example.faceme_android.PosterEntity;
 import com.example.faceme_android.R;
 import com.example.faceme_android.Tools;
-import com.faceme_android.PosterSelectionView.posterAdapter;
 
 public class NewsFeedView {
 
@@ -31,6 +32,7 @@ public class NewsFeedView {
 	
 	private ApplicationData mApplicationData;
 	private View mLoadingView;
+	private OnClickListener playListener;
 	
 	
 	public NewsFeedView(Context context) {
@@ -94,7 +96,7 @@ public class NewsFeedView {
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			View templateView;
 			templateView = convertView;
@@ -113,11 +115,26 @@ public class NewsFeedView {
 			dataText.setText("");
 			
 			if(currentNews.cosplayBmp == null){
-				currentNews.cosplayBmp = Tools.synthesisPoster(currentNews, mApplicationData);
+				Tools.synthesisPoster(currentNews, mApplicationData);
 			}
 			
-			newsImageView.setImageBitmap(currentNews.cosplayBmp);
-
+			newsImageView.setImageBitmap(currentNews.newsBmp);
+			long userfaceID = currentNews.userfaces.get(0);
+			long characterfaceID = mApplicationData.mUserFaceCache.get(userfaceID).id;
+			mApplicationData.mUserFaceCache.get(userfaceID);
+			
+			Button btn_play = (Button)templateView.findViewById(R.id.button_play);
+			btn_play.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent;
+					intent =new Intent(mContext, CharacterSelectionActivity.class);
+					mApplicationData.playWithNews = true;
+					mApplicationData.currentNews = mApplicationData.mNews.get(position);		
+					mContext.startActivity(intent);
+				}
+			});
 			return templateView;
 		}
 		

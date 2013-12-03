@@ -7,13 +7,13 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import com.faceme_android.NewsEntity;
-
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+
+import com.faceme_android.NewsEntity;
 
 
 
@@ -72,15 +72,23 @@ public class Tools {
 			CharacterFaceEntity face = data.mCharacterFaceCache.get(faceKey);
 			canvas.drawBitmap(face.bmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
 		}
-		
+		int faceX = 0;
+		int faceY = 0;
 		for(long userFaceKey : news.userfaces){
 			UserFaceEntity userFace = data.mUserFaceCache.get(userFaceKey);
 			CharacterFaceEntity face = data.mCharacterFaceCache.get(userFace.getCharacterKey());
+			faceX = (int) (face.getPositionX() * nonfacePoster.getWidth());
+			faceY = (int) (face.getPostionY() * nonfacePoster.getHeight());
 			Bitmap userFaceBmp = Bitmap.createScaledBitmap(userFace.userFaceBmp, (int)(nonfacePoster.getWidth() * face.getWidth()), (int)(nonfacePoster.getHeight() * face.getHeight()), false);
 			canvas.drawBitmap(userFaceBmp, face.getPositionX() * nonfacePoster.getWidth(), face.getPostionY() * nonfacePoster.getHeight(), null);
 		}
 
 		canvas.drawBitmap(nonfacePoster, 0, 0, null);
+		news.cosplayBmp = result;
+		Bitmap bmp = Bitmap.createScaledBitmap(result, 480, (int) (480.0f/result.getWidth() * result.getHeight()), false);
+		
+		int y = faceY - 100 >0 ? faceY-100 : 0;
+		news.newsBmp = Bitmap.createBitmap(bmp, 0, y, 480, 200);
 		
 		return result;
 	}
