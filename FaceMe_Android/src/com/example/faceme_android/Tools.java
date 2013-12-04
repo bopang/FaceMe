@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -91,5 +94,15 @@ public class Tools {
 		news.newsBmp = Bitmap.createBitmap(bmp, 0, y, 480, 200);
 		
 		return result;
+	}
+	public static JSONObject encodeUserFaceEntity(String faceKey, String characterKey, String posterKey, String userID) throws JSONException{
+		JSONObject userFaceJson = new JSONObject();
+		JSONObject faceEntity = new JSONObject();
+		faceEntity.put("imageKey", faceKey );
+		faceEntity.put("characterKey", ""+characterKey);
+		faceEntity.put("posterKey", ""+posterKey);
+		faceEntity.put("userID", userID);
+		
+		return userFaceJson;
 	}
 }

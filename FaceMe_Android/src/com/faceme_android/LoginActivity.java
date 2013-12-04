@@ -52,8 +52,9 @@ public class LoginActivity extends Activity {
 		
 		String user_url_path = "https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/"
 				+ username;
+		
 		mApplicationData = (ApplicationData) getApplicationContext();
-		mApplicationData.loadUserInfo(user_url_path);
+		mApplicationData.loadUserInfo(user_url_path.replace(" ", "%20"));
 		
 		while(mApplicationData.mCurrentUser==null){
 			;

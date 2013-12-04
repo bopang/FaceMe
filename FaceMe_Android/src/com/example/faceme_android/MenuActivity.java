@@ -179,7 +179,7 @@ public class MenuActivity extends Activity{
 					
 					userProfileList.add(new UserProfile(name,gender,school,picUrl,bmp));
 					ApplicationData state = (ApplicationData) getApplicationContext();
-					state.mCurrentUser = userProfileList.get(0);
+					//state.mCurrentUser = userProfileList.get(0);
 					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block

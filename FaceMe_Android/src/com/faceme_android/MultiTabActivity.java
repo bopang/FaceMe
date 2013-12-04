@@ -37,7 +37,7 @@ public class MultiTabActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mApplicationData = (ApplicationData) getApplicationContext();
-		mApplicationData.loadUserInfo();
+		//mApplicationData.loadUserInfo();
 		setContentView(R.layout.multitab_bed);
 		instance = this;
 
