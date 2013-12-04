@@ -33,47 +33,47 @@ public class CommentEndpoint {
 		return result;
 	}
 	
-	@ApiMethod(httpMethod = "GET", name = "commentbyuserid.get", 
-			path = "comment/get/{userid}")
-	@SuppressWarnings({ "cast", "unchecked" })
-	public ArrayList<CommentEntity> getCommentByUserId(@Named("userid") String userID) {
-		PersistenceManager mgr = getPersistenceManager();
-		ArrayList<CommentEntity> result = new ArrayList<CommentEntity>();
-		try {
-			Query query = mgr.newQuery(CommentEntity.class, 
-					"user ==userID");
-		
-			for (Object obj : (List<Object>) query.execute()) {
-				result.add(((CommentEntity) obj));
-				((PairTableEntity) obj).setIfNotified(true);
-			}
-			
-		} finally {
-			mgr.close();
-		}
-		return result;
-	}
-	
-	@ApiMethod(httpMethod = "GET", name = "commentbyUserIDAndToComment.get", 
-			path = "comment/get/{userid}/{tocomment}")
-	@SuppressWarnings({ "cast", "unchecked" })
-	public ArrayList<CommentEntity> getCommentByToUserIdAndToComment(@Named("userid") String userID, @Named("tocomment") String tocomment) {
-		PersistenceManager mgr = getPersistenceManager();
-		ArrayList<CommentEntity> result = new ArrayList<CommentEntity>();
-		try {
-			Query query = mgr.newQuery(CommentEntity.class, 
-					"(user ==userID) && (toComment ==tocomment) ");
-		
-			for (Object obj : (List<Object>) query.execute()) {
-				result.add(((CommentEntity) obj));
-				((PairTableEntity) obj).setIfNotified(true);
-			}
-			
-		} finally {
-			mgr.close();
-		}
-		return result;
-	}
+//	@ApiMethod(httpMethod = "GET", name = "commentbyuserid.get", 
+//			path = "comment/get/{userid}")
+//	@SuppressWarnings({ "cast", "unchecked" })
+//	public ArrayList<CommentEntity> getCommentByUserId(@Named("userid") String userID) {
+//		PersistenceManager mgr = getPersistenceManager();
+//		ArrayList<CommentEntity> result = new ArrayList<CommentEntity>();
+//		try {
+//			Query query = mgr.newQuery(CommentEntity.class, 
+//					"user ==userID");
+//		
+//			for (Object obj : (List<Object>) query.execute()) {
+//				result.add(((CommentEntity) obj));
+//				((PairTableEntity) obj).setIfNotified(true);
+//			}
+//			
+//		} finally {
+//			mgr.close();
+//		}
+//		return result;
+//	}
+//	
+//	@ApiMethod(httpMethod = "GET", name = "commentbyUserIDAndToComment.get", 
+//			path = "comment/get/{userid}/{tocomment}")
+//	@SuppressWarnings({ "cast", "unchecked" })
+//	public ArrayList<CommentEntity> getCommentByToUserIdAndToComment(@Named("userid") String userID, @Named("tocomment") String tocomment) {
+//		PersistenceManager mgr = getPersistenceManager();
+//		ArrayList<CommentEntity> result = new ArrayList<CommentEntity>();
+//		try {
+//			Query query = mgr.newQuery(CommentEntity.class, 
+//					"(user ==userID) && (toComment ==tocomment) ");
+//		
+//			for (Object obj : (List<Object>) query.execute()) {
+//				result.add(((CommentEntity) obj));
+//				((PairTableEntity) obj).setIfNotified(true);
+//			}
+//			
+//		} finally {
+//			mgr.close();
+//		}
+//		return result;
+//	}
 	
 	@ApiMethod(httpMethod = "POST", name = "comment.insert",
 			path = "comment/insert")

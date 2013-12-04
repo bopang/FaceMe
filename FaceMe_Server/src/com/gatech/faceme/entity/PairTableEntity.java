@@ -1,6 +1,7 @@
 package com.gatech.faceme.entity;
 
 import java.util.ArrayList;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
@@ -22,23 +23,15 @@ public class PairTableEntity {
 	private ArrayList<String> otherUsers;
 	
 	@Persistent
-	private String activeUserFace;
-	
-	@Persistent
-	private ArrayList<String> otherUserFace;
-	
-	
-	@Persistent
-	private boolean ifNotified;
-	
-	public PairTableEntity(String activeUser, ArrayList<String> otherUsers,
-			String activeUserFace, ArrayList<String> otherUserFace,
-				boolean ifNotified){
+	private ArrayList<String> userFaces;
+
+	public PairTableEntity(Key key, String activeUser,
+			ArrayList<String> otherUsers, ArrayList<String> userFaces) {
+		super();
+		this.key = key;
 		this.activeUser = activeUser;
-		this.setotherUsers(otherUsers);
-		this.setActiveUserFace(activeUserFace);
-		this.setOtherUserFace(otherUserFace);
-		this.ifNotified = ifNotified;
+		this.otherUsers = otherUsers;
+		this.userFaces = userFaces;
 	}
 
 	public Key getKey() {
@@ -49,14 +42,6 @@ public class PairTableEntity {
 		this.key = key;
 	}
 
-	public ArrayList<String> getotherUsers() {
-		return otherUsers;
-	}
-
-	public void setotherUsers(ArrayList<String> otherUsers) {
-		this.otherUsers = otherUsers;
-	}
-
 	public String getActiveUser() {
 		return activeUser;
 	}
@@ -64,28 +49,23 @@ public class PairTableEntity {
 	public void setActiveUser(String activeUser) {
 		this.activeUser = activeUser;
 	}
-	public boolean getIfNotified() {
-		return ifNotified;
+
+	public ArrayList<String> getOtherUsers() {
+		return otherUsers;
 	}
 
-	public void setIfNotified(boolean ifNotified) {
-		this.ifNotified = ifNotified;
+	public void setOtherUsers(ArrayList<String> otherUsers) {
+		this.otherUsers = otherUsers;
 	}
 
-	public String getActiveUserFace() {
-		return activeUserFace;
+	public ArrayList<String> getUserFaces() {
+		return userFaces;
 	}
 
-	public void setActiveUserFace(String activeUserFace) {
-		this.activeUserFace = activeUserFace;
-	}
-
-	public ArrayList<String> getOtherUserFace() {
-		return otherUserFace;
-	}
-
-	public void setOtherUserFace(ArrayList<String> otherUserFace) {
-		this.otherUserFace = otherUserFace;
+	public void setUserFaces(ArrayList<String> userFaces) {
+		this.userFaces = userFaces;
 	}
 	
+	
+
 }

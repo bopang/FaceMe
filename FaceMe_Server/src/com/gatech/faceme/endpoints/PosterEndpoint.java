@@ -48,7 +48,7 @@ public class PosterEndpoint {
 	 * 
 	 * @return List<PosterEntity>
 	 */
-	@ApiMethod(httpMethod = "GET", name = "poster.#list", path = "poster/list/{startPoint}/{quantity}")
+	@ApiMethod(httpMethod = "GET", name = "poster.somelist", path = "poster/list/{startPoint}/{quantity}")
 	@SuppressWarnings({ "cast", "unchecked" })
 	public List<PosterEntity> listPosterWithGivenQuanlity(@Named("startPoint") int start, 
 					@Named("quantity") int number) {
