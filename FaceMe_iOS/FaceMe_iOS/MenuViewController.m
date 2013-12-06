@@ -75,11 +75,12 @@
     appDelegate.mUserFaceCache=[[NSMutableDictionary alloc]init];
     
     NSArray* newsfeeds = [jsonForNewFeeds objectForKey:@"items"];
-    newsFeed=[[NewsFeedEntity alloc]init];
-    newsFeed.userfaces=[[NSMutableArray alloc]init];
-    newsFeed.characters=[[NSMutableArray alloc]init];
+    
     for (id newfeed in newsfeeds ){
-        
+        newsFeed=[[NewsFeedEntity alloc]init];
+        newsFeed.userfaces=[[NSMutableArray alloc]init];
+        newsFeed.characters=[[NSMutableArray alloc]init];
+        newsFeed.userNames = [[NSMutableArray alloc] init];
         NSString*posterKey=[newfeed objectForKey:@"posterKey"];
         NSString*orginalPosterImageKey=[newfeed objectForKey:@"originalPosterImageKey"];
         NSString*nonfacePosterImageKey=[newfeed objectForKey:@"nonfacePosterImageKey"];
@@ -343,15 +344,15 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    NSMutableString*urlString=[[NSMutableString alloc]initWithFormat:@"https://facemegatech.appspot.com/_ah/api/notificationendpoint/v1/notification/getallnotification/"];
-    [urlString appendFormat:appDelegate.currentUser.username];
-    NSDictionary*jsonData=[self getData:urlString];
-    NSArray*json=[jsonData objectForKey:@"items"];
-    if (json!=nil) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"FaceMe"
-                                                            object:nil
-                                                          ];
-    }
+//    NSMutableString*urlString=[[NSMutableString alloc]initWithFormat:@"https://facemegatech.appspot.com/_ah/api/notificationendpoint/v1/notification/getallnotification/"];
+//    [urlString appendFormat:appDelegate.currentUser.username];
+//    NSDictionary*jsonData=[self getData:urlString];
+//    NSArray*json=[jsonData objectForKey:@"items"];
+//    if (json!=nil) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"FaceMe"
+//                                                            object:nil
+//                                                          ];
+//    }
    
 }
 @end

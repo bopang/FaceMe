@@ -127,7 +127,7 @@
     faceImageViews = [[NSMutableArray alloc] init];
     for (int i=0; i<[faceImages count];i++) {
         UIImageView*faceImgView=[[UIImageView alloc]initWithImage:[imageTool scaleImage:[[[appDelegate currentPoster].faces objectAtIndex:i]bmp] AtTheRatio:0.65]];
-        faceImgView.contentMode = UIViewContentModeCenter;
+        faceImgView.contentMode = UIViewContentModeScaleAspectFill;
         faceImgView.clipsToBounds=YES;
         CGRect currentFrame=faceImgView.frame;
         

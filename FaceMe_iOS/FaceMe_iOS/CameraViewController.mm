@@ -283,7 +283,11 @@
 }
 
 - (IBAction)takePicture:(id)sender {
-    UIImage* photoImage = [UIImage imageWithMat:mat_photo andImageOrientation:UIImageOrientationLeftMirrored];
+    if(transposed){
+        cv::flip(mat_photo, mat_photo, 0);
+        mat_photo = mat_photo.t();
+    }
+    UIImage* photoImage = [UIImage imageWithMat:mat_photo andImageOrientation:UIImageOrientationUp];
     ShareViewController* shareViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"shareController"];
     shareViewController.userface = photoImage;
     [self.navigationController pushViewController:shareViewController animated:true];

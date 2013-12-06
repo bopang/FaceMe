@@ -90,6 +90,14 @@
 
 - (IBAction)uploadIcon:(id)sender {
     [self uploadUserFaceEntity: [self uploadImage:[self getUploadUrl]]];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Upload successful!"
+                          message:@"Upload successful!"
+                          delegate:self
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil, nil];
+    [alert show];
+
     
 }
 -(NSString*)getUploadUrl
@@ -162,11 +170,18 @@
 }
 -(void)uploadUserFaceEntity:(NSString*)facekey
 {
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     NSURL*postUrl=[[NSURL alloc]initWithString:@"https://facemegatech.appspot.com/_ah/api/userfaceendpoint/v1/userface/insert"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
     [request setURL:postUrl];
-    NSDictionary*faceEntity=[NSDictionary dictionaryWithObject:facekey forKey:@"imageKey"];
+    NSMutableDictionary*faceEntity= [[NSMutableDictionary alloc] init];
+    [faceEntity setObject:facekey forKey:@"imageKey"];
+    [faceEntity setObject:appDelegate.chosenFace.key forKey:@"characterKey"];
+    [faceEntity setObject:appDelegate.currentPoster.key forKey:@"posterKey"];
+    [faceEntity setObject:appDelegate.currentUser.username forKey:@"userID"];
+    
+    
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:faceEntity
                                                        options:NSJSONWritingPrettyPrinted error:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -178,6 +193,7 @@
     //NSLog(@"%@",responseData);
     NSString*data=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", data);
+    
     
     
 }

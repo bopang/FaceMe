@@ -13,6 +13,7 @@
 @end
 
 @implementation MainViewController
+@synthesize mainView;
 
 - (void)viewDidLoad
 {
@@ -29,10 +30,26 @@
 - (IBAction)signIn_btn:(id)sender {
     
     {
+        CGRect newFrame = self.mainView.frame;
+        newFrame.origin.y -= 250;    // shift right by 500pts
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             self.mainView.frame = newFrame;
+                         }
+                         completion:^(BOOL finished){}];
+        
+        
+        
         //[self.spinner startAnimating];
-        AppDelegate*appDelegate=[UIApplication sharedApplication].delegate ;
-        [appDelegate openSession];
+        
     }
     
+}
+- (IBAction)facebookLogin:(id)sender {
+    AppDelegate*appDelegate=[UIApplication sharedApplication].delegate ;
+    [appDelegate openSession];
+}
+
+- (IBAction)facemeLogin:(id)sender {
 }
 @end

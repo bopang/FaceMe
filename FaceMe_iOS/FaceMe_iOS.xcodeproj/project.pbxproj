@@ -95,6 +95,26 @@
 		20828F181851AB250078F894 /* UIImage2OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F121851AB250078F894 /* UIImage2OpenCV.mm */; };
 		20828F191851AB250078F894 /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F141851AB250078F894 /* VideoSource.mm */; };
 		20828F1A1851AB250078F894 /* CameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F161851AB250078F894 /* CameraViewController.mm */; };
+		20828F281851F2760078F894 /* address.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F1B1851F2760078F894 /* address.png */; };
+		20828F291851F2760078F894 /* appLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F1C1851F2760078F894 /* appLogin.png */; };
+		20828F2A1851F2760078F894 /* buttonLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F1D1851F2760078F894 /* buttonLogin.png */; };
+		20828F2B1851F2760078F894 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F1E1851F2760078F894 /* email.png */; };
+		20828F2C1851F2760078F894 /* facebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F1F1851F2760078F894 /* facebookLogin.png */; };
+		20828F2D1851F2760078F894 /* facebookupload.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F201851F2760078F894 /* facebookupload.png */; };
+		20828F2E1851F2760078F894 /* game.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F211851F2760078F894 /* game.png */; };
+		20828F2F1851F2760078F894 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F221851F2760078F894 /* heart.png */; };
+		20828F301851F2760078F894 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F231851F2760078F894 /* icon1.png */; };
+		20828F311851F2760078F894 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F241851F2760078F894 /* icon2.png */; };
+		20828F321851F2760078F894 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F251851F2760078F894 /* icon3.png */; };
+		20828F331851F2760078F894 /* introBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F261851F2760078F894 /* introBack.png */; };
+		20828F341851F2760078F894 /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F271851F2760078F894 /* loginBackground.png */; };
+		20828F371851F2840078F894 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20828F361851F2840078F894 /* LoginViewController.m */; };
+		20828F3D1851F2910078F894 /* number.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F381851F2910078F894 /* number.png */; };
+		20828F3E1851F2910078F894 /* textFields.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F391851F2910078F894 /* textFields.png */; };
+		20828F3F1851F2910078F894 /* trophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F3A1851F2910078F894 /* trophy.png */; };
+		20828F401851F2910078F894 /* trophy1.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F3B1851F2910078F894 /* trophy1.png */; };
+		20828F411851F2910078F894 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 20828F3C1851F2910078F894 /* upload.png */; };
+		20828F441851F29D0078F894 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 20828F431851F29D0078F894 /* UserProfile.m */; };
 		889E1BA0184C2420005438F1 /* NewsFeedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E1B9F184C2420005438F1 /* NewsFeedEntity.m */; };
 		889E1BA3184C306A005438F1 /* UserFaceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E1BA2184C306A005438F1 /* UserFaceEntity.m */; };
 /* End PBXBuildFile section */
@@ -226,6 +246,28 @@
 		20828F141851AB250078F894 /* VideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoSource.mm; sourceTree = "<group>"; };
 		20828F151851AB250078F894 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		20828F161851AB250078F894 /* CameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraViewController.mm; sourceTree = "<group>"; };
+		20828F1B1851F2760078F894 /* address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address.png; sourceTree = "<group>"; };
+		20828F1C1851F2760078F894 /* appLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appLogin.png; sourceTree = "<group>"; };
+		20828F1D1851F2760078F894 /* buttonLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLogin.png; sourceTree = "<group>"; };
+		20828F1E1851F2760078F894 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		20828F1F1851F2760078F894 /* facebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookLogin.png; sourceTree = "<group>"; };
+		20828F201851F2760078F894 /* facebookupload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookupload.png; sourceTree = "<group>"; };
+		20828F211851F2760078F894 /* game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game.png; sourceTree = "<group>"; };
+		20828F221851F2760078F894 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		20828F231851F2760078F894 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		20828F241851F2760078F894 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		20828F251851F2760078F894 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		20828F261851F2760078F894 /* introBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introBack.png; sourceTree = "<group>"; };
+		20828F271851F2760078F894 /* loginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackground.png; sourceTree = "<group>"; };
+		20828F351851F2840078F894 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		20828F361851F2840078F894 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		20828F381851F2910078F894 /* number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number.png; sourceTree = "<group>"; };
+		20828F391851F2910078F894 /* textFields.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textFields.png; sourceTree = "<group>"; };
+		20828F3A1851F2910078F894 /* trophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trophy.png; sourceTree = "<group>"; };
+		20828F3B1851F2910078F894 /* trophy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trophy1.png; sourceTree = "<group>"; };
+		20828F3C1851F2910078F894 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
+		20828F421851F29D0078F894 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		20828F431851F29D0078F894 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		889E1B9E184C2420005438F1 /* NewsFeedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedEntity.h; sourceTree = "<group>"; };
 		889E1B9F184C2420005438F1 /* NewsFeedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedEntity.m; sourceTree = "<group>"; };
 		889E1BA1184C306A005438F1 /* UserFaceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserFaceEntity.h; path = ../UserFaceEntity.h; sourceTree = "<group>"; };
@@ -375,6 +417,10 @@
 		20828ECD185174160078F894 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				20828F421851F29D0078F894 /* UserProfile.h */,
+				20828F431851F29D0078F894 /* UserProfile.m */,
+				20828F351851F2840078F894 /* LoginViewController.h */,
+				20828F361851F2840078F894 /* LoginViewController.m */,
 				20828ED418518B1A0078F894 /* OpenCV */,
 				20828ED21851754E0078F894 /* UserProfile */,
 				20828ED1185175350078F894 /* Introduction */,
@@ -443,6 +489,24 @@
 		20828ED3185176AC0078F894 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				20828F381851F2910078F894 /* number.png */,
+				20828F391851F2910078F894 /* textFields.png */,
+				20828F3A1851F2910078F894 /* trophy.png */,
+				20828F3B1851F2910078F894 /* trophy1.png */,
+				20828F3C1851F2910078F894 /* upload.png */,
+				20828F1B1851F2760078F894 /* address.png */,
+				20828F1C1851F2760078F894 /* appLogin.png */,
+				20828F1D1851F2760078F894 /* buttonLogin.png */,
+				20828F1E1851F2760078F894 /* email.png */,
+				20828F1F1851F2760078F894 /* facebookLogin.png */,
+				20828F201851F2760078F894 /* facebookupload.png */,
+				20828F211851F2760078F894 /* game.png */,
+				20828F221851F2760078F894 /* heart.png */,
+				20828F231851F2760078F894 /* icon1.png */,
+				20828F241851F2760078F894 /* icon2.png */,
+				20828F251851F2760078F894 /* icon3.png */,
+				20828F261851F2760078F894 /* introBack.png */,
+				20828F271851F2760078F894 /* loginBackground.png */,
 				00F4798A18516C0100FDE0A8 /* comment1.png */,
 				00F4798818516ADC00FDE0A8 /* comment.png */,
 				0007FAB21850386000FE8098 /* cell_weibo1.png */,
@@ -598,20 +662,31 @@
 				181E93D7183B0FA6001F3071 /* person9.png in Resources */,
 				1855430E183F4B8400AA45E5 /* navbar_bg.png in Resources */,
 				18C9F5BE182796E800ADBEC4 /* buttonBack1.png in Resources */,
+				20828F401851F2910078F894 /* trophy1.png in Resources */,
 				181E93E7183B144E001F3071 /* online5 copy.png in Resources */,
 				181A3D7D1825CF19001B2781 /* FaceMe_logo_large.png in Resources */,
+				20828F2C1851F2760078F894 /* facebookLogin.png in Resources */,
 				00F47985185166A700FDE0A8 /* sideview.png in Resources */,
 				181E93E3183B1325001F3071 /* people6.png in Resources */,
 				00F47983185164A900FDE0A8 /* camera.png in Resources */,
+				20828F311851F2760078F894 /* icon2.png in Resources */,
+				20828F341851F2760078F894 /* loginBackground.png in Resources */,
 				0007FAB31850386000FE8098 /* cell_weibo1.png in Resources */,
 				00F4798918516ADC00FDE0A8 /* comment.png in Resources */,
 				0007FAB518503BED00FE8098 /* postCell.png in Resources */,
+				20828F2F1851F2760078F894 /* heart.png in Resources */,
+				20828F301851F2760078F894 /* icon1.png in Resources */,
+				20828F2D1851F2760078F894 /* facebookupload.png in Resources */,
 				0007FAB1185037AA00FE8098 /* cell_weibo.png in Resources */,
+				20828F2B1851F2760078F894 /* email.png in Resources */,
 				1846A99218371C7A00C4796C /* gatech1.jpg in Resources */,
 				185054C4184403B600300E5F /* newcell.png in Resources */,
 				18C9F5B118277C4600ADBEC4 /* cell_middle@2x.png in Resources */,
 				207944FB17FA254F00D4882F /* Images.xcassets in Resources */,
+				20828F411851F2910078F894 /* upload.png in Resources */,
+				20828F3F1851F2910078F894 /* trophy.png in Resources */,
 				1846A98D183719F700C4796C /* gatech2.jpg in Resources */,
+				20828F291851F2760078F894 /* appLogin.png in Resources */,
 				1846A997183720F700C4796C /* gatech4.jpg in Resources */,
 				00F479811851514300FDE0A8 /* shadow.png in Resources */,
 				181E93D5183B0FA6001F3071 /* check7.png in Resources */,
@@ -619,18 +694,25 @@
 				1846A99018371AF500C4796C /* gatech3.jpg in Resources */,
 				1846A99C1837224800C4796C /* gatech8.jpg in Resources */,
 				18E4F88718382D3000D21A80 /* gatech9.jpg in Resources */,
+				20828F3E1851F2910078F894 /* textFields.png in Resources */,
+				20828F321851F2760078F894 /* icon3.png in Resources */,
 				184A9C3C182F411900DE3647 /* Main_iPhone.storyboard in Resources */,
+				20828F3D1851F2910078F894 /* number.png in Resources */,
 				185054BA1843F66300300E5F /* profileBackground.png in Resources */,
 				185054BC1843F9BA00300E5F /* profileBackground_lines.png in Resources */,
 				00F4798B18516C0100FDE0A8 /* comment1.png in Resources */,
 				00F479871851674000FDE0A8 /* camera1.png in Resources */,
+				20828F2E1851F2760078F894 /* game.png in Resources */,
+				20828F281851F2760078F894 /* address.png in Resources */,
 				18C9F5BA1827845300ADBEC4 /* navbar_bg@2x_1.png in Resources */,
 				181E93DD183B1152001F3071 /* bust.png in Resources */,
 				181E93DF183B1241001F3071 /* machine2.png in Resources */,
 				185054BE1843FFE500300E5F /* cell.png in Resources */,
 				1846A998183720F700C4796C /* gatech5.jpg in Resources */,
 				181E93E1183B12AB001F3071 /* people5.png in Resources */,
+				20828F331851F2760078F894 /* introBack.png in Resources */,
 				207944EA17FA254F00D4882F /* InfoPlist.strings in Resources */,
+				20828F2A1851F2760078F894 /* buttonLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +745,7 @@
 				889E1BA3184C306A005438F1 /* UserFaceEntity.m in Sources */,
 				20828F0E1851AB040078F894 /* GLESImageView.mm in Sources */,
 				889E1BA0184C2420005438F1 /* NewsFeedEntity.m in Sources */,
+				20828F371851F2840078F894 /* LoginViewController.m in Sources */,
 				18E1C5BC1841684600599B07 /* ImageRoundCorner.m in Sources */,
 				183B640B18447C37009CA666 /* PosterEntity.m in Sources */,
 				20828F0C1851AB040078F894 /* DummyVideoSource.mm in Sources */,
@@ -672,6 +755,7 @@
 				20828F031851AAC30078F894 /* cvneon.cpp in Sources */,
 				180C67AF1827426A00747186 /* PosterCell.m in Sources */,
 				207944EC17FA254F00D4882F /* main.m in Sources */,
+				20828F441851F29D0078F894 /* UserProfile.m in Sources */,
 				20828F041851AAC30078F894 /* Globals.cpp in Sources */,
 				1846A97918369D4000C4796C /* IntroChildViewController.m in Sources */,
 				181A3D891825D945001B2781 /* PosterSelectionViewController.m in Sources */,

@@ -10,6 +10,9 @@
 #import "AppDelegate.h"
 @interface MainViewController : UIViewController
 - (IBAction)signIn_btn:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+- (IBAction)facebookLogin:(id)sender;
+- (IBAction)facemeLogin:(id)sender;
 
 
 @end
