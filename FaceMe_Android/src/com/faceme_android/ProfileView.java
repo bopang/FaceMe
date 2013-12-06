@@ -26,8 +26,6 @@ public class ProfileView {
 	private View mContentView;
 	private LayoutInflater mLayoutInFlater;
 	
-	//private ListView mPosterList;
-	//private ArrayAdapter<PosterEntity> mListAdapter;
 	
 	private ApplicationData mApplicationData;
 	
@@ -58,11 +56,5 @@ public class ProfileView {
 	public View getContentView() {
 		return mContentView;
 	}
-
-//	public ArrayAdapter getAdapter(){
-//		return mListAdapter;
-//	}
-
-	
 	
 }
