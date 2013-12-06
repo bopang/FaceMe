@@ -45,7 +45,7 @@ public class NotificationEndpoint {
 //										"parameters String mainuserid "
 //										);
 			Query query = mgr.newQuery(NotificationEntity.class, 
-					"(activeUser ==userID)");
+					"userName ==userID");
 		
 			for (Object obj : (List<Object>) query.execute()) {
 				result.add(((NotificationEntity) obj));
