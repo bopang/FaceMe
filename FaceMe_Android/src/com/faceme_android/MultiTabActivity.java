@@ -32,7 +32,8 @@ public class MultiTabActivity extends Activity {
 	private PosterSelectionView mPosterSelectionView;
 	private NewsFeedView mNewsFeedView;
 	private RankingView mRankingView;
-
+	private ProfileView mProfileView;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,13 +69,14 @@ public class MultiTabActivity extends Activity {
 		mPosterSelectionView = new PosterSelectionView(this);
 		mNewsFeedView = new NewsFeedView(this);
 		mRankingView = new RankingView(this);
+		mProfileView = new ProfileView(this);
 		
 		LayoutInflater mLi = LayoutInflater.from(this);
 		View view1 = mLi.inflate(R.layout.multitab_subtab_play, null);
 		//View view2 = mLi.inflate(R.layout.multitab_subtab_b, null);
 		//View view3 = mLi.inflate(R.layout.multitab_subtab_c, null);
 		View view4 = mLi.inflate(R.layout.multitab_subtab_d, null);
-		View view5 = mLi.inflate(R.layout.multitab_subtab_profile, null);
+		//View view5 = mLi.inflate(R.layout.multitab_subtab_profile, null);
 
 		// ����������view����
 		final ArrayList<View> views = new ArrayList<View>();
@@ -84,7 +86,7 @@ public class MultiTabActivity extends Activity {
 		//views.add(view2);
 		views.add(mRankingView.getContentView());
 		views.add(view4);
-		views.add(view5);
+		views.add(mProfileView.getContentView());
 
 		// ����ViewPager������������
 		PagerAdapter mPagerAdapter = new PagerAdapter() {
