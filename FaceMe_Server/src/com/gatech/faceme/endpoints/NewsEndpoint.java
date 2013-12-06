@@ -120,7 +120,37 @@ public class NewsEndpoint {
 				count++;
 				if(count==(start+number-1)) break;
 			}
-		} finally {
+			for (PairTableEntity obj : (List<PairTableEntity>) query3.execute()) {
+				if(obj.getUserFaces().size()==0) continue;
+				UserFaceEntity userface = mgr.getObjectById(UserFaceEntity.class, 
+						Long.parseLong(obj.getUserFaces().get(0)));
+				
+				String posterkey = userface.getPosterKey();
+				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
+				Key posterKey = posterEntity.getKey();
+				
+				query2 = mgr.newQuery(CharacterFaceEntity.class);
+				query2.setFilter("posterID == posterIDparam");
+				query2.declareParameters(Key.class.getName() + " posterIDparam");
+				
+				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
+				for (String uf: obj.getUserFaces()) {
+					userfaces.add(mgr.getObjectById(UserFaceEntity.class, Long.parseLong(uf)));
+				}
+			
+				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
+				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute(posterKey)) {
+					characters.add(object);
+					
+				}
+				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(), posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
+						posterEntity.getPosterName(), userfaces, characters));
+				count++;
+				if(count==(start+number-1)) break;
+	
+			}
+		} 
+		finally {
 			mgr.close();
 		}
 		return result;
