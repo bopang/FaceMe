@@ -16,7 +16,7 @@
         >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/button_retake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -25,7 +25,7 @@
             android:textSize="18sp" />
         
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/button_retake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -36,7 +36,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/button_retake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"

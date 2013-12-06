@@ -24,17 +24,31 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left|top"
         android:gravity="center"
-        android:layout_marginBottom="25dp" >
+        android:layout_marginBottom="5dp" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/button_backToMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:background="@drawable/secondbuttonshape"
             android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="5dp"
+            android:text="Back"
+            android:textColor="#333"
+            android:textSize="20sp" />
+        
+        <Button
+            android:id="@+id/button_retake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/secondbuttonshape"
+            android:paddingBottom="5dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:paddingTop="5dp"
             android:text="Retake"
             android:textColor="#333"
@@ -47,8 +61,8 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/secondbuttonshape"
             android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:paddingTop="5dp"
             android:text="Upload"
             android:textColor="#333"
@@ -60,50 +74,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/secondbuttonshape"
             android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:paddingTop="5dp"
             android:text="Share"
             android:textColor="#333"
             android:textSize="20sp" >
 
         </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#222222"
-        android:gravity="center" >
-
-        <Button
-            android:id="@+id/button_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="Home"
-            android:textColor="#fdbb1d"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@null"
-            android:text="Notification"
-            android:textColor="#fdbb1d"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="Friends"
-            android:textColor="#fdbb1d"
-            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

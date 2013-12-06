@@ -259,6 +259,7 @@ public class ApplicationData extends Application{
 		@Override
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
+			mNews.clear();
 			HttpClient client=new DefaultHttpClient();
 			HttpGet httpGet=new HttpGet(newsFeedUrl);
 			try {
@@ -300,11 +301,17 @@ public class ApplicationData extends Application{
 					
 					for(int j=0; j<userfacesJson.length(); j++){
 						JSONObject userfaceJson = userfacesJson.getJSONObject(j);
+						long id = userfaceJson.getJSONObject("key").getLong("id");
+						if(mUserFaceCache.containsKey(id)){
+							userfaces.add(id);
+							continue;
+						}
+						
 						String imageKey = userfaceJson.getString("imageKey");
 						String userName = userfaceJson.getString("userID");
 						String posterID = userfaceJson.getString("posterKey");
 						long characterID = userfaceJson.getLong("characterKey");
-						long id = userfaceJson.getJSONObject("key").getLong("id");
+						
 						UserFaceEntity userface = new UserFaceEntity(imageKey, userName, posterID, characterID);
 						userface.userFaceBmp = Tools.getImageBitmapFromBlobKey(imageKey);
 						
@@ -318,6 +325,11 @@ public class ApplicationData extends Application{
 					for(int j=0; j<characterfacesJson.length(); j++){
 						JSONObject characterfaceJson = characterfacesJson.getJSONObject(j);
 						 long id = characterfaceJson.getJSONObject("key").getLong("id");
+						 if(mCharacterFaceCache.containsKey(id)){
+							 characters.add(id);
+							 continue;
+						 }
+						 
 						 String imageKey=characterfaceJson.getString("imageKey");
 						 String name = characterfaceJson.getString("name");
 						 float positionX = (float) characterfaceJson.getDouble("positionX");
@@ -331,7 +343,7 @@ public class ApplicationData extends Application{
 						 characterface.bmp = Tools.getImageBitmapFromBlobKey(imageKey);
 						 
 						 mCharacterFaceCache.put(id, characterface);
-						 characters.add(id); 
+						 characters.add(id);
 					}
 					
 					NewsEntity news = new NewsEntity(posterKey, originalPosterImageKey,
@@ -342,6 +354,7 @@ public class ApplicationData extends Application{
 					news.originalPosterBmp = Tools.getImageBitmapFromBlobKey(originalPosterImageKey);
 					
 					mNews.add(news);
+				
 				}
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block

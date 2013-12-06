@@ -6,26 +6,40 @@
     android:background="#2d2d2d"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/label_newsfeed"
+    <FrameLayout
+        android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fdbb1d"
-        android:gravity="center"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:text="News Feed"
-        android:textColor="#333"
-        android:textSize="25sp" />
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_newsfeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fdbb1d"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="News Feed"
+            android:textColor="#333"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:id="@+id/button_refresh"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/refresh" />
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="440dp"
+        android:background="#eeeeee"
         android:paddingBottom="0dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:paddingTop="25dp" 
-        android:background="#eeeeee">
+        android:paddingTop="25dp" >
 
         <ListView
             android:id="@+id/listView_newslist"
@@ -40,7 +54,6 @@
             android:layout_gravity="center"
             android:text="Loading..."
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </FrameLayout>
-    
+
 </LinearLayout>

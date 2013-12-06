@@ -62,15 +62,6 @@ public class PosterSelectionActivity extends Activity {
 		chosePoster();	
 		state = (ApplicationData) getApplicationContext();
 		
-		Button btn_home = (Button) findViewById(R.id.button_home);
-		btn_home.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-					startActivity(new Intent(getBaseContext(),MenuActivity.class));
-			}
-		});
-		
 	}
 	public void chosePoster(){
 		ListView posterList=(ListView) findViewById(R.id.listView_posterlist);

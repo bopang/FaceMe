@@ -1,6 +1,5 @@
 package com.faceme_android;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -9,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.example.faceme_android.ApplicationData;
 import com.example.faceme_android.CharacterSelectionActivity;
-import com.example.faceme_android.PosterEntity;
 import com.example.faceme_android.R;
+import com.example.faceme_android.RateAndCommentActivity;
 import com.example.faceme_android.Tools;
 
 public class NewsFeedView {
@@ -47,7 +47,26 @@ public class NewsFeedView {
 		mNewsList = (ListView) mContentView.findViewById(R.id.listView_newslist);
 		mListAdapter = new NewsAdapter(mApplicationData.mNews);
 		mNewsList.setAdapter(mListAdapter);
+		mNewsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View viewClicked, int position,
+					long id) {
+				mApplicationData.currentNews = mApplicationData.mNews.get(position);
+				Intent intent =new Intent(mContext, RateAndCommentActivity.class);
+
+				mContext.startActivity(intent);
+			}
+		});
 		
+		Button btn_refresh = (Button) mContentView.findViewById(R.id.button_refresh);
+		btn_refresh.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mApplicationData.loadNewsFeed(mListAdapter);
+			}
+		});
 //		mNewsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
 //			@Override
@@ -135,6 +154,7 @@ public class NewsFeedView {
 					mContext.startActivity(intent);
 				}
 			});
+			
 			return templateView;
 		}
 		

@@ -26,6 +26,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.faceme_android.MultiTabActivity;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
@@ -128,6 +130,15 @@ public class PictureViewActivity extends Activity {
 		Button btn_share = (Button)findViewById(R.id.button_Share);
 		Button btn_upload = (Button)findViewById(R.id.button_Upload);
 
+		Button btn_back = (Button) findViewById(R.id.button_backToMenu);
+		btn_back.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+					startActivity(new Intent(getBaseContext(),MultiTabActivity.class));
+			}
+		});
+		
 		btn_share.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -145,12 +156,12 @@ public class PictureViewActivity extends Activity {
 			}
 		});
 
-		Button btn_home = (Button) findViewById(R.id.button_home);
-		btn_home.setOnClickListener(new View.OnClickListener() {
+		Button btn_retake = (Button) findViewById(R.id.button_retake);
+		btn_retake.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(getBaseContext(),MenuActivity.class));
+				startActivity(new Intent(getBaseContext(),CameraActivity.class));
 			}
 		});
 

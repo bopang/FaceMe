@@ -31,6 +31,17 @@ public class MainActivity extends Activity {
 				//createNotification();
 			}
 		});
+        
+        Button btn_signup=(Button)findViewById(R.id.button_signUp);
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(getBaseContext(), CameraActivitySuperMan.class));
+				//createNotification();
+			}
+		});
     }
 
 

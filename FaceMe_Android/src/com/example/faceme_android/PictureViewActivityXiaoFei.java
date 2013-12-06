@@ -70,14 +70,6 @@ public class PictureViewActivityXiaoFei extends Activity {
 			}
 		});
 		
-		Button btn_home = (Button) findViewById(R.id.button_home);
-		btn_home.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-					startActivity(new Intent(getBaseContext(),MenuActivity.class));
-			}
-		});
 		
 		btn_upload.setOnClickListener(new View.OnClickListener() {
 			

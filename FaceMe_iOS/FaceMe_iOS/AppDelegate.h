@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "CharacterFace.h"
 #import "NewsFeedEntity.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property PosterEntity*currentPoster;
 @property NSMutableArray*loadedPoster;

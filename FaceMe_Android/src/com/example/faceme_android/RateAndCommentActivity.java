@@ -25,12 +25,13 @@ public class RateAndCommentActivity extends Activity {
 	ListView userCommentsView;
 	ArrayAdapter<UserComment> commentAdapter;
 	EditText newCommentTextField;
+	ApplicationData mApplicationData;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rate_and_comment);
-		
+		mApplicationData = (ApplicationData) (ApplicationData) getApplicationContext();
 		ImageView poster = (ImageView) findViewById(R.id.imageView_rating);
 		userCommentsView=(ListView) findViewById(R.id.commentsList);
 		newCommentTextField = (EditText) findViewById(R.id.addCommentTextField);
@@ -38,12 +39,10 @@ public class RateAndCommentActivity extends Activity {
 		commentList = new ArrayList<UserComment>();
 		
 		
-		poster.setImageBitmap(Tools.getBitmapFromAsset(this, "iron_man_3_Face full.jpg"));
-		
-		
-		
+		poster.setImageBitmap(mApplicationData.currentNews.cosplayBmp);
+
 	//	commentList.add(new UserComment("Xiaofei Zeng", "Interesting! :)", Tools.getBitmapFromAsset(this, "xiaofeiFace.jpg")));
-		commentList.add(new UserComment("Ziyi Jiang", "So Cool!", Tools.getBitmapFromAsset(this, "ziyiFace.jpeg")));
+	//	commentList.add(new UserComment("Ziyi Jiang", "So Cool!", Tools.getBitmapFromAsset(this, "ziyiFace.jpeg")));
 	
 		
 		LayoutParams lp = userCommentsView.getLayoutParams();
