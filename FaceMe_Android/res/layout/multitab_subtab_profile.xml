@@ -33,24 +33,13 @@
             android:layout_marginTop="15dip" >
 
             <ImageView
-                android:id="@+id/reviseHead"
+                android:id="@+id/iv_userFace"
                 android:layout_width="130.0dip"
                 android:layout_height="130.0dip"
                 android:background="@drawable/defaultuserpicture"
                 android:scaleType="fitXY" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="20.0dip"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:background="#55000000"
-                android:clickable="false"
-                android:focusable="false"
-                android:gravity="center"
-                android:text="Loading"
-                android:textColor="#ffffffff"
-                android:textSize="10.0dip" />
+            
         </RelativeLayout>
 
         <LinearLayout
@@ -77,15 +66,15 @@
                 android:layout_margin="5sp"
                 android:background="@drawable/yellowline" />
 
-            <EditText
-                android:id="@+id/add_brith_name"
+            <TextView
+                android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:hint="Please input your name"
+                android:text="User Name"
                 android:lines="1"
                 android:textSize="15dp" />
+        
         </LinearLayout>
 
         <LinearLayout
@@ -110,39 +99,15 @@
                 android:layout_margin="5sp"
                 android:background="@drawable/yellowline" />
 
-            <RadioGroup
-                android:id="@+id/add_radioGourp"
+            <TextView
+                android:id="@+id/tv_user_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:layout_gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:text="Gender"
+                android:textSize="15dp" />
 
-                <RadioButton
-                    android:id="@+id/add_brith_nan"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:background="#0fffffff"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/check_circle"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="5dip"
-                    android:text="Male"
-                    android:textColor="#222222" />
-
-                <RadioButton
-                    android:id="@+id/add_brith_nv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:background="#0fffffff"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/check_circle"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="15dip"
-                    android:text="Female"
-                    android:textColor="#222222" />
-            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
@@ -157,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dip"
-                android:text="DOB     "
+                android:text="School"
                 android:textColor="#C48550" />
 
             <ImageView
@@ -166,13 +131,13 @@
                 android:layout_margin="5sp"
                 android:background="@drawable/yellowline" />
 
-            <Button
-                android:id="@+id/add_brith_brith"
+            <TextView
+                android:id="@+id/tv_user_school"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:hint="Set your date of birth "
+                android:hint="School"
                 android:lines="1"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -256,7 +221,7 @@
             android:layout_marginTop="20dip"
             android:background="@drawable/buttonstatus"
             android:gravity="center"
-            android:text="Save"
+            android:text="OK"
             android:textColor="#ffffff"
             android:textSize="25sp" />
     </LinearLayout>

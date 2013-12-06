@@ -51,6 +51,8 @@ public class NotificationEntity {
 		this.userName = userName;
 	}
 	
-	
+	public NotificationEntity clone(){
+		return new NotificationEntity(this.getKey(),this.getPairKey(),this.getUserName());
+	}
 	
 }
