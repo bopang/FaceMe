@@ -52,11 +52,11 @@ public class CharacterSelectionActivity extends Activity {
 		mApplicationData =(ApplicationData) getApplicationContext();
 		
 		if(mApplicationData.playWithNews == false){
-			posterTitle.setText(mApplicationData.currentPoster.getPosterName());
+			posterTitle.setText(mApplicationData.currentPoster.getMovieName());
 			loadPosterData(mApplicationData.currentPoster);
 		}
 		else{
-			posterTitle.setText(mApplicationData.currentNews.posterName);
+			posterTitle.setText(mApplicationData.currentNews.movieName);
 			ImageView posterImg=(ImageView) findViewById(R.id.received_posterPic);
 			posterImg.setImageBitmap(mApplicationData.currentNews.cosplayBmp);
 			setCharacterImageViews(mApplicationData.currentNews.getAvaliableFaces(mApplicationData));
