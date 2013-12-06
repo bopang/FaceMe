@@ -64,6 +64,8 @@
             android:name="com.example.faceme_android.PictureViewActivity"
             android:label="@string/title_activity_picture_view" >
         </activity>
+         <activity android:name="com.example.faceme_android.RegistrationActivity" >
+        </activity>
         <activity android:name="com.example.faceme_android.PictureViewActivityXiaoFei" >
         </activity>
         <activity android:name="com.example.faceme_android.PosterSelectionActivity" >

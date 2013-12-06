@@ -38,7 +38,7 @@
         android:textSize="50sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_signup"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button_signin"
