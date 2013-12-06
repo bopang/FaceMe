@@ -66,7 +66,7 @@ public class NewsEndpoint {
 				
 				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
 				for (String uf: obj.getUserFaces()) {
-					userfaces.add(mgr.getObjectById(UserFaceEntity.class, uf));
+					userfaces.add(mgr.getObjectById(UserFaceEntity.class, Long.parseLong(uf)));
 				}
 			
 				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
