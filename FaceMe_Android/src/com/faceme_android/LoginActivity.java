@@ -107,20 +107,26 @@ public class LoginActivity extends Activity {
 			editor.putString("username", username);
 			editor.putString("password", password);
 			editor.commit();
-			startActivity(new Intent(LoginActivity.this, MultiTabActivity.class));
 			createNotification();
+			startActivity(new Intent(LoginActivity.this, MultiTabActivity.class));
+			
 		}
 	}
 	
     public void createNotification() {
         // Prepare intent which is triggered if the
         // notification is selected
-        Intent intent = new Intent(this, RateAndCommentActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Bitmap logoIcon=Tools.getBitmapFromAsset(this, "logo.png");
+       
         
         new GetNotificationInfoTask().execute();
+        try {
+			Thread.sleep(300);
+		} catch (InterruptedException e1) {e1.printStackTrace();}
         if(hasNotification){
+        	System.out.println("Generate Notification intent "+ hasNotification);
+        	 Intent intent = new Intent(LoginActivity.this, MultiTabActivity.class);
+        	PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+             Bitmap logoIcon=Tools.getBitmapFromAsset(this, "logo.png");
         	// Build notification
             NotificationCompat.Builder noti = new NotificationCompat.Builder(this)
             .setContentTitle("You Got a Paired Photo! " )
@@ -167,6 +173,7 @@ public class LoginActivity extends Activity {
 				
 				if (items.length() > 0) {
 					hasNotification = true;
+					System.out.println("hasNotification"+hasNotification);
 				}
 				
 				
@@ -180,6 +187,7 @@ public class LoginActivity extends Activity {
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				hasNotification = false;
+				System.out.println("hasNotification"+hasNotification);
 			}
 			
 			return null;
