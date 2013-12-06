@@ -31,26 +31,6 @@ public class NewsEndpoint {
 			Query query1 = mgr.newQuery(UserFaceEntity.class);
 			Query query2 = mgr.newQuery(CharacterFaceEntity.class);
 			Query query3 =mgr.newQuery(PairTableEntity.class); 
-
-			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
-				String posterkey = obj.getPosterKey();
-				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
-				Key posterKey = posterEntity.getKey();
-				
-				query2 = mgr.newQuery(CharacterFaceEntity.class);
-				query2.setFilter("posterID == posterIDparam");
-				query2.declareParameters(Key.class.getName() + " posterIDparam");
-				
-				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
-				userfaces.add(obj);
-				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
-				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute(posterKey)) {
-					characters.add(object);
-					
-				}
-				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(), posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
-						posterEntity.getPosterName(), userfaces, characters));
-			}
 			for (PairTableEntity obj : (List<PairTableEntity>) query3.execute()) {
 				if(obj.getUserFaces().size()==0) continue;
 				UserFaceEntity userface = mgr.getObjectById(UserFaceEntity.class, 
@@ -77,6 +57,26 @@ public class NewsEndpoint {
 				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(), posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
 						posterEntity.getPosterName(), userfaces, characters));
 			}
+			for (UserFaceEntity obj : (List<UserFaceEntity>) query1.execute()) {
+				String posterkey = obj.getPosterKey();
+				PosterEntity posterEntity = mgr.getObjectById(PosterEntity.class, Long.parseLong(posterkey));
+				Key posterKey = posterEntity.getKey();
+				
+				query2 = mgr.newQuery(CharacterFaceEntity.class);
+				query2.setFilter("posterID == posterIDparam");
+				query2.declareParameters(Key.class.getName() + " posterIDparam");
+				
+				ArrayList<UserFaceEntity> userfaces = new ArrayList<UserFaceEntity>();
+				userfaces.add(obj);
+				ArrayList<CharacterFaceEntity> characters = new ArrayList<CharacterFaceEntity>();
+				for (CharacterFaceEntity object : (List<CharacterFaceEntity>) query2.execute(posterKey)) {
+					characters.add(object);
+					
+				}
+				result.add(new News(posterkey, posterEntity.getOriginalPosterKey(), posterEntity.getNonfacePosterKey(), posterEntity.getMovieName(),
+						posterEntity.getPosterName(), userfaces, characters));
+			}
+			
 		} finally {
 			//mgr.close();
 		}

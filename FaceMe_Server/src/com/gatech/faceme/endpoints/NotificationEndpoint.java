@@ -48,7 +48,8 @@ public class NotificationEndpoint {
 					"userName ==userID");
 		
 			for (Object obj : (List<Object>) query.execute()) {
-				result.add(((NotificationEntity) obj));
+				result.add(((NotificationEntity) obj).clone());
+				mgr.deletePersistent(obj);
 			}
 			
 		} finally {
@@ -111,6 +112,21 @@ public class NotificationEndpoint {
 		return notification;
 	}
 	
+	@ApiMethod(httpMethod = "DELETE", name = "notification.remove", path = "notification/remove/list")
+	@SuppressWarnings({ "cast", "unchecked" })
+	public void removeListNotification() {
+		PersistenceManager mgr = PMF.get().getPersistenceManager();
+		//List<NotificationEntity> result = new ArrayList<NotificationEntity>();
+		try {
+			Query query = mgr.newQuery(NotificationEntity.class);
+			for (Object obj : (List<Object>) query.execute()) {
+				mgr.deletePersistent(obj);
+			}
+		} finally {
+			mgr.close();
+		}
+	
+	}
 	private static PersistenceManager getPersistenceManager() {
 		return PMF.get().getPersistenceManager();
 	}
