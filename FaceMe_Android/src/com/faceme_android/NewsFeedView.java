@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -59,7 +60,7 @@ public class NewsFeedView {
 			}
 		});
 		
-		Button btn_refresh = (Button) mContentView.findViewById(R.id.button_refresh);
+		ImageButton btn_refresh = (ImageButton) mContentView.findViewById(R.id.button_refresh);
 		btn_refresh.setOnClickListener(new OnClickListener() {
 
 			@Override
