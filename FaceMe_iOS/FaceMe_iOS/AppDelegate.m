@@ -7,13 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "MenuViewController.h"
 #import "IntroductionViewController.h"
 @interface AppDelegate ()
 @property (strong, nonatomic) UITabBarController* tabController;
 @property(strong,nonatomic) MenuViewController* mainViewController;
-@property(strong,nonatomic) ViewController*loginViewController;
+@property(strong,nonatomic) MainViewController*     loginViewController;
 @property(strong, nonatomic) UIStoryboard* mainStoryboard;
 @property(strong,nonatomic) IntroductionViewController*introViewController;
 
@@ -26,6 +26,8 @@
 @synthesize mainViewController;
 @synthesize newsFeeds;
 @synthesize chosenFace,currentPoster,currentUser,loadedPoster;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar_bg"];

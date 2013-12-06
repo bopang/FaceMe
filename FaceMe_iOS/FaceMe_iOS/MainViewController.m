@@ -6,13 +6,13 @@
 //  Copyright (c) 2013年 Bo Pang. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad
 {

@@ -19,5 +19,5 @@
 @property UIImage* thumbnail;
 @property UIImage* orginalPoster;
 @property UIImage* nonfacePoster;
-@property NSArray*faces;
+@property NSArray* faces;
 @end

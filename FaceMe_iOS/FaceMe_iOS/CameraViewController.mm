@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Bo Pang. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CameraViewController.h"
 #import "UIImage2OpenCV.h"
+#import "AppDelegate.h"
 
-
-@interface ViewController ()
+@interface CameraViewController ()
 {
 #if TARGET_IPHONE_SIMULATOR
     DummyVideoSource * videoSource;
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation ViewController
+@implementation CameraViewController
 @synthesize imageView;
 @synthesize posterImage;
 @synthesize posterNFImage;
@@ -58,10 +58,20 @@
     
     // Init poster Image
     
-    self.posterImage = [UIImage imageNamed:@"image1.jpg"];
-    self.posterNFImage = [UIImage imageNamed:@"image2.png"];
+    AppDelegate* appDelegate=[UIApplication sharedApplication].delegate ;
+//    self.posterImage = [UIImage imageNamed:@"image1.jpg"];
+//    self.posterNFImage = [UIImage imageNamed:@"image2.png"];
+    self.posterImage = [[appDelegate currentPoster] orginalPoster];
+    self.posterNFImage = [[appDelegate currentPoster] nonfacePoster];
+    
     self.mat_poster = [self.posterImage toMat];
     self.mat_posterNF = [self.posterNFImage toMat];
+    
+    
+    self.face_x = [[appDelegate chosenFace] positionX];//0.31318f;
+    self.face_y = [[appDelegate chosenFace] positionY];
+    self.face_width = [[appDelegate chosenFace] width];
+    self.face_height = [[appDelegate chosenFace] height];
     
     [self initMatData];
     
@@ -112,10 +122,7 @@
 #pragma mark - InitMatData
 - (void) initMatData
 {
-    self.face_x = 0.31318f;
-    self.face_y = 0.16038f;
-    self.face_width = 0.22727f;
-    self.face_height = 0.18868f;
+    
     
     int imageWidth = mat_poster.cols;
     int imageHeight = mat_poster.rows;

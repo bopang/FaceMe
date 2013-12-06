@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewFeedCell.h"
 #import "NewsFeedEntity.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "CharacterFace.h"
 #import "IntroductionViewController.h"
 #import "ImageRoundCorner.h"
@@ -18,7 +18,7 @@
 #import "AppDelegate.h"
 @interface MenuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *profileView;
-@property ViewController*loginViewController;
+@property MainViewController *loginViewController;
 @property (weak,nonatomic) NSData*responseData;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *gender;

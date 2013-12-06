@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     roundCorner=[[ImageRoundCorner alloc]init];
-   // UIEdgeInsets inset = UIEdgeInsetsMake(5, 0, 0, 0);
+    // UIEdgeInsets inset = UIEdgeInsetsMake(5, 0, 0, 0);
     //self.posterTable.contentInset = inset;
     NSURL *url = [NSURL URLWithString:@"https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -50,18 +50,18 @@
     //NSLog(@"%@", json);
     posters=[[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view.
-   // NSDictionary *items = [json objectForKey:@"items"];
-
+    // NSDictionary *items = [json objectForKey:@"items"];
+    
     NSArray *items = [json objectForKey:@"items"];
     for (id item in items){
         PosterEntity *currentPoster=[[PosterEntity alloc]init];
         currentPoster.movieName =[item objectForKey:@"movieName"];
-         NSLog(@"%@", currentPoster.movieName);
+        NSLog(@"%@", currentPoster.movieName);
         currentPoster.thumbnailKey=[item objectForKey:@"thumbnailKey"];
-         NSLog(@"%@", currentPoster.thumbnailKey);
+        NSLog(@"%@", currentPoster.thumbnailKey);
         currentPoster.key=[[item objectForKey:@"key"] objectForKey:@"id"];
         NSLog(@"id= %@", currentPoster.key);
-       
+        
         currentPoster.posterName=[item objectForKey:@"posterName"];
         currentPoster.nonfacePosterKey=[item objectForKey:@"nonfacePosterKey"];
         currentPoster.originalPosterKey=[item objectForKey:@"originalPosterKey"];
@@ -72,17 +72,17 @@
     }
     AppDelegate*appDelegate=[UIApplication sharedApplication].delegate ;
     appDelegate.loadedPoster=posters;
-//    for (id key in json) {
-//            NSLog(@"%@", key);
-//        SinglePoster *currentPoster=[[SinglePoster alloc]init];
-//        NSDictionary *subDictionary = [json objectForKey:@"items"];
-//        currentPoster.posterTitle =[subDictionary objectForKey:@"posterName"];
-//        NSLog(@"%@", currentPoster.posterTitle );
-//        //NSString *image= [json objectForKey:@"urlpath"];
-//        // do stuff
-//        [posters addObject:currentPoster];
-        
-//    }
+    //    for (id key in json) {
+    //            NSLog(@"%@", key);
+    //        SinglePoster *currentPoster=[[SinglePoster alloc]init];
+    //        NSDictionary *subDictionary = [json objectForKey:@"items"];
+    //        currentPoster.posterTitle =[subDictionary objectForKey:@"posterName"];
+    //        NSLog(@"%@", currentPoster.posterTitle );
+    //        //NSString *image= [json objectForKey:@"urlpath"];
+    //        // do stuff
+    //        [posters addObject:currentPoster];
+    
+    //    }
     
     self.posterTable.separatorColor = [UIColor clearColor];
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
@@ -118,18 +118,18 @@
     UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
     //cellBackgroundView.image = background;
     cell.backgroundView = cellBackgroundView;
-
+    
     
     //cell.posterTitle.text=@"1234";
     //cell.thumbnailImageView.image = [UIImage imageNamed:[thumbnails objectAtIndex:indexPath.row]];
-   // cell.posterDetail.text = [prepTime objectAtIndex:indexPath.row];
+    // cell.posterDetail.text = [prepTime objectAtIndex:indexPath.row];
     
-//    UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
-//  
-//    
-//    UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
-//    cellBackgroundView.image = background;
-//    cell.backgroundView = cellBackgroundView;
+    //    UIImage *background = [self cellBackgroundForRowAtIndexPath:indexPath];
+    //
+    //
+    //    UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
+    //    cellBackgroundView.image = background;
+    //    cell.backgroundView = cellBackgroundView;
     
     return cell;
 }
@@ -164,13 +164,13 @@
         NSIndexPath *indexPath = [self.posterTable indexPathForSelectedRow];
         NSLog(@"%ld",(long)indexPath.row);
         CharaterSelectionViewController*controller = segue.destinationViewController;
-       controller.imageUrl = ((PosterEntity *)[posters objectAtIndex:indexPath.row]).thumbnailKey;
+        controller.imageUrl = ((PosterEntity *)[posters objectAtIndex:indexPath.row]).thumbnailKey;
         self.theKey=[(PosterEntity*)[posters objectAtIndex:indexPath.row]key];
         NSLog(@"the key is %@",theKey);
-       
+        
         controller.getKey=self.theKey;
         AppDelegate*appDelegate=[UIApplication sharedApplication].delegate ;
-        appDelegate. currentPoster= [posters objectAtIndex:indexPath.row];
+        appDelegate.currentPoster= [posters objectAtIndex:indexPath.row];
     }
 }
 
@@ -184,10 +184,10 @@
     {
         retImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageNamed]]];
         
-            [staticImageDictionary setObject:retImage forKey:imageNamed];
+        [staticImageDictionary setObject:retImage forKey:imageNamed];
         
     }
-   
+    
     return retImage;
 }
 

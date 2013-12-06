@@ -19,5 +19,6 @@
 @property NSString* getKey;
 @property ImageRoundCorner*imageTool;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property NSMutableArray* faceImageViews;
 
 @end

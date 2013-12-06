@@ -9,5 +9,5 @@
 #import "NewsFeedEntity.h"
 
 @implementation NewsFeedEntity
-@synthesize posterKey,posterName,movieName,orginalPosterBmp,orignalPosterImageKey,nonfacePosterBmp,nonfacePosterImagekey,updateDate,userfaces,characters,cosplayBmp;
+@synthesize posterKey,posterName,movieName,orginalPosterBmp,orignalPosterImageKey,nonfacePosterBmp,nonfacePosterImagekey,updateDate,userfaces,characters,cosplayBmp, userNames;
 @end

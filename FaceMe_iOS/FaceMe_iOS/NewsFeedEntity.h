@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface NewsFeedEntity : NSObject
+
 @property NSString*posterKey;
+
+@property NSMutableArray* userNames;
+
 @property NSString*orignalPosterImageKey;
 @property NSString*nonfacePosterImagekey;
 @property NSString*movieName;

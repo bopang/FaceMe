@@ -10,7 +10,7 @@
 #import "GLESImageView.h"
 #import "VideoSource.h"
 
-@interface ViewController : UIViewController<VideoSourceDelegate,UIActionSheetDelegate>
+@interface CameraViewController : UIViewController<VideoSourceDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) GLESImageView *imageView;
 @property (nonatomic, strong) UIImage *posterImage;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IntroChildViewController.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 @interface IntroductionViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 @property (strong,nonatomic) UIPageViewController*mainPageView;
 

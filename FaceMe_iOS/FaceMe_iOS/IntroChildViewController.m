@@ -7,7 +7,7 @@
 //
 
 #import "IntroChildViewController.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 @interface IntroChildViewController ()
 
 @end
@@ -45,7 +45,7 @@
     if (self.index==3) {
         //[btn_1 setHidden:NO];
         //[btn_2 setHidden:NO];
-        ViewController*loginViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"login"];
+        MainViewController*loginViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"login"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
    

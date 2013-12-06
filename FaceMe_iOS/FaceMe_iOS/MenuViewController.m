@@ -45,6 +45,7 @@
     //[self showTabBar];
     imageWithCorner=[[ImageRoundCorner alloc]init];
     [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
+    
 	// Do any additional setup after loading the view.
     NSString*profileUrl=@"https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
     NSString*photoUrl=@"https://facemegatech.appspot.com/_ah/api/newsendpoint/v1/news/list";
@@ -53,6 +54,7 @@
     NSDictionary*json= [self getData:profileUrl];
     //NSLog(@"%@", json);
     swipeTime=NO;
+    
     newsFeeds=[[NSMutableArray alloc]init];
     userName.text=[json objectForKey:@"userID"];
     school.text=[json objectForKey:@"school"];
@@ -68,11 +70,14 @@
     appDelegate.mUserFaceCache=[[NSMutableDictionary alloc]init];
     
     NSArray* newsfeeds = [jsonForNewFeeds objectForKey:@"items"];
-    newsFeed=[[NewsFeedEntity alloc]init];
-    newsFeed.userfaces=[[NSMutableArray alloc]init];
-    newsFeed.characters=[[NSMutableArray alloc]init];
+    
     for (id newfeed in newsfeeds ){
+        newsFeed=[[NewsFeedEntity alloc]init];
         
+        newsFeed.userfaces=[[NSMutableArray alloc]init];
+        newsFeed.characters=[[NSMutableArray alloc]init];
+        newsFeed.userNames = [[NSMutableArray alloc] init];
+
         NSString*posterKey=[newfeed objectForKey:@"posterKey"];
         NSString*orginalPosterImageKey=[newfeed objectForKey:@"originalPosterImageKey"];
         NSString*nonfacePosterImageKey=[newfeed objectForKey:@"nonfacePosterImageKey"];
@@ -98,6 +103,8 @@
             NSLog(@"%d",[appDelegate.mUserFaceCache count]);
             [newsFeed.userfaces addObject:friendFeed.ID ];
              NSLog(@"%@",friendFeed.ID);
+            
+            [newsFeed.userNames addObject:friendFeed.userID];
             
         }
         NSArray* characters = [newfeed objectForKey:@"characters"];
@@ -151,7 +158,7 @@
     [self.view addGestureRecognizer:swipeRight];
     [self.view addGestureRecognizer:swipeLeft];
     self.profileView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-     self.profileView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.profileView.layer.shadowColor = [UIColor blackColor].CGColor;
    
     self.profileView.layer.shadowOpacity = 1.0f;
     self.profileView.layer.shadowRadius = 4.0f;
@@ -176,15 +183,36 @@
     static NSString *NewFeedIdentifier = @"NewFeedTableCell";
     
      NewFeedCell*cell = (NewFeedCell *)[tableView dequeueReusableCellWithIdentifier:NewFeedIdentifier];
-    cell.username.text=[[[self newsFeeds]objectAtIndex:indexPath.row]movieName];
-    cell.uploadedImage.contentMode = UIViewContentModeCenter;
+    
+    NewsFeedEntity * news = [[self newsFeeds]objectAtIndex:indexPath.row];
+    
+    if(news.userfaces.count == 1){
+        NSString* username = [news.userNames objectAtIndex:0];
+        cell.username.text = [NSString stringWithFormat:@"%@ upload a new photo",username];
+    }
+    else{
+        NSMutableString* text = [[NSMutableString alloc] init];
+        [text appendString:[news.userNames objectAtIndex:0]];
+        [text appendString:@"takes a new photo with"];
+        for (int i=1; i<news.userNames.count; i++){
+            [text appendString:[news.userNames objectAtIndex:i]];
+            [text appendString:@" "];
+        }
+        cell.username.text = text;
+    }
+    //cell.uploadedImage.contentMode = UIViewContentModeCenter;
     cell.uploadedImage.clipsToBounds = YES;
-    cell.uploadedImage.image=[imageWithCorner scaleImage:[self combineImage:[[self newsFeeds]objectAtIndex:indexPath.row]]AtTheRatio:0.4];
+    //cell.uploadedImage.image=[imageWithCorner scaleImage:[self combineImage:[[self newsFeeds]objectAtIndex:indexPath.row]]AtTheRatio:0.4];
+    if(news.cosplayBmp == nil){
+        news.cosplayBmp = [self combineImage:news];
+    }
+    cell.uploadedImage.image = news.cosplayBmp;
+    
     [imageWithCorner roundCorner:cell.uploadedImage atRadius:3];
     UIImage *background = [UIImage imageNamed:@"cell_weibo1.png"];
     
     UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:background];
-    //cellBackgroundView.image = background;
+    cellBackgroundView.image = background;
     cell.backgroundView = cellBackgroundView;
     return cell;
 }
@@ -263,29 +291,27 @@
     UIGraphicsBeginImageContext(currentNewsFeed.nonfacePosterBmp.size);
     
     
-   for (int i=0; i< [currentNewsFeed.userfaces count];i++) {
-   // NSLog(@"%@",[currentNewsFeed.userfaces objectAtIndex:i]);
-       UserFaceEntity* currentUserEntity= [[appDelegate mUserFaceCache]objectForKey:[currentNewsFeed.userfaces objectAtIndex:i]] ;
-    NSLog(@"characterkey is");
-    NSLog(@"%@",currentUserEntity.characterKey);
-   
-  
-       CharacterFace*currentCharacter=[[appDelegate mCharacterFaceCache]objectForKey:currentUserEntity.characterKey];
-      [currentUserEntity.userFaceBmp drawInRect:CGRectMake( currentCharacter.positionX*currentNewsFeed.nonfacePosterBmp.size.width, currentCharacter.positionY*currentNewsFeed.nonfacePosterBmp.size.height, currentCharacter.width*currentNewsFeed.nonfacePosterBmp.size.width, currentCharacter.height*currentNewsFeed.nonfacePosterBmp.size.height)];
-      NSLog(@"currentCharacter.positionX is");
-       
-      NSLog(@"%f",currentCharacter.positionX);
-        NSLog(@"currentCharacter.positionY is");
-     NSLog(@"%f",currentCharacter.positionY);
-    NSLog(@"currentCharacter.width is");
-    NSLog(@"%f",currentCharacter.width);
+    int posterWidth = currentNewsFeed.nonfacePosterBmp.size.width;
+    int posterHeight = currentNewsFeed.nonfacePosterBmp.size.height;
     
-     
+    for (NSString *chrarcterface in currentNewsFeed.characters){
+        CharacterFace *currentCharacter =[[appDelegate mCharacterFaceCache]objectForKey:chrarcterface];
+        [currentCharacter.bmp drawInRect:CGRectMake(currentCharacter.positionX * posterWidth, currentCharacter.positionY * posterHeight, currentCharacter.width * posterWidth, currentCharacter.height * posterHeight)];
+    }
+    
+   for (int i=0; i< [currentNewsFeed.userfaces count];i++) {
+ 
+       UserFaceEntity* currentUserEntity= [[appDelegate mUserFaceCache]objectForKey:[currentNewsFeed.userfaces objectAtIndex:i]] ;
+       CharacterFace*currentCharacter=[[appDelegate mCharacterFaceCache]objectForKey:currentUserEntity.characterKey];
+       
+      [currentUserEntity.userFaceBmp drawInRect:CGRectMake( currentCharacter.positionX * posterWidth, currentCharacter.positionY * posterHeight, currentCharacter.width * posterWidth, currentCharacter.height * posterHeight)];
    }
-   [currentNewsFeed.nonfacePosterBmp drawInRect:CGRectMake(0, 0, currentNewsFeed.nonfacePosterBmp.size.width,currentNewsFeed.nonfacePosterBmp.size.height)];
 
+    [currentNewsFeed.nonfacePosterBmp drawInRect:CGRectMake(0, 0, currentNewsFeed.nonfacePosterBmp.size.width,currentNewsFeed.nonfacePosterBmp.size.height)];
+    
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
     return newImage;
 }
 - (IBAction)showProfileButton:(UIButton *)sender {

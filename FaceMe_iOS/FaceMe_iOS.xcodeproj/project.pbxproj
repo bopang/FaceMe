@@ -10,7 +10,6 @@
 		0007FAB1185037AA00FE8098 /* cell_weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0007FAB0185037AA00FE8098 /* cell_weibo.png */; };
 		0007FAB31850386000FE8098 /* cell_weibo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0007FAB21850386000FE8098 /* cell_weibo1.png */; };
 		0007FAB518503BED00FE8098 /* postCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 0007FAB418503BED00FE8098 /* postCell.png */; };
-		008882EB184E958B00EF1192 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008882EA184E958B00EF1192 /* FacebookSDK.framework */; };
 		00F479811851514300FDE0A8 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F479801851514300FDE0A8 /* shadow.png */; };
 		00F47983185164A900FDE0A8 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F47982185164A900FDE0A8 /* camera.png */; };
 		00F47985185166A700FDE0A8 /* sideview.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F47984185166A700FDE0A8 /* sideview.png */; };
@@ -31,7 +30,6 @@
 		181E93E3183B1325001F3071 /* people6.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E93E2183B1325001F3071 /* people6.png */; };
 		181E93E6183B144E001F3071 /* close13.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E93E4183B144E001F3071 /* close13.png */; };
 		181E93E7183B144E001F3071 /* online5 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E93E5183B144E001F3071 /* online5 copy.png */; };
-		181E93EA183C5A8D001F3071 /* GameSharingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E93E9183C5A8D001F3071 /* GameSharingData.m */; };
 		18390601182D8B5900D1A367 /* NewFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18390600182D8B5900D1A367 /* NewFeedCell.m */; };
 		183B640B18447C37009CA666 /* PosterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B640A18447C37009CA666 /* PosterEntity.m */; };
 		1846A97618369C8200C4796C /* IntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846A97518369C8200C4796C /* IntroductionViewController.m */; };
@@ -57,7 +55,6 @@
 		1855430E183F4B8400AA45E5 /* navbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1855430D183F4B8400AA45E5 /* navbar_bg.png */; };
 		1858C23E1835597800F8B85E /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C23D1835597800F8B85E /* ShareViewController.m */; };
 		1858C2851836056B00F8B85E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C2841836056B00F8B85E /* Social.framework */; };
-		18B247F9182757C20006C66D /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B247F8182757C20006C66D /* opencv2.framework */; };
 		18C9F5AC1827619100ADBEC4 /* SinglePoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C9F5AB1827619100ADBEC4 /* SinglePoster.m */; };
 		18C9F5B018277C4600ADBEC4 /* cell_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9F5AD18277C4600ADBEC4 /* cell_bottom@2x.png */; };
 		18C9F5B118277C4600ADBEC4 /* cell_middle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9F5AE18277C4600ADBEC4 /* cell_middle@2x.png */; };
@@ -75,13 +72,29 @@
 		207944EC17FA254F00D4882F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 207944EB17FA254F00D4882F /* main.m */; };
 		207944F017FA254F00D4882F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 207944EF17FA254F00D4882F /* AppDelegate.m */; };
 		207944F617FA254F00D4882F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207944F417FA254F00D4882F /* Main_iPad.storyboard */; };
-		207944F917FA254F00D4882F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 207944F817FA254F00D4882F /* ViewController.m */; };
+		207944F917FA254F00D4882F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 207944F817FA254F00D4882F /* MainViewController.m */; };
 		207944FB17FA254F00D4882F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207944FA17FA254F00D4882F /* Images.xcassets */; };
 		2079450217FA254F00D4882F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2079450117FA254F00D4882F /* XCTest.framework */; };
 		2079450317FA254F00D4882F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944DF17FA254F00D4882F /* Foundation.framework */; };
 		2079450417FA254F00D4882F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207944E317FA254F00D4882F /* UIKit.framework */; };
 		2079450C17FA254F00D4882F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2079450A17FA254F00D4882F /* InfoPlist.strings */; };
 		2079450E17FA254F00D4882F /* FaceMe_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2079450D17FA254F00D4882F /* FaceMe_iOSTests.m */; };
+		20828ECB1851734F0078F894 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828ECA1851734E0078F894 /* FacebookSDK.framework */; };
+		20828EF218518EA50078F894 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EF118518EA50078F894 /* CoreMedia.framework */; };
+		20828EF418518EAC0078F894 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EF318518EAC0078F894 /* CoreImage.framework */; };
+		20828EF618518EB50078F894 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EF518518EB50078F894 /* AssetsLibrary.framework */; };
+		20828EF818518ED30078F894 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EF718518ED30078F894 /* AVFoundation.framework */; };
+		20828EFA18518EDB0078F894 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EF918518EDB0078F894 /* OpenGLES.framework */; };
+		20828F00185191740078F894 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20828EFF185191740078F894 /* opencv2.framework */; };
+		20828F031851AAC30078F894 /* cvneon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20828F011851AAC30078F894 /* cvneon.cpp */; };
+		20828F041851AAC30078F894 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20828F021851AAC30078F894 /* Globals.cpp */; };
+		20828F0C1851AB040078F894 /* DummyVideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F061851AB040078F894 /* DummyVideoSource.mm */; };
+		20828F0D1851AB040078F894 /* FPSCalculator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F081851AB040078F894 /* FPSCalculator.mm */; };
+		20828F0E1851AB040078F894 /* GLESImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F0A1851AB040078F894 /* GLESImageView.mm */; };
+		20828F171851AB250078F894 /* NSString+StdString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F101851AB250078F894 /* NSString+StdString.mm */; };
+		20828F181851AB250078F894 /* UIImage2OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F121851AB250078F894 /* UIImage2OpenCV.mm */; };
+		20828F191851AB250078F894 /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F141851AB250078F894 /* VideoSource.mm */; };
+		20828F1A1851AB250078F894 /* CameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20828F161851AB250078F894 /* CameraViewController.mm */; };
 		889E1BA0184C2420005438F1 /* NewsFeedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E1B9F184C2420005438F1 /* NewsFeedEntity.m */; };
 		889E1BA3184C306A005438F1 /* UserFaceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E1BA2184C306A005438F1 /* UserFaceEntity.m */; };
 /* End PBXBuildFile section */
@@ -100,7 +113,6 @@
 		0007FAB0185037AA00FE8098 /* cell_weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_weibo.png; sourceTree = "<group>"; };
 		0007FAB21850386000FE8098 /* cell_weibo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_weibo1.png; sourceTree = "<group>"; };
 		0007FAB418503BED00FE8098 /* postCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCell.png; sourceTree = "<group>"; };
-		008882EA184E958B00EF1192 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		00F479801851514300FDE0A8 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
 		00F47982185164A900FDE0A8 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		00F47984185166A700FDE0A8 /* sideview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sideview.png; sourceTree = "<group>"; };
@@ -112,7 +124,6 @@
 		18170AFB18397F380033E4BC /* SelectPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPhotoViewController.h; sourceTree = "<group>"; };
 		18170AFC18397F380033E4BC /* SelectPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoViewController.m; sourceTree = "<group>"; };
 		181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FaceMe_logo_large.png; sourceTree = "<group>"; };
-		181A3D7E1825D82A001B2781 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		181A3D811825D83E001B2781 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		181A3D821825D83E001B2781 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		181A3D841825D8C1001B2781 /* CharaterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharaterSelectionViewController.h; sourceTree = "<group>"; };
@@ -127,8 +138,6 @@
 		181E93E2183B1325001F3071 /* people6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people6.png; sourceTree = "<group>"; };
 		181E93E4183B144E001F3071 /* close13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close13.png; sourceTree = "<group>"; };
 		181E93E5183B144E001F3071 /* online5 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "online5 copy.png"; sourceTree = "<group>"; };
-		181E93E8183C5A8D001F3071 /* GameSharingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSharingData.h; sourceTree = "<group>"; };
-		181E93E9183C5A8D001F3071 /* GameSharingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSharingData.m; sourceTree = "<group>"; };
 		183905FF182D8B5900D1A367 /* NewFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewFeedCell.h; path = ../NewFeedCell.h; sourceTree = "<group>"; };
 		18390600182D8B5900D1A367 /* NewFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewFeedCell.m; path = ../NewFeedCell.m; sourceTree = "<group>"; };
 		183B640918447C37009CA666 /* PosterEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosterEntity.h; sourceTree = "<group>"; };
@@ -162,7 +171,6 @@
 		1858C23C1835597800F8B85E /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		1858C23D1835597800F8B85E /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		1858C2841836056B00F8B85E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		18B247F8182757C20006C66D /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		18C9F5AA1827619100ADBEC4 /* SinglePoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePoster.h; sourceTree = "<group>"; };
 		18C9F5AB1827619100ADBEC4 /* SinglePoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePoster.m; sourceTree = "<group>"; };
 		18C9F5AD18277C4600ADBEC4 /* cell_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bottom@2x.png"; sourceTree = "<group>"; };
@@ -186,14 +194,38 @@
 		207944EE17FA254F00D4882F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		207944EF17FA254F00D4882F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		207944F517FA254F00D4882F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		207944F717FA254F00D4882F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		207944F817FA254F00D4882F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		207944F717FA254F00D4882F /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		207944F817FA254F00D4882F /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		207944FA17FA254F00D4882F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2079450017FA254F00D4882F /* FaceMe_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceMe_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2079450117FA254F00D4882F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2079450917FA254F00D4882F /* FaceMe_iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceMe_iOSTests-Info.plist"; sourceTree = "<group>"; };
 		2079450B17FA254F00D4882F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2079450D17FA254F00D4882F /* FaceMe_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceMe_iOSTests.m; sourceTree = "<group>"; };
+		20828ECA1851734E0078F894 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		20828EF118518EA50078F894 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		20828EF318518EAC0078F894 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		20828EF518518EB50078F894 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		20828EF718518ED30078F894 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		20828EF918518EDB0078F894 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		20828EFF185191740078F894 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		20828F011851AAC30078F894 /* cvneon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvneon.cpp; sourceTree = "<group>"; };
+		20828F021851AAC30078F894 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
+		20828F051851AB040078F894 /* cvneon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvneon.h; sourceTree = "<group>"; };
+		20828F061851AB040078F894 /* DummyVideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DummyVideoSource.mm; sourceTree = "<group>"; };
+		20828F071851AB040078F894 /* FPSCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSCalculator.h; sourceTree = "<group>"; };
+		20828F081851AB040078F894 /* FPSCalculator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FPSCalculator.mm; sourceTree = "<group>"; };
+		20828F091851AB040078F894 /* GLESImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLESImageView.h; sourceTree = "<group>"; };
+		20828F0A1851AB040078F894 /* GLESImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLESImageView.mm; sourceTree = "<group>"; };
+		20828F0B1851AB040078F894 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		20828F0F1851AB250078F894 /* NSString+StdString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StdString.h"; sourceTree = "<group>"; };
+		20828F101851AB250078F894 /* NSString+StdString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSString+StdString.mm"; sourceTree = "<group>"; };
+		20828F111851AB250078F894 /* UIImage2OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage2OpenCV.h; sourceTree = "<group>"; };
+		20828F121851AB250078F894 /* UIImage2OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIImage2OpenCV.mm; sourceTree = "<group>"; };
+		20828F131851AB250078F894 /* VideoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSource.h; sourceTree = "<group>"; };
+		20828F141851AB250078F894 /* VideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoSource.mm; sourceTree = "<group>"; };
+		20828F151851AB250078F894 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		20828F161851AB250078F894 /* CameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraViewController.mm; sourceTree = "<group>"; };
 		889E1B9E184C2420005438F1 /* NewsFeedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedEntity.h; sourceTree = "<group>"; };
 		889E1B9F184C2420005438F1 /* NewsFeedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedEntity.m; sourceTree = "<group>"; };
 		889E1BA1184C306A005438F1 /* UserFaceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserFaceEntity.h; path = ../UserFaceEntity.h; sourceTree = "<group>"; };
@@ -205,13 +237,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20828EFA18518EDB0078F894 /* OpenGLES.framework in Frameworks */,
+				20828EF818518ED30078F894 /* AVFoundation.framework in Frameworks */,
+				207944E217FA254F00D4882F /* CoreGraphics.framework in Frameworks */,
+				20828EF618518EB50078F894 /* AssetsLibrary.framework in Frameworks */,
+				20828EF418518EAC0078F894 /* CoreImage.framework in Frameworks */,
+				20828EF218518EA50078F894 /* CoreMedia.framework in Frameworks */,
+				20828F00185191740078F894 /* opencv2.framework in Frameworks */,
 				18E1C5BE1841728900599B07 /* QuartzCore.framework in Frameworks */,
 				1858C2851836056B00F8B85E /* Social.framework in Frameworks */,
-				207944E217FA254F00D4882F /* CoreGraphics.framework in Frameworks */,
-				207944E417FA254F00D4882F /* UIKit.framework in Frameworks */,
-				18B247F9182757C20006C66D /* opencv2.framework in Frameworks */,
 				207944E017FA254F00D4882F /* Foundation.framework in Frameworks */,
-				008882EB184E958B00EF1192 /* FacebookSDK.framework in Frameworks */,
+				20828ECB1851734F0078F894 /* FacebookSDK.framework in Frameworks */,
+				207944E417FA254F00D4882F /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,10 +287,15 @@
 		207944DE17FA254F00D4882F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				008882EA184E958B00EF1192 /* FacebookSDK.framework */,
+				20828EFF185191740078F894 /* opencv2.framework */,
+				20828EF918518EDB0078F894 /* OpenGLES.framework */,
+				20828EF718518ED30078F894 /* AVFoundation.framework */,
+				20828EF518518EB50078F894 /* AssetsLibrary.framework */,
+				20828EF318518EAC0078F894 /* CoreImage.framework */,
+				20828EF118518EA50078F894 /* CoreMedia.framework */,
+				20828ECA1851734E0078F894 /* FacebookSDK.framework */,
 				18E1C5BD1841728900599B07 /* QuartzCore.framework */,
 				1858C2841836056B00F8B85E /* Social.framework */,
-				18B247F8182757C20006C66D /* opencv2.framework */,
 				207944DF17FA254F00D4882F /* Foundation.framework */,
 				207944E117FA254F00D4882F /* CoreGraphics.framework */,
 				207944E317FA254F00D4882F /* UIKit.framework */,
@@ -265,49 +307,20 @@
 		207944E517FA254F00D4882F /* FaceMe_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				889E1BA1184C306A005438F1 /* UserFaceEntity.h */,
-				889E1BA2184C306A005438F1 /* UserFaceEntity.m */,
-				183905FF182D8B5900D1A367 /* NewFeedCell.h */,
-				18554303183F099B00AA45E5 /* CommentViewController.h */,
-				18554304183F099B00AA45E5 /* CommentViewController.m */,
-				18390600182D8B5900D1A367 /* NewFeedCell.m */,
-				180C67AD1827426A00747186 /* PosterCell.h */,
-				180C67AE1827426A00747186 /* PosterCell.m */,
+				20828ECD185174160078F894 /* Controller */,
+				20828ECC185173E20078F894 /* DataModel */,
 				207944EE17FA254F00D4882F /* AppDelegate.h */,
 				207944EF17FA254F00D4882F /* AppDelegate.m */,
-				181A3D871825D945001B2781 /* PosterSelectionViewController.h */,
-				181A3D881825D945001B2781 /* PosterSelectionViewController.m */,
 				184A9C3B182F411900DE3647 /* Main_iPhone.storyboard */,
-				183B640918447C37009CA666 /* PosterEntity.h */,
-				183B640A18447C37009CA666 /* PosterEntity.m */,
-				1851B6A018459C88001D660F /* CharacterFace.h */,
-				1851B6A118459C88001D660F /* CharacterFace.m */,
-				18E1C5BA1841684600599B07 /* ImageRoundCorner.h */,
-				18E1C5BB1841684600599B07 /* ImageRoundCorner.m */,
-				18554306183F259300AA45E5 /* ProfileViewController.h */,
-				18554307183F259300AA45E5 /* ProfileViewController.m */,
-				18170AFB18397F380033E4BC /* SelectPhotoViewController.h */,
-				18170AFC18397F380033E4BC /* SelectPhotoViewController.m */,
-				889E1B9E184C2420005438F1 /* NewsFeedEntity.h */,
-				889E1B9F184C2420005438F1 /* NewsFeedEntity.m */,
-				1846A97718369D4000C4796C /* IntroChildViewController.h */,
-				1846A97818369D4000C4796C /* IntroChildViewController.m */,
-				1846A97418369C8200C4796C /* IntroductionViewController.h */,
-				1846A97518369C8200C4796C /* IntroductionViewController.m */,
 				1858C23C1835597800F8B85E /* ShareViewController.h */,
 				1858C23D1835597800F8B85E /* ShareViewController.m */,
-				181E93E8183C5A8D001F3071 /* GameSharingData.h */,
-				181E93E9183C5A8D001F3071 /* GameSharingData.m */,
 				18C9F5AA1827619100ADBEC4 /* SinglePoster.h */,
 				18C9F5AB1827619100ADBEC4 /* SinglePoster.m */,
-				181A3D7E1825D82A001B2781 /* CameraViewController.h */,
-				181A3D811825D83E001B2781 /* MenuViewController.h */,
-				181A3D821825D83E001B2781 /* MenuViewController.m */,
-				181A3D841825D8C1001B2781 /* CharaterSelectionViewController.h */,
-				181A3D851825D8C1001B2781 /* CharaterSelectionViewController.m */,
 				207944F417FA254F00D4882F /* Main_iPad.storyboard */,
-				207944F717FA254F00D4882F /* ViewController.h */,
-				207944F817FA254F00D4882F /* ViewController.m */,
+				207944F717FA254F00D4882F /* MainViewController.h */,
+				207944F817FA254F00D4882F /* MainViewController.m */,
+				18E1C5BA1841684600599B07 /* ImageRoundCorner.h */,
+				18E1C5BB1841684600599B07 /* ImageRoundCorner.m */,
 				207944FA17FA254F00D4882F /* Images.xcassets */,
 				207944E617FA254F00D4882F /* Supporting Files */,
 			);
@@ -315,6 +328,119 @@
 			sourceTree = "<group>";
 		};
 		207944E617FA254F00D4882F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20828ED3185176AC0078F894 /* Images */,
+				207944E717FA254F00D4882F /* FaceMe_iOS-Info.plist */,
+				207944E817FA254F00D4882F /* InfoPlist.strings */,
+				207944EB17FA254F00D4882F /* main.m */,
+				207944ED17FA254F00D4882F /* FaceMe_iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2079450717FA254F00D4882F /* FaceMe_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				2079450D17FA254F00D4882F /* FaceMe_iOSTests.m */,
+				2079450817FA254F00D4882F /* Supporting Files */,
+			);
+			path = FaceMe_iOSTests;
+			sourceTree = "<group>";
+		};
+		2079450817FA254F00D4882F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2079450917FA254F00D4882F /* FaceMe_iOSTests-Info.plist */,
+				2079450A17FA254F00D4882F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20828ECC185173E20078F894 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				889E1B9E184C2420005438F1 /* NewsFeedEntity.h */,
+				889E1B9F184C2420005438F1 /* NewsFeedEntity.m */,
+				183B640918447C37009CA666 /* PosterEntity.h */,
+				183B640A18447C37009CA666 /* PosterEntity.m */,
+				1851B6A018459C88001D660F /* CharacterFace.h */,
+				1851B6A118459C88001D660F /* CharacterFace.m */,
+				889E1BA1184C306A005438F1 /* UserFaceEntity.h */,
+				889E1BA2184C306A005438F1 /* UserFaceEntity.m */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		20828ECD185174160078F894 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20828ED418518B1A0078F894 /* OpenCV */,
+				20828ED21851754E0078F894 /* UserProfile */,
+				20828ED1185175350078F894 /* Introduction */,
+				20828ED0185175190078F894 /* Play */,
+				20828ECF185174D80078F894 /* NewsFeed */,
+				20828ECE185174260078F894 /* PlayWithPoster */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		20828ECE185174260078F894 /* PlayWithPoster */ = {
+			isa = PBXGroup;
+			children = (
+				18170AFB18397F380033E4BC /* SelectPhotoViewController.h */,
+				18170AFC18397F380033E4BC /* SelectPhotoViewController.m */,
+				181A3D871825D945001B2781 /* PosterSelectionViewController.h */,
+				181A3D881825D945001B2781 /* PosterSelectionViewController.m */,
+				180C67AD1827426A00747186 /* PosterCell.h */,
+				180C67AE1827426A00747186 /* PosterCell.m */,
+			);
+			name = PlayWithPoster;
+			sourceTree = "<group>";
+		};
+		20828ECF185174D80078F894 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				183905FF182D8B5900D1A367 /* NewFeedCell.h */,
+				18554303183F099B00AA45E5 /* CommentViewController.h */,
+				18554304183F099B00AA45E5 /* CommentViewController.m */,
+				18390600182D8B5900D1A367 /* NewFeedCell.m */,
+				181A3D811825D83E001B2781 /* MenuViewController.h */,
+				181A3D821825D83E001B2781 /* MenuViewController.m */,
+			);
+			name = NewsFeed;
+			sourceTree = "<group>";
+		};
+		20828ED0185175190078F894 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				181A3D841825D8C1001B2781 /* CharaterSelectionViewController.h */,
+				181A3D851825D8C1001B2781 /* CharaterSelectionViewController.m */,
+			);
+			name = Play;
+			sourceTree = "<group>";
+		};
+		20828ED1185175350078F894 /* Introduction */ = {
+			isa = PBXGroup;
+			children = (
+				1846A97718369D4000C4796C /* IntroChildViewController.h */,
+				1846A97818369D4000C4796C /* IntroChildViewController.m */,
+				1846A97418369C8200C4796C /* IntroductionViewController.h */,
+				1846A97518369C8200C4796C /* IntroductionViewController.m */,
+			);
+			name = Introduction;
+			sourceTree = "<group>";
+		};
+		20828ED21851754E0078F894 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				18554306183F259300AA45E5 /* ProfileViewController.h */,
+				18554307183F259300AA45E5 /* ProfileViewController.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		20828ED3185176AC0078F894 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				00F4798A18516C0100FDE0A8 /* comment1.png */,
@@ -357,30 +483,32 @@
 				18C9F5AE18277C4600ADBEC4 /* cell_middle@2x.png */,
 				18C9F5AF18277C4600ADBEC4 /* common_bg.png */,
 				181A3D7C1825CF19001B2781 /* FaceMe_logo_large.png */,
-				207944E717FA254F00D4882F /* FaceMe_iOS-Info.plist */,
-				207944E817FA254F00D4882F /* InfoPlist.strings */,
-				207944EB17FA254F00D4882F /* main.m */,
-				207944ED17FA254F00D4882F /* FaceMe_iOS-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			name = Images;
 			sourceTree = "<group>";
 		};
-		2079450717FA254F00D4882F /* FaceMe_iOSTests */ = {
+		20828ED418518B1A0078F894 /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
-				2079450D17FA254F00D4882F /* FaceMe_iOSTests.m */,
-				2079450817FA254F00D4882F /* Supporting Files */,
+				20828F0F1851AB250078F894 /* NSString+StdString.h */,
+				20828F101851AB250078F894 /* NSString+StdString.mm */,
+				20828F111851AB250078F894 /* UIImage2OpenCV.h */,
+				20828F121851AB250078F894 /* UIImage2OpenCV.mm */,
+				20828F131851AB250078F894 /* VideoSource.h */,
+				20828F141851AB250078F894 /* VideoSource.mm */,
+				20828F151851AB250078F894 /* CameraViewController.h */,
+				20828F161851AB250078F894 /* CameraViewController.mm */,
+				20828F051851AB040078F894 /* cvneon.h */,
+				20828F061851AB040078F894 /* DummyVideoSource.mm */,
+				20828F071851AB040078F894 /* FPSCalculator.h */,
+				20828F081851AB040078F894 /* FPSCalculator.mm */,
+				20828F091851AB040078F894 /* GLESImageView.h */,
+				20828F0A1851AB040078F894 /* GLESImageView.mm */,
+				20828F0B1851AB040078F894 /* Globals.h */,
+				20828F011851AAC30078F894 /* cvneon.cpp */,
+				20828F021851AAC30078F894 /* Globals.cpp */,
 			);
-			path = FaceMe_iOSTests;
-			sourceTree = "<group>";
-		};
-		2079450817FA254F00D4882F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2079450917FA254F00D4882F /* FaceMe_iOSTests-Info.plist */,
-				2079450A17FA254F00D4882F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = OpenCV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,19 +652,27 @@
 				18C9F5AC1827619100ADBEC4 /* SinglePoster.m in Sources */,
 				18390601182D8B5900D1A367 /* NewFeedCell.m in Sources */,
 				1851B6A218459C88001D660F /* CharacterFace.m in Sources */,
-				207944F917FA254F00D4882F /* ViewController.m in Sources */,
+				20828F0D1851AB040078F894 /* FPSCalculator.mm in Sources */,
+				207944F917FA254F00D4882F /* MainViewController.m in Sources */,
 				207944F017FA254F00D4882F /* AppDelegate.m in Sources */,
 				18554305183F099B00AA45E5 /* CommentViewController.m in Sources */,
 				181A3D861825D8C1001B2781 /* CharaterSelectionViewController.m in Sources */,
+				20828F181851AB250078F894 /* UIImage2OpenCV.mm in Sources */,
 				1846A97618369C8200C4796C /* IntroductionViewController.m in Sources */,
+				20828F191851AB250078F894 /* VideoSource.mm in Sources */,
 				889E1BA3184C306A005438F1 /* UserFaceEntity.m in Sources */,
+				20828F0E1851AB040078F894 /* GLESImageView.mm in Sources */,
 				889E1BA0184C2420005438F1 /* NewsFeedEntity.m in Sources */,
 				18E1C5BC1841684600599B07 /* ImageRoundCorner.m in Sources */,
-				181E93EA183C5A8D001F3071 /* GameSharingData.m in Sources */,
 				183B640B18447C37009CA666 /* PosterEntity.m in Sources */,
+				20828F0C1851AB040078F894 /* DummyVideoSource.mm in Sources */,
+				20828F1A1851AB250078F894 /* CameraViewController.mm in Sources */,
 				18554308183F259300AA45E5 /* ProfileViewController.m in Sources */,
+				20828F171851AB250078F894 /* NSString+StdString.mm in Sources */,
+				20828F031851AAC30078F894 /* cvneon.cpp in Sources */,
 				180C67AF1827426A00747186 /* PosterCell.m in Sources */,
 				207944EC17FA254F00D4882F /* main.m in Sources */,
+				20828F041851AAC30078F894 /* Globals.cpp in Sources */,
 				1846A97918369D4000C4796C /* IntroChildViewController.m in Sources */,
 				181A3D891825D945001B2781 /* PosterSelectionViewController.m in Sources */,
 				1858C23E1835597800F8B85E /* ShareViewController.m in Sources */,
@@ -675,6 +811,8 @@
 					/Users/apple/Documents/FaceMe/FaceMe_iOS,
 					/Users/imac/Desktop/FaceMe/FaceMe_iOS,
 					/Users/shawnwu/Desktop/FaceMe/FaceMe_iOS,
+					/Users/bopang/repos/FaceMe/FaceMe_iOS,
+					/Users/bopang/repos,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FaceMe_iOS/FaceMe_iOS-Prefix.pch";
@@ -694,6 +832,8 @@
 					/Users/apple/Documents/FaceMe/FaceMe_iOS,
 					/Users/imac/Desktop/FaceMe/FaceMe_iOS,
 					/Users/shawnwu/Desktop/FaceMe/FaceMe_iOS,
+					/Users/bopang/repos/FaceMe/FaceMe_iOS,
+					/Users/bopang/repos,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FaceMe_iOS/FaceMe_iOS-Prefix.pch";
