@@ -16,6 +16,8 @@
 @implementation ShareViewController
 @synthesize imageForPost;
 @synthesize getImage;
+@synthesize userface;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,15 +27,39 @@
     return self;
 }
 
+-(UIImage*)combineImage{
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    
+    UIGraphicsBeginImageContext(appDelegate.currentPoster.nonfacePoster.size);
+
+    int posterWidth = appDelegate.currentPoster.nonfacePoster.size.width;
+    int posterHeight = appDelegate.currentPoster.nonfacePoster.size.height;
+    
+    for (CharacterFace *chrarcterface in appDelegate.currentPoster.faces){
+        [chrarcterface.bmp drawInRect:CGRectMake(chrarcterface.positionX * posterWidth, chrarcterface.positionY * posterHeight, chrarcterface.width * posterWidth, chrarcterface.height * posterHeight)];
+    }
+    
+    CharacterFace* currentCharacter = appDelegate.chosenFace;
+    [self.userface drawInRect:CGRectMake( currentCharacter.positionX * posterWidth, currentCharacter.positionY * posterHeight, currentCharacter.width * posterWidth, currentCharacter.height * posterHeight)];
+    
+    [appDelegate.currentPoster.nonfacePoster drawInRect:CGRectMake(0, 0, posterWidth, posterHeight)];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    AppDelegate*appDelegate=[UIApplication sharedApplication].delegate ;
-   
-    imageForPost.image=appDelegate.getPhoto;
+    AppDelegate* appDelegate=[UIApplication sharedApplication].delegate ;
+    
+    imageForPost.image = [self combineImage];
     NSLog(@"!!!!!!!!!!");
-    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -63,33 +89,33 @@
 }
 
 - (IBAction)uploadIcon:(id)sender {
-   [self uploadUserFaceEntity: [self uploadImage:[self getUploadUrl]]];
+    [self uploadUserFaceEntity: [self uploadImage:[self getUploadUrl]]];
     
 }
 -(NSString*)getUploadUrl
 {
-NSURL *url = [NSURL URLWithString:@"https://facemegatech.appspot.com/_ah/api/originalposterendpoint/v1/originalposter/url"];
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
-[request setHTTPMethod:@"GET"];
-//[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-
-NSHTTPURLResponse *response = nil;
-NSError *error = nil;
-
-//Make the request
-NSData*responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-
-//Parse the data as a series of Note objects
-NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
- NSString*jsonData=[json objectForKey:@"url"];
-NSLog(@"%@", jsonData);
-return jsonData;
+    NSURL *url = [NSURL URLWithString:@"https://facemegatech.appspot.com/_ah/api/originalposterendpoint/v1/originalposter/url"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"GET"];
+    //[request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
+    
+    NSHTTPURLResponse *response = nil;
+    NSError *error = nil;
+    
+    //Make the request
+    NSData*responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    //Parse the data as a series of Note objects
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    NSString*jsonData=[json objectForKey:@"url"];
+    NSLog(@"%@", jsonData);
+    return jsonData;
 }
 -(NSString*)uploadImage:(NSString*)imgUrl
 {
     NSMutableString *faceKey;
-    NSData *imageData = UIImagePNGRepresentation( self.imageForPost.image);
+    NSData *imageData = UIImagePNGRepresentation(self.userface);
     //NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[imageData length]];
     NSLog(@"size: %d", [imageData length]);
     // Init the URLRequest
@@ -98,9 +124,9 @@ return jsonData;
     // string constant for the post parameter 'file'. My server uses this name: `file`. Your's may differ
     NSString* FileParamConstant = @"file";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-//    [request setHTTPShouldHandleCookies:NO];
-//    [request setTimeoutInterval:30];
+    //    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //    [request setHTTPShouldHandleCookies:NO];
+    //    [request setTimeoutInterval:30];
     [request setHTTPMethod:@"POST"];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
@@ -113,26 +139,26 @@ return jsonData;
         [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     }
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-
+    
     [request setHTTPBody:body];
     //[request setHTTPBody:imageData];
     NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-     [request setURL:[NSURL URLWithString:[NSString stringWithString:imgUrl]]];
-     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [request setURL:[NSURL URLWithString:[NSString stringWithString:imgUrl]]];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     if (connection) {
         // response data of the request
-       NSHTTPURLResponse *response = nil;
-       NSError *error = nil;
+        NSHTTPURLResponse *response = nil;
+        NSError *error = nil;
         NSData*responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];NSLog(@"%@",responseData);
         
-       faceKey=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-       NSLog(@"%@", faceKey);
+        faceKey=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", faceKey);
         //NSLog(@"%@", responseData);
-                    }
+    }
     return faceKey;
-
+    
 }
 -(void)uploadUserFaceEntity:(NSString*)facekey
 {
@@ -152,7 +178,7 @@ return jsonData;
     //NSLog(@"%@",responseData);
     NSString*data=[[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", data);
-   
+    
     
 }
 @end

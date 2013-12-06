@@ -276,7 +276,7 @@
         <!--Share View Controller-->
         <scene sceneID="iQz-nv-N5B">
             <objects>
-                <viewController storyboardIdentifier="share" id="vVb-WI-eBK" customClass="ShareViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shareController" id="vVb-WI-eBK" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gt4-k1-I7w"/>
                         <viewControllerLayoutGuide type="bottom" id="aPT-1e-yJd"/>
@@ -1033,23 +1033,26 @@
                         <viewControllerLayoutGuide type="bottom" id="n6W-rY-4R8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="erJ-fm-0fl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHS-lV-Dxf">
-                                <rect key="frame" x="137" y="527" width="46" height="30"/>
+                                <rect key="frame" x="137" y="480" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePicture:" destination="npv-u0-X3n" eventType="touchUpInside" id="bVW-9z-GBB"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozO-Fn-kLD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="464"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KqC-tP-KYw">
-                                <rect key="frame" x="195" y="527" width="112" height="34"/>
+                                <rect key="frame" x="195" y="478" width="112" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sliderChanged:" destination="npv-u0-X3n" eventType="valueChanged" id="IRm-Jz-OqM"/>
@@ -1058,6 +1061,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="containerView" destination="ozO-Fn-kLD" id="iaP-zE-HfN"/>
                         <outlet property="screenShotButton" destination="iHS-lV-Dxf" id="IZh-Lh-Tfw"/>

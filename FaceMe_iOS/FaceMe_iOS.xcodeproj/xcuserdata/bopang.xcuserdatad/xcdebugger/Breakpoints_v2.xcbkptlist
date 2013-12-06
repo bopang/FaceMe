@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "405147355.107345"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "posterNFImage"
             landmarkType = "19">
             <Locations>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "408012074.237259"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "405147355.107345"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "posterImage"
             landmarkType = "19">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "405147355.107345"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "face_x"
             landmarkType = "19">
             <Locations>
@@ -350,11 +350,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "408005669.351644"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "zoomSlider"
             landmarkType = "19">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "408012069.109932"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,26 +442,26 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "408012198.941983"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[CameraViewController viewDidLoad]"
                   moduleName = "FaceMe_iOS"
                   urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
-                  timestampString = "408015424.900868"
+                  timestampString = "408016521.549895"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -469,13 +469,13 @@
                   offsetFromSymbolStart = "1338">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[CameraViewController viewDidLoad]"
                   moduleName = "FaceMe_iOS"
                   urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
-                  timestampString = "408015424.901008"
+                  timestampString = "408016521.550053"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -492,11 +492,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CameraViewController.mm"
-            timestampString = "408012229.86656"
+            timestampString = "408018485.187078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
             <Locations>
@@ -628,7 +628,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceMe_iOS/CharaterSelectionViewController.m"
@@ -639,6 +639,80 @@
             endingLineNumber = "180"
             landmarkName = "-chooseCharacter:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FaceMe_iOS/CameraViewController.mm"
+            timestampString = "408018599.708765"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "-takePicture:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CameraViewController takePicture:]"
+                  moduleName = "FaceMe_iOS"
+                  urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
+                  timestampString = "408018655.221602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CameraViewController takePicture:]"
+                  moduleName = "FaceMe_iOS"
+                  urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
+                  timestampString = "408018655.221741"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "470">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CameraViewController takePicture:]"
+                  moduleName = "FaceMe_iOS"
+                  urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
+                  timestampString = "408018655.221881"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "534">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CameraViewController takePicture:]"
+                  moduleName = "FaceMe_iOS"
+                  urlString = "file:///Users/bopang/repos/FaceMe/FaceMe_iOS/FaceMe_iOS/CameraViewController.mm"
+                  timestampString = "408018655.222017"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "610">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

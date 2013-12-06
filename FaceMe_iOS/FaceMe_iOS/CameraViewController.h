@@ -26,7 +26,7 @@
 @property int face_winY;
 @property bool transposed;
 
-
+@property cv::Mat mat_photo;
 @property cv::Mat mat_poster;
 @property cv::Mat mat_posterNF;
 @property cv::Mat mat_PosterForDisplay;
