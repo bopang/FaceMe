@@ -19,6 +19,8 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,7 +35,6 @@ import com.example.faceme_android.ApplicationData;
 import com.example.faceme_android.R;
 import com.example.faceme_android.RateAndCommentActivity;
 import com.example.faceme_android.Tools;
-import com.example.faceme_android.UserProfile;
 
 /***
  * 
@@ -60,8 +61,14 @@ public class LoginActivity extends Activity {
 		btn_signin = (Button) findViewById(R.id.btn_login);
 		et_name = (EditText) this.findViewById(R.id.load_name);
 		et_password = (EditText) this.findViewById(R.id.load_password);
-		et_name.setText("Brandon");
-		et_password.setText("111111");
+		
+		SharedPreferences preferences = getSharedPreferences("userInfo",
+				MODE_PRIVATE);
+		this.username = preferences.getString("username", "");
+		this.password = preferences.getString("password", "");
+		
+		et_name.setText(username);
+		et_password.setText(password);
 		btn_signin.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -94,6 +101,12 @@ public class LoginActivity extends Activity {
 			Toast.makeText(LoginActivity.this, "Login failed." + username + "password incorrect", Toast.LENGTH_SHORT).show();
 			et_password.setText("");
 		}else{
+			SharedPreferences sharedPreferences = getSharedPreferences(
+					"userInfo", MODE_PRIVATE);
+			Editor editor = sharedPreferences.edit();
+			editor.putString("username", username);
+			editor.putString("password", password);
+			editor.commit();
 			startActivity(new Intent(LoginActivity.this, MultiTabActivity.class));
 			createNotification();
 		}
@@ -166,7 +179,7 @@ public class LoginActivity extends Activity {
 				e.printStackTrace();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				hasNotification = false;
 			}
 			
 			return null;
