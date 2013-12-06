@@ -14,7 +14,8 @@
 - (IBAction)twitterIcon:(id)sender;
 - (IBAction)uploadIcon:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imageForPost;
-@property UIImage*getImage;
+@property UIImage* getImage;
+@property UIImage* userface;
 
 
 @end
