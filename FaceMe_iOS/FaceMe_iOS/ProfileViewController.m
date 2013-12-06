@@ -13,7 +13,7 @@
 @end
 
 @implementation ProfileViewController
-@synthesize username,highSchool,hometown,university,gender,music,movies,birth;
+@synthesize username,highSchool,hometown,university,gender,music,movies,birth,appDelegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,17 +27,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSURL*url=[[NSURL alloc]initWithString:@"https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang"];
-    NSMutableURLRequest*request=[NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"GET"];
-    NSHTTPURLResponse *response = nil;
-    NSError *error = nil;
-    NSData*responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
-    self.username.text=[json objectForKey:@"userID"];
-    self.university.text=[json objectForKey:@"school"];
-    self.gender.text=[json objectForKey:@"gender"];
-
+    appDelegate=[UIApplication sharedApplication].delegate;
+    self.username.text=appDelegate.currentUser.username;
+    self.university.text=appDelegate.currentUser.school;
+    self.gender.text=appDelegate.currentUser.gender;
     
 }
 

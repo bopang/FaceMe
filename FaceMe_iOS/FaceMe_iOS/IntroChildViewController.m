@@ -32,11 +32,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    backgroundImage.clipsToBounds=YES;
     if (self.index<3) {
+        iconImage.image=[self GetIconImage:self.index];
     backgroundImage.image= [self GetImage:self.index];
     self.pageTitle.text=[self getLabel:self.index].text;
-    self.pageDetail.text=[NSString stringWithFormat:@"%d", self.index];
-        
+        self.pageDetail.text=[self getContent:self.index];
+    
     }
 	// Do any additional setup after loading the view.
    }
@@ -70,6 +72,20 @@
     UIImage*currentImage=[imageLibrary objectAtIndex:imageIndex];
     return currentImage;
 }
+-(UIImage*)GetIconImage:(NSUInteger)imageIndex{
+    // NSLog(@"%lu",imageIndex);
+    //NSLog(@"12345");
+    NSMutableArray*imageLibrary=[[NSMutableArray alloc]init];
+    UIImage*addImage= [UIImage imageNamed:@"icon3.png"];
+    [imageLibrary addObject:addImage];
+    UIImage*addImage1= [UIImage imageNamed:@"icon1.png"];
+    [imageLibrary addObject:addImage1];
+    UIImage*addImage2= [UIImage imageNamed:@"icon2.png"];
+    [imageLibrary addObject:addImage2];
+    //NSLog(@"%lx",[imageLibrary count]);
+    UIImage*currentImage=[imageLibrary objectAtIndex:imageIndex];
+    return currentImage;
+}
 -(UILabel*)getLabel:(NSUInteger)labelIndex{
     NSMutableArray*labelLibrary=[[NSMutableArray alloc]init];
     UILabel*addLabel=[[UILabel alloc]init];
@@ -83,6 +99,17 @@
      [labelLibrary addObject:addLabel2];
    
     UILabel*currentLabel=[labelLibrary objectAtIndex:labelIndex];
+    return currentLabel;
+}
+-(NSString*)getContent:(NSUInteger)labelIndex{
+    NSMutableArray*labelLibrary=[[NSMutableArray alloc]init];
+    NSString*string=@"The users will make new friends";
+    [labelLibrary addObject:string];
+    NSString*string1=@"The users will find people who share the same interests with them ";
+    [labelLibrary addObject:string1];
+    NSString*string2=@"The users will have more fun in their daily life";
+    [labelLibrary addObject:string2];
+    NSString*currentLabel=[labelLibrary objectAtIndex:labelIndex];
     return currentLabel;
 }
 

@@ -102,7 +102,7 @@
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     
     PosterCell *cell = (PosterCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
+    cell.posterDetail.text=((PosterEntity *)[posters objectAtIndex:indexPath.row]).posterName;
     cell.posterTitle.text = ((PosterEntity *)[posters objectAtIndex:indexPath.row]).movieName;
     NSLog(@"%ld",(long)indexPath.row);
     NSLog(@"%@",cell.posterTitle.text);

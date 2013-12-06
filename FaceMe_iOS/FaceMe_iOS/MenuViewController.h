@@ -36,5 +36,6 @@
 @property NSMutableArray*userFaces;
 @property NSMutableArray*characters;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+
 - (IBAction)logout:(id)sender;
 @end

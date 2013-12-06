@@ -45,39 +45,41 @@
     //[self showTabBar];
     imageWithCorner=[[ImageRoundCorner alloc]init];
     [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
-    
 	// Do any additional setup after loading the view.
-    NSString*profileUrl=@"https://facemegatech.appspot.com/_ah/api/userendpoint/v1/user/get/Ziyi%20Jiang";
+  
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:nil
+                                                 name:@"FaceMe"
+                                                 object:nil];
+    
+    
     NSString*photoUrl=@"https://facemegatech.appspot.com/_ah/api/newsendpoint/v1/news/list";
-    NSString*posterUrl=@"https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
+    //NSString*posterUrl=@"https://facemegatech.appspot.com/_ah/api/posterendpoint/v1/poster/list";
     //Parse the data as a series of Note objects
-    NSDictionary*json= [self getData:profileUrl];
+    appDelegate=[UIApplication sharedApplication].delegate;
+
     //NSLog(@"%@", json);
     swipeTime=NO;
-    
     newsFeeds=[[NSMutableArray alloc]init];
-    userName.text=[json objectForKey:@"userID"];
-    school.text=[json objectForKey:@"school"];
-    gender.text=[json objectForKey:@"gender"];
-    NSString*imageUrl=[json objectForKey:@"faceKey"];
+    userName.text=appDelegate.currentUser.username;
+    school.text=appDelegate.currentUser.school;
+    gender.text=appDelegate.currentUser.gender;
+    
+    NSString*imageUrl=appDelegate.currentUser.profilePicUrl;
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
     profilePicture.image = [UIImage imageWithData: imageData];
     [imageWithCorner roundCorner:profilePicture atRadius:45];
     NSDictionary* jsonForNewFeeds = [self getData:photoUrl];
     NSLog(@"%@",jsonForNewFeeds);
-    appDelegate=[UIApplication sharedApplication].delegate;
-    appDelegate.mCharacterFaceCache=[[NSMutableDictionary alloc]init];
+       appDelegate.mCharacterFaceCache=[[NSMutableDictionary alloc]init];
     appDelegate.mUserFaceCache=[[NSMutableDictionary alloc]init];
     
     NSArray* newsfeeds = [jsonForNewFeeds objectForKey:@"items"];
-    
+    newsFeed=[[NewsFeedEntity alloc]init];
+    newsFeed.userfaces=[[NSMutableArray alloc]init];
+    newsFeed.characters=[[NSMutableArray alloc]init];
     for (id newfeed in newsfeeds ){
-        newsFeed=[[NewsFeedEntity alloc]init];
         
-        newsFeed.userfaces=[[NSMutableArray alloc]init];
-        newsFeed.characters=[[NSMutableArray alloc]init];
-        newsFeed.userNames = [[NSMutableArray alloc] init];
-
         NSString*posterKey=[newfeed objectForKey:@"posterKey"];
         NSString*orginalPosterImageKey=[newfeed objectForKey:@"originalPosterImageKey"];
         NSString*nonfacePosterImageKey=[newfeed objectForKey:@"nonfacePosterImageKey"];
@@ -260,6 +262,8 @@
      [FBSession.activeSession closeAndClearTokenInformation];
     intro=[[self storyboard]instantiateViewControllerWithIdentifier:@"intro"];
     [self presentViewController:intro animated:YES completion:nil];
+    IntroductionViewController*intro1=[self.storyboard instantiateViewControllerWithIdentifier:@"intro"];
+    [self presentViewController:intro1 animated:YES completion:nil];
 }
 - (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
     NSLog(@"get gesture");
@@ -319,7 +323,7 @@
         NSLog(@"Left Swipe");
         CGRect newFrame = self.profileView.frame;
         newFrame.origin.x -= 300;    // shift right by 500pts
-        [UIView animateWithDuration:0.5
+        [UIView animateWithDuration:1
                          animations:^{
                              self.profileView.frame = newFrame;
                          }
@@ -329,7 +333,7 @@
     if (swipeTime==YES) {
         CGRect newFrame = self.profileView.frame;
         newFrame.origin.x += 300;    // shift right by 500pts
-        [UIView animateWithDuration:0.5
+        [UIView animateWithDuration:1
                          animations:^{
                              self.profileView.frame = newFrame;
                          }
@@ -338,4 +342,16 @@
     }
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    NSMutableString*urlString=[[NSMutableString alloc]initWithFormat:@"https://facemegatech.appspot.com/_ah/api/notificationendpoint/v1/notification/getallnotification/"];
+    [urlString appendFormat:appDelegate.currentUser.username];
+    NSDictionary*jsonData=[self getData:urlString];
+    NSArray*json=[jsonData objectForKey:@"items"];
+    if (json!=nil) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FaceMe"
+                                                            object:nil
+                                                          ];
+    }
+   
+}
 @end

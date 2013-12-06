@@ -9,7 +9,7 @@
 #import "PosterCell.h"
 
 @implementation PosterCell
-
+@synthesize posterDetail,posterPicture,posterTitle;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
 @interface ProfileViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *gender;
@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *music;
 @property (weak, nonatomic) IBOutlet UILabel *hometown;
 @property (weak, nonatomic) IBOutlet UILabel *highSchool;
-
+@property AppDelegate*appDelegate;
 @end
