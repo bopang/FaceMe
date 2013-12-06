@@ -31,22 +31,14 @@ public class MainActivity extends Activity {
 				//createNotification();
 			}
 		});
-        
-<<<<<<< HEAD
+
         Button btn_signup=(Button)findViewById(R.id.button_signUp);
-=======
-        Button btn_signup=(Button)findViewById(R.id.button_signup);
->>>>>>> cf2178b4d3fe6dde46bb2feb2fb481955f15164f
         btn_signup.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-<<<<<<< HEAD
-				startActivity(new Intent(getBaseContext(), CameraActivitySuperMan.class));
-=======
 				startActivity(new Intent(getBaseContext(), RegistrationActivity.class));
->>>>>>> cf2178b4d3fe6dde46bb2feb2fb481955f15164f
 				//createNotification();
 			}
 		});
